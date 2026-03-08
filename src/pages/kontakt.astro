@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Kontakt" currentPath="/kontakt">
-  <main class="main-content">
+  <main id="main-content" class="main-content">
     <h1>Kontakt oss</h1>
     <p class="article-deck">Henvendelser om servering, overnatting, selskaper og omvisning</p>
     <p class="byline">Donseg&aring;rden &middot; Hamnvik, Ibestad</p>
@@ -27,7 +27,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
-    <div class="divider"></div>
+    <hr class="divider" />
 
     <div class="notice-box" style="max-width: 400px; margin: 1.2rem auto;">
       <h3>Hamnvik Handelssted</h3>
@@ -36,7 +36,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p>Troms</p>
     </div>
 
-    <div class="divider"></div>
+    <hr class="divider" />
 
     <h2 class="section-heading">Finn oss</h2>
     <p>
@@ -44,9 +44,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       Handelsstedet er lett synlig fra sjøsiden med sine gule sjøhus langs brygga.
     </p>
 
-    <div class="vintage-frame straight" style="max-width: 100%;">
-      <img src="/images/IMG_1853.jpg" alt="Hamnvik Handelssted sett fra sjøen" />
-      <div class="vintage-frame-caption">De gule sjøhusene ved brygga &mdash; velkommen til oss</div>
-    </div>
+    <figure class="vintage-frame straight" style="max-width: 100%;">
+      <img src="/images/IMG_1853.jpg" alt="Hamnvik Handelssted sett fra sjøen med gule sjøhus" />
+      <figcaption class="vintage-frame-caption">De gule sjøhusene ved brygga &mdash; velkommen til oss</figcaption>
+    </figure>
   </main>
 </BaseLayout>

@@ -1,6 +1,6 @@
 /* ========================================
    Hamnvik Handelssted
-   Newspaper / Gazette Design (1880s)
+   Modern design with 1880s character
    ======================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display+SC:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500;600;700&display=swap');
@@ -10,6 +10,35 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* ---- Skip Link (WCAG 2.4.1) ---- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 200;
+  padding: 0.6rem 1.2rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-nav);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border: none;
+  border-radius: 0 0 4px 4px;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: none;
+}
+
+/* ---- Focus Styles (WCAG 2.4.7) ---- */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* ---- Variables ---- */
@@ -24,6 +53,7 @@
   --rule-light: #999;
   --rule-faint: #ccc;
   --accent: #8b0000;
+  --bg: #faf6ec;
 
   --font-display: 'Playfair Display', Georgia, serif;
   --font-display-sc: 'Playfair Display SC', Georgia, serif;
@@ -43,243 +73,193 @@ body {
   font-weight: 500;
   line-height: 1.75;
   color: var(--ink);
-  background-color: #2a2017;
-  background-image:
-    /* Wood grain - fine horizontal lines */
-    repeating-linear-gradient(
-      2deg,
-      transparent,
-      transparent 1px,
-      rgba(0,0,0,0.07) 1px,
-      rgba(0,0,0,0.07) 2px,
-      transparent 2px,
-      transparent 5px
-    ),
-    /* Wood grain - wider variation bands */
-    repeating-linear-gradient(
-      178deg,
-      transparent,
-      transparent 8px,
-      rgba(80,55,30,0.1) 8px,
-      rgba(80,55,30,0.1) 10px,
-      transparent 10px,
-      transparent 22px
-    ),
-    /* Knot / swirl accents */
-    radial-gradient(ellipse 60px 40px at 20% 30%, rgba(50,30,15,0.15) 0%, transparent 70%),
-    radial-gradient(ellipse 80px 50px at 75% 60%, rgba(50,30,15,0.12) 0%, transparent 70%),
-    radial-gradient(ellipse 45px 35px at 50% 80%, rgba(50,30,15,0.1) 0%, transparent 70%),
-    /* Warm wood base gradient */
-    linear-gradient(
-      175deg,
-      #35291d 0%,
-      #3e3025 15%,
-      #3a2c20 30%,
-      #423326 50%,
-      #382a1f 70%,
-      #33261b 85%,
-      #2e2118 100%
-    );
+  background-color: var(--bg);
+  background-image: url('/images/ornament.svg');
+  background-repeat: no-repeat;
+  background-position: center 40vh;
+  background-size: 700px 700px;
+  background-attachment: fixed;
   min-height: 100vh;
 }
 
-/* ---- Site Wrapper (the "newspaper page") ---- */
+/* ---- Site Wrapper ---- */
 .site-wrapper {
-  max-width: 860px;
-  margin: 2.5rem auto;
-  background:
-    /* Paper fiber texture - fine horizontal */
-    repeating-linear-gradient(
-      0deg,
-      transparent 0px,
-      transparent 1px,
-      rgba(120,95,60,0.025) 1px,
-      rgba(120,95,60,0.025) 3px,
-      transparent 3px,
-      transparent 5px
-    ),
-    /* Paper fiber texture - fine vertical */
-    repeating-linear-gradient(
-      90deg,
-      transparent 0px,
-      transparent 2px,
-      rgba(120,95,60,0.02) 2px,
-      rgba(120,95,60,0.02) 4px,
-      transparent 4px,
-      transparent 7px
-    ),
-    /* Age spots / foxing stains */
-    radial-gradient(ellipse 30px 25px at 15% 8%, rgba(160,120,60,0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 20px 18px at 85% 25%, rgba(140,100,50,0.05) 0%, transparent 70%),
-    radial-gradient(ellipse 35px 30px at 70% 70%, rgba(160,120,60,0.04) 0%, transparent 70%),
-    radial-gradient(ellipse 25px 20px at 25% 55%, rgba(150,110,55,0.05) 0%, transparent 70%),
-    radial-gradient(ellipse 18px 15px at 90% 85%, rgba(145,105,50,0.04) 0%, transparent 70%),
-    /* Aged edges vignette - heavier burn */
-    radial-gradient(ellipse 70% 65% at center, var(--paper-light) 0%, #f2ead8 70%, #e6d9c0 88%, #d8c9aa 100%),
-    var(--paper-light);
+  width: 100%;
   min-height: 100vh;
-  box-shadow:
-    /* Lift shadow on desk */
-    0 8px 40px rgba(0,0,0,0.5),
-    0 2px 8px rgba(0,0,0,0.3),
-    /* Inner vignette */
-    inset 0 0 100px rgba(120,90,50,0.06),
-    inset 0 0 30px rgba(120,90,50,0.03);
   position: relative;
-  /* Slightly rough paper edge */
-  border: 1px solid #c8b898;
-  outline: 1px solid rgba(0,0,0,0.08);
-  outline-offset: -3px;
+}
+
+/* Blur ornament only behind content, not hero */
+.main-content,
+.site-footer {
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+/* ---- Content Width Utility ---- */
+.content-width {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 /* ==============================
-   MASTHEAD (newspaper header)
+   HEADER — Front Page (masthead)
    ============================== */
 
-.masthead {
-  padding: 0 2rem;
+.site-header-front {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 3rem 2rem 2rem;
   text-align: center;
+  background: rgba(250, 246, 236, 0.8);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+
+  --header-font-size: 3.4rem;
+  --header-nav-margin: 1.5rem;
+  --header-nav-font: 0.92rem;
+  --header-sub-opacity: 1;
+  --header-sub-height: 1em;
 }
 
-/* Thick top rule */
-.masthead-top-rule {
-  height: 4px;
-  background: var(--ink);
-  margin-bottom: 0.5rem;
+.site-header-front.scrolled {
+  border-bottom: 1px solid var(--rule-faint);
 }
 
-/* Dateline: "Grunnlagt 1794 ✦ Ibestad, Troms" */
-.masthead-dateline {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.3rem 0;
-  font-family: var(--font-label);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: var(--ink-mid);
-  text-transform: uppercase;
+.site-header-front .site-subtitle,
+.site-header-front .site-tagline {
+  opacity: var(--header-sub-opacity);
+  overflow: hidden;
+  line-height: var(--header-sub-height);
+  margin-top: calc(var(--header-sub-opacity) * 0.5rem);
 }
 
-.masthead-dateline-ornament {
-  font-size: 0.6rem;
-  color: var(--rule-light);
-}
-
-/* Thin rule */
-.masthead-rule-thin {
-  height: 1px;
-  background: var(--rule);
-}
-
-/* Newspaper name */
-.masthead-title {
-  padding: 0.8rem 0 0.6rem;
-}
-
-.masthead-title a {
-  text-decoration: none;
-  color: var(--ink);
-  border-bottom: none;
-}
-
-.masthead-title a:hover {
-  color: var(--ink-mid);
-}
-
-.masthead-name {
+.site-header-front .site-name {
   font-family: var(--font-display);
-  font-size: 3.2rem;
+  font-size: var(--header-font-size);
   font-weight: 900;
   font-style: italic;
-  letter-spacing: 0.01em;
+  color: var(--ink);
   line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.site-header-front .site-name a {
+  color: var(--ink);
+  border-bottom: none;
+  text-decoration: none;
+}
+
+.site-header-front .site-name a:hover {
   color: var(--ink);
 }
 
-.masthead-sub {
+.site-header-front .site-subtitle {
   font-family: var(--font-nav);
   font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   color: var(--ink-light);
-  margin-top: 0.25rem;
 }
 
-/* Edition line: "Servering · Overnatting · Kultur" */
-.masthead-edition {
-  padding: 0.3rem 0;
+.site-header-front .site-tagline {
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-style: italic;
-  font-weight: 500;
-  color: var(--ink-mid);
+  color: var(--ink-light);
 }
 
-.masthead-dot {
-  margin: 0 0.3rem;
-  color: var(--rule-light);
+.site-header-front nav {
+  margin-top: var(--header-nav-margin);
 }
 
-/* Thick rule */
-.masthead-rule-thick {
-  height: 3px;
-  background: var(--ink);
-}
-
-/* Double rule at bottom */
-.masthead-rule-double {
-  height: 3px;
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
-  margin-top: 0;
-}
-
-/* ---- Navigation (index line) ---- */
-.masthead-nav {
-  padding: 0.45rem 0;
-}
-
-.masthead-nav ul {
+.site-header-front nav ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  gap: 0.2rem;
 }
 
-.masthead-nav li {
-  display: flex;
-  align-items: center;
-}
-
-.masthead-nav li:not(:last-child)::after {
-  content: "|";
-  color: var(--rule-light);
-  font-size: 0.85rem;
-  padding: 0 0.1rem;
-}
-
-.masthead-nav a {
+.site-header-front nav a {
   display: block;
-  padding: 0.15rem 0.65rem;
-  color: var(--ink);
-  text-decoration: none;
+  padding: 0.35rem 0.8rem;
   font-family: var(--font-nav);
-  font-size: 0.9rem;
+  font-size: var(--header-nav-font);
   font-weight: 600;
   letter-spacing: 0.05em;
+  color: var(--ink);
+  text-decoration: none;
   border-bottom: none;
   transition: color 0.15s;
 }
 
-.masthead-nav a:hover {
+.site-header-front nav a:hover,
+.site-header-front nav a.active {
   color: var(--accent);
 }
 
-.masthead-nav a.active {
+/* ==============================
+   HEADER — Sticky Nav (subpages)
+   ============================== */
+
+.site-header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--rule-faint);
+  padding: 0.7rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(250, 246, 236, 0.92);
+}
+
+.site-header-sticky .site-name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--ink);
+}
+
+.site-header-sticky .site-name a {
+  color: var(--ink);
+  border-bottom: none;
+  text-decoration: none;
+}
+
+.site-header-sticky .site-name a:hover {
+  color: var(--ink-mid);
+}
+
+.site-header-sticky nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem;
+}
+
+.site-header-sticky nav a {
+  display: block;
+  padding: 0.3rem 0.65rem;
+  font-family: var(--font-nav);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: none;
+  transition: color 0.15s;
+}
+
+.site-header-sticky nav a:hover,
+.site-header-sticky nav a.active {
   color: var(--accent);
 }
 
@@ -347,15 +327,14 @@ h2::after {
   display: none;
 }
 
-/* Section heading with rules above and below */
+/* Section heading */
 h2.section-heading {
-  border-top: 2px solid var(--ink);
-  border-bottom: 1px solid var(--rule);
-  padding: 0.35rem 0;
-  margin-top: 1.5rem;
-  margin-bottom: 0.8rem;
-  text-align: center;
-  letter-spacing: 0.1em;
+  padding-bottom: 0.35rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--rule-faint);
+  text-align: left;
+  letter-spacing: 0.08em;
 }
 
 h3 {
@@ -367,8 +346,7 @@ h3 {
 
 p {
   margin-bottom: 0.8rem;
-  text-align: justify;
-  hyphens: auto;
+  text-align: left;
 }
 
 a {
@@ -387,7 +365,7 @@ a:hover {
 .drop-cap::first-letter {
   font-family: var(--font-display);
   float: left;
-  font-size: 4.5rem;
+  font-size: 4rem;
   line-height: 0.72;
   font-weight: 900;
   color: var(--ink);
@@ -401,10 +379,10 @@ a:hover {
    ============================== */
 
 .pull-quote {
-  margin: 1.5rem 2rem;
-  padding: 1rem 1.5rem;
-  border-top: 2px solid var(--ink);
-  border-bottom: 1px solid var(--rule);
+  margin: 2rem 2rem;
+  padding: 1.2rem 1.5rem;
+  border-top: 1px solid var(--rule-faint);
+  border-bottom: 1px solid var(--rule-faint);
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-style: italic;
@@ -439,23 +417,20 @@ a:hover {
 }
 
 /* ==============================
-   NOTICE BOX (classified ad style)
+   NOTICE BOX
    ============================== */
 
 .notice-box {
-  border: 2px solid var(--ink);
-  padding: 1rem 1.2rem;
-  margin: 1.2rem 0;
+  border: 1px solid var(--rule-light);
+  border-radius: 6px;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
   text-align: center;
   position: relative;
 }
 
 .notice-box::before {
-  content: "";
-  position: absolute;
-  inset: 3px;
-  border: 1px solid var(--rule-light);
-  pointer-events: none;
+  display: none;
 }
 
 .notice-box h3 {
@@ -474,12 +449,7 @@ a:hover {
 }
 
 .notice-box-small {
-  border-width: 1px;
   padding: 0.8rem 1rem;
-}
-
-.notice-box-small::before {
-  display: none;
 }
 
 /* ==============================
@@ -503,7 +473,9 @@ a:hover {
    ============================== */
 
 .main-content {
-  padding: 1.5rem 2.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 2rem;
   min-height: 60vh;
 }
 
@@ -517,7 +489,6 @@ a:hover {
   margin-bottom: 0.8rem;
   padding-bottom: 0;
   border-bottom: none;
-  text-align: justify;
   line-height: 1.7;
 }
 
@@ -528,14 +499,29 @@ a:hover {
 .hero {
   position: relative;
   overflow: hidden;
-  border-bottom: 2px solid var(--ink);
+  margin-top: -300px;
+  padding-top: 300px;
+  z-index: 0;
 }
 
 .hero img {
   width: 100%;
-  height: auto;
+  height: 80vh;
   display: block;
-  filter: grayscale(30%) contrast(1.1) sepia(10%);
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+/* Fade bottom edge of hero into page background */
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25%;
+  background: linear-gradient(transparent, var(--bg));
+  pointer-events: none;
 }
 
 .hero-overlay {
@@ -543,69 +529,45 @@ a:hover {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, rgba(10, 10, 10, 0.8));
-  padding: 3rem 2.5rem 1.2rem;
+  z-index: 1;
+  padding: 4rem 2.5rem 2rem;
+  background: none;
 }
 
 .hero-overlay h2 {
   font-family: var(--font-display);
-  color: var(--paper-light);
-  font-size: 2rem;
+  color: var(--ink);
+  font-size: 2.2rem;
   font-style: italic;
   font-weight: 900;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+  text-shadow: none;
   text-align: left;
   letter-spacing: -0.01em;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 /* ==============================
-   DIVIDERS (section rules)
+   DIVIDERS
    ============================== */
 
-/* Ornamental divider with symbol */
 .divider {
-  text-align: center;
-  margin: 1.5rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
+  height: 1px;
+  background: var(--rule-faint);
+  margin: 2rem 0;
+  border: none;
 }
 
 .divider::before,
 .divider::after {
-  content: "";
-  flex: 1;
+  display: none;
+}
+
+.divider-heavy {
   height: 1px;
   background: var(--rule-light);
-}
-
-/* Empty divider gets automatic ornament */
-.divider:empty {
-  gap: 0;
-}
-
-.divider:empty::before {
-  flex: 1;
-}
-
-.divider:empty::after {
-  content: "  ✦  ";
-  flex: none;
-  height: auto;
-  background: none;
-  font-size: 0.6rem;
-  color: var(--rule-light);
-  padding: 0 0.5rem;
-}
-
-/* Heavy divider - thick-thin double rule */
-.divider-heavy {
-  margin: 1.8rem 0;
+  margin: 2.5rem 0;
   border: none;
-  border-top: 2px solid var(--ink);
-  border-bottom: 1px solid var(--rule);
-  height: 5px;
-  display: block;
 }
 
 .divider-heavy::before,
@@ -613,58 +575,18 @@ a:hover {
   display: none;
 }
 
-/* Ornamental divider with multiple symbols */
-.divider-ornate {
-  text-align: center;
-  margin: 1.8rem 0;
-  display: flex;
-  align-items: center;
-  gap: 0;
-}
-
-.divider-ornate::before,
-.divider-ornate::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--rule-light);
-}
-
-.divider-ornate-symbol {
-  padding: 0 0.8rem;
-  font-size: 0.75rem;
-  color: var(--rule-light);
-  letter-spacing: 0.3em;
-}
-
-/* ---- Section rule (heavier, for major breaks) ---- */
-.section-rule {
-  height: 2px;
-  background: var(--ink);
-  margin: 2rem 0 0.3rem;
-}
-
-.section-rule-double {
-  height: 3px;
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
-  margin: 2rem 0 1rem;
-}
-
 /* ==============================
-   NEWSPAPER COLUMNS
+   COLUMNS
    ============================== */
 
 .columns-2 {
   column-count: 2;
   column-gap: 2rem;
-  column-rule: 1px solid var(--rule-faint);
 }
 
 .columns-3 {
   column-count: 3;
   column-gap: 1.8rem;
-  column-rule: 1px solid var(--rule-faint);
 }
 
 .no-break {
@@ -672,24 +594,20 @@ a:hover {
 }
 
 /* ==============================
-   IMAGE FRAMES (engraving style)
+   IMAGE FRAMES
    ============================== */
 
 .vintage-frame {
   display: inline-block;
-  padding: 0;
-  background: none;
-  border: 2px solid var(--ink);
   margin: 1rem 0;
-  transform: none;
-  box-shadow: none;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .vintage-frame img {
   display: block;
   width: 100%;
   height: auto;
-  filter: grayscale(20%) contrast(1.05) sepia(8%);
 }
 
 .vintage-frame.straight {
@@ -707,9 +625,7 @@ a:hover {
   font-weight: 500;
   color: var(--ink-light);
   text-align: center;
-  padding: 0.4rem 0.5rem;
-  border-top: 1px solid var(--rule-faint);
-  background: var(--paper);
+  padding: 0.5rem 0;
 }
 
 /* ---- Image Gallery ---- */
@@ -725,31 +641,30 @@ a:hover {
 }
 
 /* ==============================
-   INFO CARDS (as newspaper briefs)
+   INFO CARDS
    ============================== */
 
 .info-cards {
-  column-count: 2;
-  column-gap: 1.8rem;
-  column-rule: 1px solid var(--rule-faint);
-  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 1.5rem 0;
 }
 
 .info-card {
-  break-inside: avoid;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid var(--rule-faint);
-  margin-bottom: 0.3rem;
+  padding: 1.2rem;
+  border: 1px solid var(--rule-faint);
+  border-radius: 6px;
   text-align: left;
-  background: none;
-  border-left: none;
-  border-right: none;
-  border-top: none;
+  transition: border-color 0.2s;
+}
+
+.info-card:hover {
+  border-color: var(--rule-light);
 }
 
 .info-card:first-child {
   border-top: 1px solid var(--rule-faint);
-  padding-top: 0.6rem;
 }
 
 .info-card::before {
@@ -758,10 +673,10 @@ a:hover {
 
 .info-card h3 {
   font-family: var(--font-display-sc);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-style: normal;
   letter-spacing: 0.06em;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.3rem;
   color: var(--ink);
 }
 
@@ -775,44 +690,36 @@ a:hover {
 }
 
 .info-card p {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   text-align: left;
   margin-bottom: 0;
-  line-height: 1.45;
+  line-height: 1.55;
 }
 
 /* ==============================
    CONTACT
    ============================== */
 
-/* Contact as classified notice */
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 0;
-  margin: 1rem 0;
-  border: 2px solid var(--ink);
-  position: relative;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
 }
 
 .contact-grid::before {
-  content: "";
-  position: absolute;
-  inset: 3px;
-  border: 1px solid var(--rule-light);
-  pointer-events: none;
+  display: none;
 }
 
 .contact-card {
-  padding: 1rem 1rem;
+  padding: 1.2rem;
   text-align: center;
-  background: none;
-  border: none;
-  border-right: 1px solid var(--rule-faint);
+  border: 1px solid var(--rule-faint);
+  border-radius: 6px;
 }
 
 .contact-card:last-child {
-  border-right: none;
+  border-right: 1px solid var(--rule-faint);
 }
 
 .contact-card::before {
@@ -835,39 +742,32 @@ a:hover {
 }
 
 /* ==============================
-   FOOTER (colophon)
+   FOOTER
    ============================== */
 
-.paper-footer {
-  padding: 0 2.5rem 1.5rem;
+.site-footer {
+  background: var(--paper);
+  border-top: 1px solid var(--rule-faint);
+  padding: 2.5rem 2rem 1.5rem;
   font-size: 0.85rem;
   color: var(--ink-light);
+  margin-top: 3rem;
 }
 
-.paper-footer-rule {
-  height: 2px;
-  background: var(--ink);
-  margin-bottom: 1rem;
-}
-
-.paper-footer-content {
+.site-footer-content {
+  max-width: 900px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 2rem;
   text-align: center;
 }
 
-.paper-footer-col {
+.site-footer-col {
   flex: 1;
 }
 
-.paper-footer-center {
-  border-left: 1px solid var(--rule-faint);
-  border-right: 1px solid var(--rule-faint);
-  padding: 0 1rem;
-}
-
-.paper-footer-label {
+.site-footer-label {
   font-family: var(--font-label);
   font-size: 0.7rem;
   font-weight: 700;
@@ -877,36 +777,30 @@ a:hover {
   margin-bottom: 0.3rem;
 }
 
-.paper-footer-col p {
+.site-footer-col p {
   margin-bottom: 0.2rem;
   font-size: 0.82rem;
   text-align: center;
 }
 
-.paper-footer a {
+.site-footer a {
   color: var(--ink-mid);
   border-bottom: none;
 }
 
-.paper-footer a:hover {
+.site-footer a:hover {
   color: var(--accent);
 }
 
-.paper-footer-bottom {
+.site-footer-bottom {
+  max-width: 900px;
+  margin: 1rem auto 0;
   text-align: center;
-  margin-top: 1rem;
-  padding-top: 0.5rem;
+  padding-top: 0.8rem;
   border-top: 1px solid var(--rule-faint);
   font-size: 0.72rem;
-  color: var(--rule-light);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.6rem;
+  color: var(--ink-light);
 }
-
-/* Legacy footer classes (in case used) */
-.site-footer { display: none; }
 
 /* ==============================
    BLOCKQUOTE
@@ -928,37 +822,6 @@ ul, ol {
 
 li {
   margin-bottom: 0.3rem;
-}
-
-/* ==============================
-   ENTRANCE ANIMATION
-   ============================== */
-
-@keyframes newspaper-zoom-in {
-  0% {
-    transform: scale(0.65) perspective(1200px) rotateX(10deg);
-    opacity: 0;
-    box-shadow:
-      0 2px 10px rgba(0,0,0,0.2),
-      0 1px 3px rgba(0,0,0,0.1);
-  }
-  35% {
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1) perspective(1200px) rotateX(0deg);
-    opacity: 1;
-    box-shadow:
-      0 8px 40px rgba(0,0,0,0.5),
-      0 2px 8px rgba(0,0,0,0.3),
-      inset 0 0 100px rgba(120,90,50,0.06),
-      inset 0 0 30px rgba(120,90,50,0.03);
-  }
-}
-
-body.entrance-active .site-wrapper {
-  animation: newspaper-zoom-in 2.2s cubic-bezier(0.23, 1, 0.32, 1) both;
-  transform-origin: center top;
 }
 
 /* ==============================
@@ -994,6 +857,27 @@ body.entrance-active .site-wrapper {
   animation: page-turn-in 0.3s ease-out 0.1s both;
 }
 
+/* ---- Reduced Motion (WCAG 2.3.3) ---- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  ::view-transition-old(page-content),
+  ::view-transition-new(page-content) {
+    animation: none;
+  }
+
+  .site-header-front .site-subtitle,
+  .site-header-front .site-tagline {
+    transition: none;
+  }
+
+  a, .info-card, .site-header-front nav a, .site-header-sticky nav a {
+    transition: none;
+  }
+}
+
 /* ==============================
    RESPONSIVE
    ============================== */
@@ -1003,28 +887,30 @@ body.entrance-active .site-wrapper {
     font-size: 17px;
   }
 
-  .site-wrapper {
-    margin: 0;
-    box-shadow: none;
-    border: none;
-    outline: none;
+  /* Sticky header stacks on mobile */
+  .site-header-sticky {
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
   }
 
-  body.entrance-active .site-wrapper {
-    animation: none;
+  .site-header-sticky nav ul {
+    justify-content: center;
   }
 
-  .masthead {
-    padding: 0 1rem;
+  .site-header-sticky nav a {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.78rem;
   }
 
-  .masthead-name {
-    font-size: 2.2rem;
+  /* Front page header */
+  .site-header-front .site-name {
+    font-size: 2.4rem;
   }
 
-  .masthead-nav a {
-    padding: 0.15rem 0.4rem;
-    font-size: 0.8rem;
+  .site-header-front nav a {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.82rem;
   }
 
   .main-content {
@@ -1036,7 +922,7 @@ body.entrance-active .site-wrapper {
   }
 
   .info-cards {
-    column-count: 1;
+    grid-template-columns: 1fr;
   }
 
   .image-gallery {
@@ -1056,22 +942,18 @@ body.entrance-active .site-wrapper {
     font-size: 3.5rem;
   }
 
-  p {
-    text-align: left;
-    hyphens: none;
+  .pull-quote {
+    margin: 1.2rem 0.5rem;
+    padding: 0.8rem 1rem;
   }
 
-  .paper-footer-content {
+  .notice-box {
+    margin: 1rem 0;
+  }
+
+  .site-footer-content {
     flex-direction: column;
-    gap: 0.8rem;
-  }
-
-  .paper-footer-center {
-    border-left: none;
-    border-right: none;
-    border-top: 1px solid var(--rule-faint);
-    border-bottom: 1px solid var(--rule-faint);
-    padding: 0.8rem 0;
+    gap: 1rem;
   }
 
   .contact-grid {
@@ -1082,47 +964,20 @@ body.entrance-active .site-wrapper {
     border-right: none;
     border-bottom: 1px solid var(--rule-faint);
   }
-
-  .contact-card:last-child {
-    border-bottom: none;
-  }
-
-  .pull-quote {
-    margin: 1.2rem 0.5rem;
-    padding: 0.8rem 1rem;
-  }
-
-  .notice-box {
-    margin: 1rem 0;
-  }
-
-  .notice-box::before {
-    display: none;
-  }
 }
 
 @media (max-width: 480px) {
-  .masthead-name {
-    font-size: 1.7rem;
+  .site-header-front .site-name {
+    font-size: 1.8rem;
   }
 
-  .masthead-dateline {
-    font-size: 0.65rem;
-    gap: 0.5rem;
+  .site-header-sticky .site-name {
+    font-size: 1.1rem;
   }
 
-  .masthead-nav li:not(:last-child)::after {
-    padding: 0;
-    font-size: 0.7rem;
-  }
-
-  .masthead-nav a {
+  .site-header-sticky nav a {
     padding: 0.15rem 0.3rem;
     font-size: 0.72rem;
-  }
-
-  .masthead-edition {
-    font-size: 0.75rem;
   }
 
   h1 {

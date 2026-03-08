@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Nyheter" currentPath="/nyheter">
-  <main class="main-content">
+  <main id="main-content" class="main-content">
     <h1>Nyheter</h1>
     <p class="article-deck">Hendelser og &oslash;yeblikk fra livet p&aring; handelsstedet</p>
     <p class="byline">Redaksjonen &middot; Hamnvik</p>
@@ -14,13 +14,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         Det er ikke hver dag kongeskipet legger til kai utenfor stuedøra. Men akkurat
         det skjedde altså i Hamnvik.
       </p>
-      <div class="vintage-frame straight" style="max-width: 320px; margin: 1rem 0 1.5rem;">
-        <img src="/images/kongeskipet.png" alt="KS Norge i havna ved Hamnvik Handelssted" />
-        <div class="vintage-frame-caption">KS Norge ved brygga i Hamnvik</div>
-      </div>
+      <figure class="vintage-frame straight" style="max-width: 320px; margin: 1rem 0 1.5rem;">
+        <img src="/images/kongeskipet.png" alt="KS Norge fortøyd ved brygga i Hamnvik med fjell i bakgrunnen" />
+        <figcaption class="vintage-frame-caption">KS Norge ved brygga i Hamnvik</figcaption>
+      </figure>
     </article>
 
-    <div class="divider-heavy"></div>
+    <hr class="divider-heavy" />
 
     <article>
       <h2 class="section-heading">Kongebesøk i Hamnvik</h2>
@@ -35,10 +35,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         gjennom generasjonene.
       </p>
 
-      <div class="vintage-frame straight" style="max-width: 100%; margin: 1.2rem 0;">
-        <img src="/images/kongebesok/IMG_4917.jpg" alt="Kongebesøket i Hamnvik 2011" />
-        <div class="vintage-frame-caption">Kongeparet ankommer Hamnvik Handelssted</div>
-      </div>
+      <figure class="vintage-frame straight" style="max-width: 100%; margin: 1.2rem 0;">
+        <img src="/images/kongebesok/IMG_4917.jpg" alt="KS Norge ved kai i Hamnvik, med sjaluppen klar ved brygga og folkemengde som venter" />
+        <figcaption class="vintage-frame-caption">Kongeparet ankommer Hamnvik Handelssted</figcaption>
+      </figure>
 
       <div class="columns-2">
         <p>
@@ -57,56 +57,56 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </p>
       </div>
 
-      <div class="pull-quote">
+      <blockquote class="pull-quote">
         NRK sendte direkte for Nordnytt og Dagsrevyen.
         En dag Hamnvik sent vil glemme.
-      </div>
+      </blockquote>
 
-      <div class="divider"></div>
+      <hr class="divider" />
 
       <h3>Bilder fra dagen</h3>
       <p class="photo-credit">Foto: Ragnar Hansen</p>
 
       <div class="image-gallery">
-        <div class="vintage-frame">
-          <img src="/images/kongebesok/IMG_4823.jpg" alt="Fra kongebesøket i Hamnvik" />
-        </div>
-        <div class="vintage-frame">
-          <img src="/images/kongebesok/IMG_4829.jpg" alt="Fra kongebesøket i Hamnvik" />
-        </div>
-        <div class="vintage-frame">
-          <img src="/images/kongebesok/IMG_4839.jpg" alt="Fra kongebesøket i Hamnvik" />
-        </div>
-        <div class="vintage-frame">
-          <img src="/images/kongebesok/IMG_4857.jpg" alt="Fra kongebesøket i Hamnvik" />
-        </div>
-        <div class="vintage-frame">
-          <img src="/images/kongebesok/IMG_4863.jpg" alt="Fra kongebesøket i Hamnvik" />
-        </div>
-        <div class="vintage-frame">
-          <img src="/images/kongebesok/IMG_4895.jpg" alt="Fra kongebesøket i Hamnvik" />
-        </div>
-        <div class="vintage-frame">
-          <img src="/images/kongebesok/IMG_4901.jpg" alt="Fra kongebesøket i Hamnvik" />
-        </div>
-        <div class="vintage-frame">
-          <img src="/images/kongebesok/IMG_4912.jpg" alt="Fra kongebesøket i Hamnvik" />
-        </div>
-        <div class="vintage-frame">
-          <img src="/images/kongebesok/IMG_4918.jpg" alt="Fra kongebesøket i Hamnvik" />
-        </div>
-        <div class="vintage-frame">
-          <img src="/images/kongebesok/IMG_4919.jpg" alt="Fra kongebesøket i Hamnvik" />
-        </div>
-        <div class="vintage-frame">
-          <img src="/images/kongebesok/IMG_4920.jpg" alt="Fra kongebesøket i Hamnvik" />
-        </div>
-        <div class="vintage-frame">
-          <img src="/images/kongebesok/IMG_4921.jpg" alt="Fra kongebesøket i Hamnvik" />
-        </div>
-        <div class="vintage-frame">
-          <img src="/images/kongebesok/IMG_4936.jpg" alt="Fra kongebesøket i Hamnvik" />
-        </div>
+        <figure class="vintage-frame">
+          <img src="/images/kongebesok/IMG_4823.jpg" alt="Sjaluppen legger ut fra kongeskipet KS Norge" />
+        </figure>
+        <figure class="vintage-frame">
+          <img src="/images/kongebesok/IMG_4829.jpg" alt="Kongeparet går i land på brygga i Hamnvik, med norsk flagg og følge" />
+        </figure>
+        <figure class="vintage-frame">
+          <img src="/images/kongebesok/IMG_4839.jpg" alt="Kongeparet med følge går opp fra brygga, med norske flagg langs veien" />
+        </figure>
+        <figure class="vintage-frame">
+          <img src="/images/kongebesok/IMG_4857.jpg" alt="Kong Harald og Dronning Sonja sitter i publikum under festforestillingen" />
+        </figure>
+        <figure class="vintage-frame">
+          <img src="/images/kongebesok/IMG_4863.jpg" alt="Dronning Sonja holder tale, flankert av lokale i bunad og uniformer" />
+        </figure>
+        <figure class="vintage-frame">
+          <img src="/images/kongebesok/IMG_4895.jpg" alt="Dronning Sonja i samtale med lokale vertskap utendørs ved handelsstedet" />
+        </figure>
+        <figure class="vintage-frame">
+          <img src="/images/kongebesok/IMG_4901.jpg" alt="Kongeparet ankommer hovedhuset på Donsegården" />
+        </figure>
+        <figure class="vintage-frame">
+          <img src="/images/kongebesok/IMG_4912.jpg" alt="Intervju med lokale representanter utenfor handelsstedet" />
+        </figure>
+        <figure class="vintage-frame">
+          <img src="/images/kongebesok/IMG_4918.jpg" alt="Folkemengde på brygga ser sjaluppen komme inn mot kai" />
+        </figure>
+        <figure class="vintage-frame">
+          <img src="/images/kongebesok/IMG_4919.jpg" alt="Flaggpyntet seilskute ved kai i Hamnvik med fjell i bakgrunnen" />
+        </figure>
+        <figure class="vintage-frame">
+          <img src="/images/kongebesok/IMG_4920.jpg" alt="To politibetjenter i galauniform står vakt ved hvitt gjerde" />
+        </figure>
+        <figure class="vintage-frame">
+          <img src="/images/kongebesok/IMG_4921.jpg" alt="Kong Harald og Dronning Sonja med følge på vei til handelsstedet" />
+        </figure>
+        <figure class="vintage-frame">
+          <img src="/images/kongebesok/IMG_4936.jpg" alt="NRK-journalist gjør direktesendt intervju ved handelsstedet" />
+        </figure>
       </div>
     </article>
   </main>

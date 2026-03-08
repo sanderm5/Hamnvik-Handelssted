@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Krambu" currentPath="/krambu">
-  <main class="main-content">
+  <main id="main-content" class="main-content">
     <h1>Krambu</h1>
     <p class="article-deck">Husflidsutsalg i den gamle krambua &mdash; ta med et stykke kystkultur hjem</p>
     <p class="byline">Donseg&aring;rden &middot; Hamnvik, Ibestad</p>
@@ -25,18 +25,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           god tid, se seg rundt og finne noe du ikke visste du trengte.
         </p>
       </div>
-      <div class="vintage-frame" style="max-width: 260px;">
-        <img src="/images/maleri.png" alt="Historisk maleri av handelsstedet" />
-        <div class="vintage-frame-caption">Handelen har alltid vært kjernen i Donsegården</div>
-      </div>
+      <figure class="vintage-frame" style="max-width: 260px;">
+        <img src="/images/maleri.png" alt="Historisk maleri av handelsstedet med sjøhus og brygge" />
+        <figcaption class="vintage-frame-caption">Handelen har alltid vært kjernen i Donsegården</figcaption>
+      </figure>
     </div>
 
-    <div class="pull-quote">
+    <blockquote class="pull-quote">
       Et sted å ta seg god tid, se seg rundt
       og finne noe du ikke visste du trengte.
-    </div>
+    </blockquote>
 
-    <div class="divider"></div>
+    <hr class="divider" />
 
     <h2 class="section-heading">Husflid fra kysten</h2>
     <p>

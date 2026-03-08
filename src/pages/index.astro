@@ -4,13 +4,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="Velkommen" currentPath="/">
   <div class="hero">
-    <img src="/images/IMG_1853.jpg" alt="Hamnvik Handelssted sett fra sjøen, med gule sjøhus og brygge" />
+    <img src="/images/HAMNVIK.png" alt="Illustrasjon av Hamnvik Handelssted med gule sjøhus, seilbåt og fjell i vinterlandskap" />
     <div class="hero-overlay">
       <h2>Velkommen til Hamnvik Handelssted</h2>
     </div>
   </div>
 
-  <main class="main-content">
+  <main id="main-content" class="main-content">
     <h1>Der historien lever videre</h1>
     <p class="article-deck">Et fredet handelssted fra 1794 &mdash; ved fjorden i Hamnvik, Ibestad</p>
     <p class="byline">Donseg&aring;rden &middot; Hamnvik, Troms</p>
@@ -35,12 +35,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </p>
     </div>
 
-    <div class="pull-quote">
+    <blockquote class="pull-quote">
       Et levende kulturminne der du kan spise godt, overnatte i historiske rom
       og oppleve fortellingene fra over to hundre år med kystkultur.
-    </div>
+    </blockquote>
 
-    <div class="divider"></div>
+    <hr class="divider" />
 
     <h2 class="section-heading">Opplev handelsstedet</h2>
 
@@ -67,13 +67,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
-    <div class="divider"></div>
+    <hr class="divider" />
 
     <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start;">
-      <div class="vintage-frame" style="max-width: 260px;">
+      <figure class="vintage-frame" style="max-width: 260px;">
         <img src="/images/maleri.png" alt="Maleri av Hamnvik Handelssted med dampskip i havna" />
-        <div class="vintage-frame-caption">Dampskibet Prins Gustav ankommer Havnviken, 1838</div>
-      </div>
+        <figcaption class="vintage-frame-caption">Dampskibet Prins Gustav ankommer Havnviken, 1838</figcaption>
+      </figure>
       <div style="flex: 1; min-width: 200px;">
         <h2>Fra dampskip til d&oslash;rterskel</h2>
         <p>

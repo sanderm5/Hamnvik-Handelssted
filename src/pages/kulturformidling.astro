@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Kulturformidling" currentPath="/kulturformidling">
-  <main class="main-content">
+  <main id="main-content" class="main-content">
     <h1>Kulturformidling</h1>
     <p class="article-deck">Omvisning, k&aring;serier og bildevisning i museale rom fulle av fortellinger</p>
     <p class="byline">Donseg&aring;rden &middot; Hamnvik, Ibestad</p>
@@ -21,7 +21,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       som levde og arbeidet her &mdash; fra grunnleggelsen i 1794 og frem til i dag.
     </p>
 
-    <div class="divider"></div>
+    <hr class="divider" />
 
     <h2 class="section-heading">Kåserier &amp; bildevisning</h2>
     <p>
@@ -32,24 +32,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       i hovedhuset.
     </p>
 
-    <div class="pull-quote">
+    <blockquote class="pull-quote">
       Fortellingene spenner fra 1794, gjennom dampskipenes storhetstid,
       til kongebesøket i 2011.
-    </div>
+    </blockquote>
 
     <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1.2rem 0;">
-      <div class="vintage-frame" style="flex: 1; min-width: 200px;">
-        <img src="/images/maleri.png" alt="Historisk maleri av handelsstedet" />
-        <div class="vintage-frame-caption">Havnviken slik en kunstner så den på 1800-tallet</div>
-      </div>
-      <div class="vintage-frame" style="flex: 1; min-width: 200px;">
-        <img src="/images/kongeskipet.png" alt="Kongeskipet i Hamnvik" />
-        <div class="vintage-frame-caption">Kongeskipet ved kai i 2011</div>
-      </div>
+      <figure class="vintage-frame" style="flex: 1; min-width: 200px;">
+        <img src="/images/maleri.png" alt="Maleri av Havnviken med sjøhus og seilskip på 1800-tallet" />
+        <figcaption class="vintage-frame-caption">Havnviken slik en kunstner så den på 1800-tallet</figcaption>
+      </figure>
+      <figure class="vintage-frame" style="flex: 1; min-width: 200px;">
+        <img src="/images/kongeskipet.png" alt="Kongeskipet KS Norge fortøyd ved kai i Hamnvik" />
+        <figcaption class="vintage-frame-caption">Kongeskipet ved kai i 2011</figcaption>
+      </figure>
     </div>
     <p class="photo-credit">Foto: Ragnar Hansen</p>
 
-    <div class="divider"></div>
+    <hr class="divider" />
 
     <h2 class="section-heading">Fotefarprosjektet</h2>
     <p>

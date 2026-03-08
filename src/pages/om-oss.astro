@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Om oss" currentPath="/om-oss">
-  <main class="main-content">
+  <main id="main-content" class="main-content">
     <h1>Om Hamnvik Handelssted</h1>
     <p class="article-deck">To hundre &aring;rs handel, gjestfrihet og kystkultur p&aring; &eacute;n og samme brygge</p>
     <p class="byline">Donseg&aring;rden &middot; Hamnvik, Ibestad</p>
@@ -28,18 +28,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           til alle som vil lytte.
         </p>
       </div>
-      <div class="vintage-frame" style="max-width: 280px;">
-        <img src="/images/maleri.png" alt="Historisk maleri av handelsstedet" />
-        <div class="vintage-frame-caption">Dampskibet Prins Gustav ankommer Havnviken, 1838</div>
-      </div>
+      <figure class="vintage-frame" style="max-width: 280px;">
+        <img src="/images/maleri.png" alt="Historisk maleri av handelsstedet med dampskip ved kai" />
+        <figcaption class="vintage-frame-caption">Dampskibet Prins Gustav ankommer Havnviken, 1838</figcaption>
+      </figure>
     </div>
 
-    <div class="pull-quote">
+    <blockquote class="pull-quote">
       Gjennom generasjoner har familien Dons holdt stedet i hevd.
       Bygningene forteller i dag sin historie til alle som vil lytte.
-    </div>
+    </blockquote>
 
-    <div class="divider"></div>
+    <hr class="divider" />
 
     <h2 class="section-heading">Bygningene</h2>
     <p class="drop-cap">
@@ -50,12 +50,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       del av fortellingen.
     </p>
 
-    <div class="vintage-frame straight" style="max-width: 100%;">
-      <img src="/images/IMG_1853.jpg" alt="Hamnvik Handelssted sett fra sjøen" />
-      <div class="vintage-frame-caption">Handelsstedet slik det fremstår i dag, sett fra sjøsiden</div>
-    </div>
+    <figure class="vintage-frame straight" style="max-width: 100%;">
+      <img src="/images/IMG_1853.jpg" alt="Hamnvik Handelssted sett fra sjøen, med gule sjøhus langs brygga" />
+      <figcaption class="vintage-frame-caption">Handelsstedet slik det fremstår i dag, sett fra sjøsiden</figcaption>
+    </figure>
 
-    <div class="divider"></div>
+    <hr class="divider" />
 
     <h2 class="section-heading">Dampskipenes tid</h2>
     <p class="drop-cap">
@@ -65,7 +65,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       og handelsstedet blomstret som aldri før.
     </p>
 
-    <div class="divider"></div>
+    <hr class="divider" />
 
     <h2 class="section-heading">Fotefarprosjektet</h2>
     <p>

@@ -10,6 +10,7 @@ interface Props {
 }
 
 const { title, currentPath = '/' } = Astro.props;
+const isFrontPage = currentPath === '/';
 ---
 
 <!DOCTYPE html>
@@ -23,8 +24,9 @@ const { title, currentPath = '/' } = Astro.props;
     <ClientRouter />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Hopp til hovedinnhold</a>
     <div class="site-wrapper">
-      <Header currentPath={currentPath} />
+      <Header currentPath={currentPath} isFrontPage={isFrontPage} />
       <div transition:name="page-content">
         <slot />
       </div>
@@ -32,19 +34,52 @@ const { title, currentPath = '/' } = Astro.props;
     </div>
 
     <script>
-      (function() {
-        var dominated = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        var mobile = window.matchMedia('(max-width: 750px)').matches;
-        var seen = sessionStorage.getItem('hh-entered');
+      function initScrollHeader() {
+        var header = document.querySelector('.site-header-front') as HTMLElement | null;
+        if (!header) return;
+        var el = header;
+        var start = 0;
+        var end = 300;
 
-        if (!dominated && !mobile && !seen) {
-          document.body.classList.add('entrance-active');
-          sessionStorage.setItem('hh-entered', '1');
-          setTimeout(function() {
-            document.body.classList.remove('entrance-active');
-          }, 2500);
+        function update() {
+          var t = Math.min(Math.max((window.scrollY - start) / (end - start), 0), 1);
+
+          // Padding: 3rem → 0.6rem (top), 2rem → 0.6rem (bottom)
+          var padY = 3 - t * 2.4;
+          var padBot = 2 - t * 1.4;
+          el.style.paddingTop = padY + 'rem';
+          el.style.paddingBottom = padBot + 'rem';
+
+          // Font size: 3.4rem → 1.35rem
+          var fontSize = 3.4 - t * 2.05;
+          el.style.setProperty('--header-font-size', fontSize + 'rem');
+
+          // Nav margin: 1.5rem → 0
+          var navMargin = 1.5 - t * 1.5;
+          el.style.setProperty('--header-nav-margin', navMargin + 'rem');
+
+          // Nav font: 0.92rem → 0.82rem
+          var navFont = 0.92 - t * 0.1;
+          el.style.setProperty('--header-nav-font', navFont + 'rem');
+
+          // Subtitle/tagline opacity
+          var subOpacity = 1 - Math.min(t * 3, 1);
+          el.style.setProperty('--header-sub-opacity', String(subOpacity));
+          var subHeight = (1 - Math.min(t * 2, 1));
+          el.style.setProperty('--header-sub-height', subHeight + 'em');
+
+          if (t > 0.5) {
+            el.classList.add('scrolled');
+          } else {
+            el.classList.remove('scrolled');
+          }
         }
-      })();
+
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+      }
+      initScrollHeader();
+      document.addEventListener('astro:after-swap', initScrollHeader);
     </script>
   </body>
 </html>
