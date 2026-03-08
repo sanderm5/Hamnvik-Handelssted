@@ -1,56 +1,38 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import { reader } from '../utils/reader';
+
+const overnatting = await reader.singletons.overnatting.read();
+if (!overnatting) throw new Error('Overnatting-innhold mangler');
 ---
 
 <BaseLayout title="Overnatting" currentPath="/overnatting">
   <main id="main-content" class="main-content">
-    <h1>Overnatting</h1>
-    <p class="article-deck">Bo i historien &mdash; med fjorden rett utenfor vinduet</p>
-    <p class="byline">Donseg&aring;rden &middot; Hamnvik, Ibestad</p>
+    <h1>{overnatting.heading}</h1>
+    <p class="article-deck">{overnatting.deck}</p>
+    <p class="byline">{overnatting.byline}</p>
 
-    <p class="page-intro">
-      Våkn opp i et fredet handelssted &mdash; med fjorden rett utenfor vinduet
-      og over to hundre års historie i veggene.
-    </p>
+    <p class="page-intro">{overnatting.intro}</p>
 
-    <figure class="vintage-frame straight" style="max-width: 100%; margin-bottom: 1.2rem;">
-      <img src="/images/IMG_1853.jpg" alt="Hamnvik Handelssted ved sjøen med gule bygninger" />
-      <figcaption class="vintage-frame-caption">Bygningene ved sjøen i Hamnvik</figcaption>
-    </figure>
+    {overnatting.sections.map((section, i) => (
+      <>
+        {i > 0 && <hr class="divider" />}
+        <Section section={section} />
+      </>
+    ))}
 
-    <div class="columns-2">
-      <p class="drop-cap">
-        Å overnatte på Hamnvik Handelssted er å bo i historien. De gamle bygningene har
-        fått nytt liv som gjesterom, men har beholdt sin sjel. Her er det tregulv som
-        knirker, vinduer som vender mot sjøen, og en stillhet som bare finnes langt
-        fra storbyens mas.
-      </p>
-
-      <p>
-        Utenfor døra ligger brygga, fjorden og fjellene. Om sommeren er det midnattssol,
-        og lysene over vannet skifter time for time. Stedet egner seg like godt for den
-        som søker ro som for den som vil utforske kystlandskapet i Ibestad.
-      </p>
-    </div>
-
-    <blockquote class="pull-quote">
-      Her er det tregulv som knirker, vinduer som vender mot sjøen,
-      og en stillhet som bare finnes langt fra storbyens mas.
-    </blockquote>
-
-    <hr class="divider" />
-
-    <h2 class="section-heading">Skreddersydd opphold</h2>
-    <p>
-      Vi tilpasser oppholdet etter dine ønsker. Overnatting kan kombineres med
-      servering av tradisjonsmat, omvisning i de museale lokalene, eller rett og
-      slett bare fred og ro ved fjorden.
-    </p>
+    <h3>Priser</h3>
+    <ul>
+      {overnatting.priser.map((p) => (
+        <li>{p.label}: <strong>{p.price}</strong></li>
+      ))}
+    </ul>
+    <p>{overnatting.prisNotat}</p>
 
     <div class="notice-box">
-      <h3>Bestilling &amp; Tilbud</h3>
-      <p><a href="/kontakt">Ta kontakt</a> for tilbud og bestilling.</p>
-      <p>Vi skreddersyr gjerne oppholdet etter dine &oslash;nsker.</p>
+      <h3>{overnatting.noticeTitle}</h3>
+      <p><a href="/kontakt">{overnatting.noticeText}</a></p>
     </div>
   </main>
 </BaseLayout>

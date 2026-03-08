@@ -1,95 +1,93 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { reader } from '../utils/reader';
+
+const hjem = await reader.singletons.hjem.read();
+if (!hjem) throw new Error('Forside-innhold mangler');
 ---
 
 <BaseLayout title="Velkommen" currentPath="/">
   <div class="hero">
-    <img src="/images/HAMNVIK.png" alt="Illustrasjon av Hamnvik Handelssted med gule sjøhus, seilbåt og fjell i vinterlandskap" />
-    <div class="hero-overlay">
-      <h2>Velkommen til Hamnvik Handelssted</h2>
+    <picture class="hero-light">
+      <source srcset="/images/HAMNVIK.webp" type="image/webp" />
+      <img src="/images/HAMNVIK.png" alt="Illustrasjon av Hamnvik Handelssted med gule sjøhus, seilbåt og fjell i vinterlandskap" />
+    </picture>
+    <img class="hero-dark" src="/images/hamnvik-nordlys.png" alt="Hamnvik Handelssted under nordlyset, gule sjøhus speiler seg i fjorden" />
+    <div class="hero-banner" aria-hidden="true">
+      <span class="hero-banner-line">Velkommen til</span>
+      <span class="hero-banner-line">Hamnvik Handelssted</span>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
     </div>
   </div>
 
   <main id="main-content" class="main-content">
-    <h1>Der historien lever videre</h1>
-    <p class="article-deck">Et fredet handelssted fra 1794 &mdash; ved fjorden i Hamnvik, Ibestad</p>
-    <p class="byline">Donseg&aring;rden &middot; Hamnvik, Troms</p>
+    <h1>{hjem.heading}</h1>
+    <p class="article-deck">{hjem.deck}</p>
+    <p class="byline">{hjem.byline}</p>
 
-    <p class="page-intro">
-      Der fjorden møter fjellet i Hamnvik ligger Donsegården &mdash; et fredet handelssted
-      der historien lever videre gjennom mat, kultur og gjestfrihet.
-    </p>
+    <p class="page-intro">{hjem.intro}</p>
 
     <div class="columns-2">
-      <p>
-        Siden 1794 har dette vært et samlingspunkt på kysten av Troms. Det som begynte
-        som Jens Bing Dons og Ingeborg Anna Normann Dons sitt handelssted, er i dag et
-        levende kulturminne der du kan spise godt, overnatte i historiske rom og oppleve
-        fortellingene fra over to hundre år med kystkultur.
-      </p>
-
-      <p>
-        Vi åpner dørene for deg som vil oppleve noe utenom det vanlige &mdash; enten det er
-        et selskap med hjemmelagd tradisjonsmat, en natt i de gamle bygningene, eller en
-        stund i krambua mellom husflid og håndverk.
-      </p>
+      <p>{hjem.bodyText1}</p>
+      <p>{hjem.bodyText2}</p>
     </div>
 
-    <blockquote class="pull-quote">
-      Et levende kulturminne der du kan spise godt, overnatte i historiske rom
-      og oppleve fortellingene fra over to hundre år med kystkultur.
-    </blockquote>
+    <blockquote class="pull-quote scroll-reveal">{hjem.pullQuote}</blockquote>
 
-    <hr class="divider" />
+  </main>
 
-    <h2 class="section-heading">Opplev handelsstedet</h2>
+  <div class="sticky-cards-wrap">
+    <section class="sticky-cards">
+      <h2 class="section-heading scroll-reveal">Opplev handelsstedet</h2>
 
-    <div class="info-cards">
-      <div class="info-card">
-        <h3><a href="/servering">Servering</a></h3>
-        <p>Norsk tradisjonsmat tilberedt med omtanke, servert i autentiske omgivelser. Alle rettigheter.</p>
+      <div class="info-cards">
+        {hjem.cards.map((card) => (
+          <div class="info-card scroll-reveal">
+            <h3>{card.link ? <a href={card.link}>{card.title}</a> : card.title}</h3>
+            <p>{card.description}</p>
+          </div>
+        ))}
       </div>
-      <div class="info-card">
-        <h3><a href="/overnatting">Overnatting</a></h3>
-        <p>Sov i bygninger med sjel og historie, med utsikt over fjord og fjell.</p>
-      </div>
-      <div class="info-card">
-        <h3>M&oslash;te &amp; Fest</h3>
-        <p>Lokaler med karakter for jubileum, selskap, møter og sammenkomster.</p>
-      </div>
-      <div class="info-card">
-        <h3><a href="/kulturformidling">Kulturformidling</a></h3>
-        <p>Omvisning, kåserier og bildevisning i museale rom fulle av fortellinger.</p>
-      </div>
-      <div class="info-card">
-        <h3><a href="/krambu">Krambu</a></h3>
-        <p>Husflidsutsalg i den gamle krambua &mdash; ta med et stykke kystkultur hjem.</p>
-      </div>
-    </div>
 
-    <hr class="divider" />
+      <hr class="divider" />
 
-    <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start;">
-      <figure class="vintage-frame" style="max-width: 260px;">
-        <img src="/images/maleri.png" alt="Maleri av Hamnvik Handelssted med dampskip i havna" />
-        <figcaption class="vintage-frame-caption">Dampskibet Prins Gustav ankommer Havnviken, 1838</figcaption>
-      </figure>
-      <div style="flex: 1; min-width: 200px;">
-        <h2>Fra dampskip til d&oslash;rterskel</h2>
-        <p>
-          En gang la dampskipene til kai her og brakte varer fra hele verden til handelsstedet
-          i Hamnvik. I dag er det gjestene som ankommer &mdash; til et sted der tiden har
-          stått stille, men vertskapet er like varmt som det alltid har vært.
-        </p>
-        <p>
-          Handelsstedet er en del av Ibestad kommunes fotefarprosjekt.
-        </p>
+      <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start;">
+        {hjem.dampskipImage && (
+          <figure class="vintage-frame scroll-reveal" style="max-width: 260px;">
+            <img src={hjem.dampskipImage} alt={hjem.dampskipImageAlt} />
+            <figcaption class="vintage-frame-caption">{hjem.dampskipImageCaption}</figcaption>
+          </figure>
+        )}
+        <div style="flex: 1; min-width: 200px;">
+          <h2>{hjem.dampskipHeading}</h2>
+          <p>{hjem.dampskipText}</p>
+          <p>{hjem.dampskipFotefarText}</p>
 
-        <div class="notice-box notice-box-small">
-          <h3>Bestilling</h3>
-          <p><a href="/kontakt">Ta kontakt</a> for tilbud og bestilling.</p>
+          <div class="notice-box notice-box-small">
+            <h3>{hjem.noticeTitle}</h3>
+            <p><a href="/kontakt">{hjem.noticeText}</a></p>
+          </div>
         </div>
       </div>
+    </section>
+  </div>
+
+  <section class="testimonials-section">
+    <div class="testimonials-inner">
+      <h2 class="section-heading scroll-reveal">Hva gjestene sier</h2>
+
+      {hjem.testimonials.map((t) => (
+        <blockquote class="pull-quote scroll-reveal">
+          {t.quote}
+          <span class="pull-quote-source">{t.source}</span>
+        </blockquote>
+      ))}
+
+      <p style="text-align: center;"><a href="/referanser">Les flere referanser</a></p>
     </div>
-  </main>
+  </section>
 </BaseLayout>

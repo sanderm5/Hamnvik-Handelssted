@@ -1,0 +1,67 @@
+heading: Overnatting
+deck: "Bo i historien — med fjorden rett utenfor vinduet"
+byline: "Donsegården · Hamnvik, Ibestad"
+intro: >-
+  Våkn opp i et fredet handelssted — med fjorden rett utenfor vinduet
+  og over to hundre års historie i veggene.
+sections:
+  - heading: ""
+    content: >-
+      Å overnatte på Hamnvik Handelssted er å bo i historien. De gamle bygningene har
+      fått nytt liv som gjesterom, men har beholdt sin sjel. Her er det tregulv som
+      knirker, vinduer som vender mot sjøen, og en stillhet som bare finnes langt
+      fra storbyens mas.
+
+      Utenfor døra ligger brygga, fjorden og fjellene. Om sommeren er det midnattssol,
+      og lysene over vannet skifter time for time. Stedet egner seg like godt for den
+      som søker ro som for den som vil utforske kystlandskapet i Ibestad.
+    image: /images/IMG_1853.jpg
+    imageAlt: Hamnvik Handelssted ved sjøen med gule bygninger
+    imageCaption: Bygningene ved sjøen i Hamnvik
+    pullQuote: >-
+      Her er det tregulv som knirker, vinduer som vender mot sjøen,
+      og en stillhet som bare finnes langt fra storbyens mas.
+  - heading: Skrivargårdens Gjesterom
+    content: >-
+      Trenger du en plass for å overnatte mens du oppholder deg på Ibestad?
+      Skrivargårdens Gjesterom ligger omtrent 1,5 km fra sentrum, nær Ibestad Kirke.
+      Hovedhuset ble bygget i 1789 og fungerte tidligere som kontor og residens for
+      Senja Sorenskriveri (1854–1964), som inspirerte gårdens navn.
+
+      Rom med felles kjøkken, stue og bad. Internett inkludert.
+      Fullt møblert kjøkken for egenpreparering av mat.
+
+      Frokost kr 150,00 per person ved avtalt tidspunkt.
+    image: null
+    imageAlt: ""
+    imageCaption: ""
+    pullQuote: ""
+  - heading: I nærheten
+    content: >-
+      Kort avstand til sentrum med butikker, idrettsanlegg, skiløyper, motorcrossbane,
+      Kobbetjønna friluftsområde, Årnes badestrand og Hamnvik Handelssted.
+    image: null
+    imageAlt: ""
+    imageCaption: ""
+    pullQuote: ""
+  - heading: Skreddersydd opphold
+    content: >-
+      Vi tilpasser oppholdet etter dine ønsker. Overnatting kan kombineres med
+      servering av tradisjonsmat, omvisning i de museale lokalene, eller rett og
+      slett bare fred og ro ved fjorden.
+    image: null
+    imageAlt: ""
+    imageCaption: ""
+    pullQuote: ""
+priser:
+  - label: "Enkeltrom / én person i dobbeltrom"
+    price: 450 kr/natt
+  - label: Dobbeltrom
+    price: 600 kr/natt
+  - label: Ekstra flatseng / barneseng
+    price: 150 kr/natt
+prisNotat: Priser inkluderer sengetøy.
+noticeTitle: Bestilling & Tilbud
+noticeText: >-
+  Ta kontakt for tilbud og bestilling.
+  Vi skreddersyr gjerne oppholdet etter dine ønsker.

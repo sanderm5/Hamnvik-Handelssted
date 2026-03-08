@@ -1,70 +1,30 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import { reader } from '../utils/reader';
+
+const kultur = await reader.singletons.kulturformidling.read();
+if (!kultur) throw new Error('Kulturformidling-innhold mangler');
 ---
 
 <BaseLayout title="Kulturformidling" currentPath="/kulturformidling">
   <main id="main-content" class="main-content">
-    <h1>Kulturformidling</h1>
-    <p class="article-deck">Omvisning, k&aring;serier og bildevisning i museale rom fulle av fortellinger</p>
-    <p class="byline">Donseg&aring;rden &middot; Hamnvik, Ibestad</p>
+    <h1>{kultur.heading}</h1>
+    <p class="article-deck">{kultur.deck}</p>
+    <p class="byline">{kultur.byline}</p>
 
-    <p class="page-intro">
-      Bygningene på Hamnvik Handelssted er ikke bare vakre &mdash; de er fulle av fortellinger.
-      Vi deler dem gjerne med deg.
-    </p>
+    <p class="page-intro">{kultur.intro}</p>
 
-    <h2 class="section-heading">Museale lokaler</h2>
-    <p class="drop-cap">
-      Flere av rommene på handelsstedet er bevart som museale utstillinger og gir et
-      innblikk i hverdagslivet på et nordnorsk handelssted gjennom ulike tidsepoker.
-      Her kan du se gjenstander, bilder og dokumenter som forteller om menneskene
-      som levde og arbeidet her &mdash; fra grunnleggelsen i 1794 og frem til i dag.
-    </p>
-
-    <hr class="divider" />
-
-    <h2 class="section-heading">Kåserier &amp; bildevisning</h2>
-    <p>
-      For grupper og selskaper tilbyr vi kåserier med bildevisning om handelsstedets
-      utvikling gjennom over to hundre år. Fortellingene spenner fra Jens Bing Dons
-      sin tid, gjennom dampskipenes storhetstid da Prins Gustav la til kai i 1838,
-      til kongebesøket i 2011 da Kong Harald og Dronning Sonja ble vist rundt
-      i hovedhuset.
-    </p>
-
-    <blockquote class="pull-quote">
-      Fortellingene spenner fra 1794, gjennom dampskipenes storhetstid,
-      til kongebesøket i 2011.
-    </blockquote>
-
-    <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1.2rem 0;">
-      <figure class="vintage-frame" style="flex: 1; min-width: 200px;">
-        <img src="/images/maleri.png" alt="Maleri av Havnviken med sjøhus og seilskip på 1800-tallet" />
-        <figcaption class="vintage-frame-caption">Havnviken slik en kunstner så den på 1800-tallet</figcaption>
-      </figure>
-      <figure class="vintage-frame" style="flex: 1; min-width: 200px;">
-        <img src="/images/kongeskipet.png" alt="Kongeskipet KS Norge fortøyd ved kai i Hamnvik" />
-        <figcaption class="vintage-frame-caption">Kongeskipet ved kai i 2011</figcaption>
-      </figure>
-    </div>
-    <p class="photo-credit">Foto: Ragnar Hansen</p>
-
-    <hr class="divider" />
-
-    <h2 class="section-heading">Fotefarprosjektet</h2>
-    <p>
-      Handelsstedet er en del av Ibestad kommunes fotefarprosjekt, som arbeider med å
-      dokumentere og formidle sporene etter tidligere generasjoners liv og virke i
-      kommunen. Gjennom dette prosjektet settes handelsstedets historie inn i en
-      større sammenheng &mdash; som en del av den lange fortellingen om kystsamfunnet
-      i Troms.
-    </p>
+    {kultur.sections.map((section, i) => (
+      <>
+        {i > 0 && <hr class="divider" />}
+        <Section section={section} />
+      </>
+    ))}
 
     <div class="notice-box">
-      <h3>Bestill kulturformidling</h3>
-      <p>Kulturformidling kan bestilles for grupper og selskaper,</p>
-      <p>gjerne i kombinasjon med et m&aring;ltid tradisjonsmat.</p>
-      <p><a href="/kontakt">Ta kontakt</a> for informasjon og bestilling.</p>
+      <h3>{kultur.noticeTitle}</h3>
+      <p><a href="/kontakt">{kultur.noticeText}</a></p>
     </div>
   </main>
 </BaseLayout>

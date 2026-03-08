@@ -1,0 +1,212 @@
+fragment HjemParts on Hjem {
+  __typename
+  heading
+  deck
+  byline
+  intro
+  bodyText1
+  bodyText2
+  pullQuote
+  cards {
+    __typename
+    title
+    link
+    description
+  }
+  dampskipHeading
+  dampskipText
+  dampskipImage
+  dampskipImageAlt
+  dampskipImageCaption
+  dampskipFotefarText
+  noticeTitle
+  noticeText
+  testimonials {
+    __typename
+    quote
+    source
+  }
+}
+
+fragment OmOssParts on OmOss {
+  __typename
+  heading
+  deck
+  byline
+  intro
+  introBody
+  pullQuote1
+  sections {
+    __typename
+    heading
+    content
+    image
+    imageAlt
+    imageCaption
+    pullQuote
+  }
+}
+
+fragment KontaktParts on Kontakt {
+  __typename
+  heading
+  deck
+  byline
+  intro
+  contacts {
+    __typename
+    name
+    email
+    phone
+  }
+  generalEmail
+  businessName
+  addressLine1
+  addressLine2
+  sections {
+    __typename
+    heading
+    content
+    image
+    imageAlt
+    imageCaption
+    pullQuote
+  }
+}
+
+fragment ServeringParts on Servering {
+  __typename
+  heading
+  deck
+  byline
+  intro
+  sections {
+    __typename
+    heading
+    content
+    image
+    imageAlt
+    imageCaption
+    pullQuote
+  }
+  noticeTitle
+  noticeText
+}
+
+fragment OvernattingParts on Overnatting {
+  __typename
+  heading
+  deck
+  byline
+  intro
+  sections {
+    __typename
+    heading
+    content
+    image
+    imageAlt
+    imageCaption
+    pullQuote
+  }
+  priser {
+    __typename
+    label
+    price
+  }
+  prisNotat
+  noticeTitle
+  noticeText
+}
+
+fragment KulturformidlingParts on Kulturformidling {
+  __typename
+  heading
+  deck
+  byline
+  intro
+  sections {
+    __typename
+    heading
+    content
+    image
+    imageAlt
+    imageCaption
+    pullQuote
+  }
+  noticeTitle
+  noticeText
+}
+
+fragment KrambuParts on Krambu {
+  __typename
+  heading
+  deck
+  byline
+  intro
+  sections {
+    __typename
+    heading
+    content
+    image
+    imageAlt
+    imageCaption
+    pullQuote
+  }
+  noticeTitle
+  noticeText
+}
+
+fragment BilderParts on Bilder {
+  __typename
+  heading
+  deck
+  byline
+  intro
+  gallerySections {
+    __typename
+    heading
+    description
+    photoCredit
+    images {
+      __typename
+      image
+      alt
+      caption
+    }
+  }
+  restaureringHeading
+  restaureringText
+}
+
+fragment ReferanserParts on Referanser {
+  __typename
+  quote
+  source
+  date
+  context
+  sortOrder
+}
+
+fragment NyheterParts on Nyheter {
+  __typename
+  title
+  deck
+  byline
+  date
+  intro
+  sections {
+    __typename
+    heading
+    content
+    image
+    imageAlt
+    imageCaption
+    pullQuote
+  }
+  photoCredit
+  galleryImages {
+    __typename
+    image
+    alt
+  }
+}

@@ -1,0 +1,50 @@
+---
+interface Props {
+  section: {
+    heading?: string;
+    content: string;
+    image?: string | null;
+    imageAlt?: string;
+    imageCaption?: string;
+    pullQuote?: string;
+  };
+}
+
+const { section } = Astro.props;
+const paragraphs = section.content ? section.content.split('\n\n').filter(Boolean) : [];
+const hasImage = section.image;
+---
+
+{section.heading && <h2 class="section-heading">{section.heading}</h2>}
+
+{hasImage ? (
+  <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start;">
+    <div style="flex: 1; min-width: 250px;">
+      {paragraphs.map((p, i) => (
+        <p class={i === 0 ? 'drop-cap' : ''}>{p}</p>
+      ))}
+    </div>
+    {section.imageCaption ? (
+      <figure class="vintage-frame" style="max-width: 280px;">
+        <img src={section.image} alt={section.imageAlt} />
+        <figcaption class="vintage-frame-caption">{section.imageCaption}</figcaption>
+      </figure>
+    ) : (
+      <figure class="vintage-frame straight" style="max-width: 100%;">
+        <img src={section.image} alt={section.imageAlt} />
+      </figure>
+    )}
+  </div>
+) : paragraphs.length > 1 ? (
+  <div class="columns-2">
+    {paragraphs.map((p, i) => (
+      <p class={i === 0 ? 'drop-cap' : ''}>{p}</p>
+    ))}
+  </div>
+) : paragraphs.length === 1 ? (
+  <p class="drop-cap">{paragraphs[0]}</p>
+) : null}
+
+{section.pullQuote && (
+  <blockquote class="pull-quote">{section.pullQuote}</blockquote>
+)}

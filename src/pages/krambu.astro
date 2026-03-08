@@ -1,53 +1,30 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import { reader } from '../utils/reader';
+
+const krambu = await reader.singletons.krambu.read();
+if (!krambu) throw new Error('Krambu-innhold mangler');
 ---
 
 <BaseLayout title="Krambu" currentPath="/krambu">
   <main id="main-content" class="main-content">
-    <h1>Krambu</h1>
-    <p class="article-deck">Husflidsutsalg i den gamle krambua &mdash; ta med et stykke kystkultur hjem</p>
-    <p class="byline">Donseg&aring;rden &middot; Hamnvik, Ibestad</p>
+    <h1>{krambu.heading}</h1>
+    <p class="article-deck">{krambu.deck}</p>
+    <p class="byline">{krambu.byline}</p>
 
-    <p class="page-intro">
-      Tre inn i krambua der handelsfolk har solgt sine varer siden 1700-tallets slutt.
-    </p>
+    <p class="page-intro">{krambu.intro}</p>
 
-    <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start;">
-      <div style="flex: 1; min-width: 250px;">
-        <p class="drop-cap">
-          Krambua er hjertet i ethvert handelssted. Det var her folk fra bygd og fjord
-          kom for å bytte fisk mot mel, kaffe, sukker og verktøy. På Hamnvik
-          Handelssted lever denne tradisjonen videre &mdash; om enn i ny form.
-        </p>
-        <p>
-          I dag fungerer krambua som husflidsutsalg der du finner lokalt håndverk og
-          produkter med tilknytning til kysten og regionen. Det er et sted å ta seg
-          god tid, se seg rundt og finne noe du ikke visste du trengte.
-        </p>
-      </div>
-      <figure class="vintage-frame" style="max-width: 260px;">
-        <img src="/images/maleri.png" alt="Historisk maleri av handelsstedet med sjøhus og brygge" />
-        <figcaption class="vintage-frame-caption">Handelen har alltid vært kjernen i Donsegården</figcaption>
-      </figure>
-    </div>
-
-    <blockquote class="pull-quote">
-      Et sted å ta seg god tid, se seg rundt
-      og finne noe du ikke visste du trengte.
-    </blockquote>
-
-    <hr class="divider" />
-
-    <h2 class="section-heading">Husflid fra kysten</h2>
-    <p>
-      I utsalget finner du håndlagde produkter som bærer preg av den nordnorske
-      håndverkstradisjonen. Besøk krambua og ta med deg et stykke kystkultur hjem
-      fra handelsstedet.
-    </p>
+    {krambu.sections.map((section, i) => (
+      <>
+        {i > 0 && <hr class="divider" />}
+        <Section section={section} />
+      </>
+    ))}
 
     <div class="notice-box notice-box-small">
-      <h3>&Aring;pningstider</h3>
-      <p><a href="/kontakt">Ta kontakt</a> for åpningstider og mer informasjon.</p>
+      <h3>{krambu.noticeTitle}</h3>
+      <p><a href="/kontakt">{krambu.noticeText}</a></p>
     </div>
   </main>
 </BaseLayout>

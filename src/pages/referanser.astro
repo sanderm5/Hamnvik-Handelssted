@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { reader } from '../utils/reader';
+
+const allRefs = await reader.collections.referanser.all();
+const referanser = allRefs.sort((a, b) => (a.entry.sortOrder ?? 0) - (b.entry.sortOrder ?? 0));
+---
+
+<BaseLayout title="Referanser" currentPath="/referanser">
+  <main id="main-content" class="main-content">
+    <h1>Referanser</h1>
+    <p class="article-deck">Hva gjestene sier om Hamnvik Handelssted</p>
+    <p class="byline">Utvalgte anbefalinger &middot; Hamnvik</p>
+
+    <p class="page-intro">
+      Gjennom årene har vi hatt gleden av å ta imot gjester fra nær og fjern.
+      Her er noen av ordene de har delt med oss.
+    </p>
+
+    <div class="referanse-grid">
+      {referanser.map((ref) => (
+        <article class="referanse-card">
+          <blockquote class="referanse-quote">
+            {ref.entry.quote}
+          </blockquote>
+          <footer class="referanse-footer">
+            <span class="referanse-source">{ref.entry.source}</span>
+            {ref.entry.date && <span class="referanse-date">{ref.entry.date}</span>}
+            {ref.entry.context && <span class="referanse-context">{ref.entry.context}</span>}
+          </footer>
+        </article>
+      ))}
+    </div>
+
+    <div class="notice-box">
+      <h3>Opplev det selv</h3>
+      <p><a href="/kontakt">Ta kontakt for å planlegge besøk, omvisning eller selskap.</a></p>
+    </div>
+  </main>
+</BaseLayout>

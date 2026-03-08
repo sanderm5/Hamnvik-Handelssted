@@ -1,78 +1,64 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { reader } from '../utils/reader';
+
+const omOss = await reader.singletons.omOss.read();
+if (!omOss) throw new Error('Om oss-innhold mangler');
 ---
 
 <BaseLayout title="Om oss" currentPath="/om-oss">
   <main id="main-content" class="main-content">
-    <h1>Om Hamnvik Handelssted</h1>
-    <p class="article-deck">To hundre &aring;rs handel, gjestfrihet og kystkultur p&aring; &eacute;n og samme brygge</p>
-    <p class="byline">Donseg&aring;rden &middot; Hamnvik, Ibestad</p>
+    <h1>{omOss.heading}</h1>
+    <p class="article-deck">{omOss.deck}</p>
+    <p class="byline">{omOss.byline}</p>
 
-    <p class="page-intro">
-      I over to hundre år har Donsegården vært et knutepunkt på kysten av Troms &mdash;
-      et sted der handel, gjestfrihet og kystkultur har gått hånd i hånd.
-    </p>
+    <p class="page-intro">{omOss.intro}</p>
 
-    <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start; margin-bottom: 1rem;">
-      <div style="flex: 1; min-width: 250px;">
-        <h2 class="section-heading">Grunnleggelsen</h2>
-        <p>
-          I 1794 slo Jens Bing Dons og Ingeborg Anna Normann Dons seg ned i Hamnvik
-          og grunnla handelsstedet som etter hvert skulle bli kjent som Donsegården.
-          Her drev de handel med fiskere, bønder og reisende langs leia &mdash; og bygde
-          opp et lite samfunn rundt brygga, butikken og hovedhuset.
-        </p>
-        <p>
-          Gjennom generasjoner har familien Dons holdt stedet i hevd. Bygningene som
-          en gang rommet krambuvarer, salt og tørrfisk, forteller i dag sin historie
-          til alle som vil lytte.
-        </p>
-      </div>
-      <figure class="vintage-frame" style="max-width: 280px;">
-        <img src="/images/maleri.png" alt="Historisk maleri av handelsstedet med dampskip ved kai" />
-        <figcaption class="vintage-frame-caption">Dampskibet Prins Gustav ankommer Havnviken, 1838</figcaption>
-      </figure>
+    <div class="columns-2">
+      <p>{omOss.introBody}</p>
     </div>
 
-    <blockquote class="pull-quote">
-      Gjennom generasjoner har familien Dons holdt stedet i hevd.
-      Bygningene forteller i dag sin historie til alle som vil lytte.
-    </blockquote>
+    <blockquote class="pull-quote">{omOss.pullQuote1}</blockquote>
 
-    <hr class="divider" />
+    {omOss.sections.map((section, i) => (
+      <>
+        <hr class="divider" />
 
-    <h2 class="section-heading">Bygningene</h2>
-    <p class="drop-cap">
-      Handelsstedet er i dag fredet og består av flere bygninger som til sammen utgjør et
-      sjeldent godt bevart nordnorsk handelsstedsmiljø. Sjøhusene med sine karakteristiske
-      gule vegger og røde tak reiser seg langs brygga, slik de har gjort i generasjoner.
-      Hovedhuset, krambua, sjøboder og naust &mdash; hver bygning bærer på sin
-      del av fortellingen.
-    </p>
+        <h2 class="section-heading">{section.heading}</h2>
 
-    <figure class="vintage-frame straight" style="max-width: 100%;">
-      <img src="/images/IMG_1853.jpg" alt="Hamnvik Handelssted sett fra sjøen, med gule sjøhus langs brygga" />
-      <figcaption class="vintage-frame-caption">Handelsstedet slik det fremstår i dag, sett fra sjøsiden</figcaption>
-    </figure>
+        {section.image ? (
+          <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start;">
+            <div style="flex: 1; min-width: 250px;">
+              {section.content.split('\n\n').map((p, j) => (
+                <p class={j === 0 ? 'drop-cap' : ''}>{p}</p>
+              ))}
+            </div>
+            {section.imageCaption ? (
+              <figure class="vintage-frame" style="max-width: 280px;">
+                <img src={section.image} alt={section.imageAlt} />
+                <figcaption class="vintage-frame-caption">{section.imageCaption}</figcaption>
+              </figure>
+            ) : (
+              <figure class="vintage-frame straight" style="max-width: 100%;">
+                <img src={section.image} alt={section.imageAlt} />
+                <figcaption class="vintage-frame-caption">{section.imageCaption}</figcaption>
+              </figure>
+            )}
+          </div>
+        ) : section.content.includes('\n\n') ? (
+          <div class="columns-2">
+            {section.content.split('\n\n').map((p, j) => (
+              <p class={j === 0 ? 'drop-cap' : ''}>{p}</p>
+            ))}
+          </div>
+        ) : (
+          <p class="drop-cap">{section.content}</p>
+        )}
 
-    <hr class="divider" />
-
-    <h2 class="section-heading">Dampskipenes tid</h2>
-    <p class="drop-cap">
-      Da dampskipstrafikken kom til Nord-Norge på 1800-tallet, ble Hamnvik et naturlig
-      stoppested langs kystruta. Dampskibet Prins Gustav var blant de første som la
-      til kai her i 1838. Med skipene kom varer, nyheter og reisende fra fjern og nær,
-      og handelsstedet blomstret som aldri før.
-    </p>
-
-    <hr class="divider" />
-
-    <h2 class="section-heading">Fotefarprosjektet</h2>
-    <p>
-      Hamnvik Handelssted er en del av Ibestad kommunes fotefarprosjekt &mdash; et arbeid
-      for å ta vare på sporene etter de som levde og virket her før oss. Gjennom stedet
-      formidles ikke bare arkitektur og gjenstander, men også fortellingene om menneskene
-      som skapte kystsamfunnet i Ibestad.
-    </p>
+        {section.pullQuote && (
+          <blockquote class="pull-quote">{section.pullQuote}</blockquote>
+        )}
+      </>
+    ))}
   </main>
 </BaseLayout>

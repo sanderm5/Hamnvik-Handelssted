@@ -1,52 +1,44 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import { reader } from '../utils/reader';
+
+const kontakt = await reader.singletons.kontakt.read();
+if (!kontakt) throw new Error('Kontakt-innhold mangler');
 ---
 
 <BaseLayout title="Kontakt" currentPath="/kontakt">
   <main id="main-content" class="main-content">
-    <h1>Kontakt oss</h1>
-    <p class="article-deck">Henvendelser om servering, overnatting, selskaper og omvisning</p>
-    <p class="byline">Donseg&aring;rden &middot; Hamnvik, Ibestad</p>
+    <h1>{kontakt.heading}</h1>
+    <p class="article-deck">{kontakt.deck}</p>
+    <p class="byline">{kontakt.byline}</p>
 
-    <p class="page-intro">
-      Vi tar gjerne imot henvendelser om servering, overnatting, selskaper
-      eller bare en hyggelig prat om stedet. Ring eller skriv &mdash; vi svarer
-      så snart vi kan.
-    </p>
+    <p class="page-intro">{kontakt.intro}</p>
 
     <div class="contact-grid">
-      <div class="contact-card">
-        <h3>Gunn Torild Dons</h3>
-        <p><a href="mailto:g.t.dons@online.no">g.t.dons@online.no</a></p>
-        <p><a href="tel:+4741806970">418 06 970</a></p>
-      </div>
-      <div class="contact-card">
-        <h3>Einar Johan Dons</h3>
-        <p><a href="mailto:e.j.dons@online.no">e.j.dons@online.no</a></p>
-        <p><a href="tel:+4797640360">976 40 360</a></p>
-      </div>
+      {kontakt.contacts.map((c) => (
+        <div class="contact-card">
+          <h3>{c.name}</h3>
+          <p><a href={`mailto:${c.email}`}>{c.email}</a></p>
+          <p><a href={`tel:+47${c.phone.replace(/\s/g, '')}`}>{c.phone}</a></p>
+        </div>
+      ))}
     </div>
 
     <hr class="divider" />
 
     <div class="notice-box" style="max-width: 400px; margin: 1.2rem auto;">
-      <h3>Hamnvik Handelssted</h3>
-      <p><a href="mailto:post@hamnvikhandelssted.com">post@hamnvikhandelssted.com</a></p>
-      <p>Hamnvik, Ibestad kommune</p>
-      <p>Troms</p>
+      <h3>{kontakt.businessName}</h3>
+      <p><a href={`mailto:${kontakt.generalEmail}`}>{kontakt.generalEmail}</a></p>
+      <p>{kontakt.addressLine1}</p>
+      <p>{kontakt.addressLine2}</p>
     </div>
 
-    <hr class="divider" />
-
-    <h2 class="section-heading">Finn oss</h2>
-    <p>
-      Hamnvik Handelssted ligger i Hamnvik i Ibestad kommune, Troms.
-      Handelsstedet er lett synlig fra sjøsiden med sine gule sjøhus langs brygga.
-    </p>
-
-    <figure class="vintage-frame straight" style="max-width: 100%;">
-      <img src="/images/IMG_1853.jpg" alt="Hamnvik Handelssted sett fra sjøen med gule sjøhus" />
-      <figcaption class="vintage-frame-caption">De gule sjøhusene ved brygga &mdash; velkommen til oss</figcaption>
-    </figure>
+    {kontakt.sections.map((section) => (
+      <>
+        <hr class="divider" />
+        <Section section={section} />
+      </>
+    ))}
   </main>
 </BaseLayout>

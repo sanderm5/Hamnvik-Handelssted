@@ -22,12 +22,26 @@ const isFrontPage = currentPath === '/';
     <link rel="icon" type="image/png" href="/images/4_stamp_ship.png" />
     <title>{title} | Hamnvik Handelssted</title>
     <ClientRouter />
+    <script is:inline>
+      // Apply theme immediately to prevent flash
+      (function() {
+        var setting = localStorage.getItem('theme') || 'system';
+        var html = document.documentElement;
+        html.setAttribute('data-theme-setting', setting);
+        var isDark = setting === 'dark' || (setting === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (isDark) {
+          html.setAttribute('data-theme', 'dark');
+        } else {
+          html.removeAttribute('data-theme');
+        }
+      })();
+    </script>
   </head>
   <body>
     <a href="#main-content" class="skip-link">Hopp til hovedinnhold</a>
     <div class="site-wrapper">
       <Header currentPath={currentPath} isFrontPage={isFrontPage} />
-      <div transition:name="page-content">
+      <div class="page-content" transition:name="page-content">
         <slot />
       </div>
       <Footer />
@@ -38,48 +52,358 @@ const isFrontPage = currentPath === '/';
         var header = document.querySelector('.site-header-front') as HTMLElement | null;
         if (!header) return;
         var el = header;
-        var start = 0;
-        var end = 300;
+        var end = 120;
+        var current = 0;
+
+        var isMobile = window.innerWidth <= 750;
+        window.addEventListener('resize', function() { isMobile = window.innerWidth <= 750; });
 
         function update() {
-          var t = Math.min(Math.max((window.scrollY - start) / (end - start), 0), 1);
+          var target = Math.min(Math.max(window.scrollY / end, 0), 1);
+          // Smooth lerp for buttery animation
+          current += (target - current) * 0.12;
+          var t = current;
 
-          // Padding: 3rem → 0.6rem (top), 2rem → 0.6rem (bottom)
-          var padY = 3 - t * 2.4;
-          var padBot = 2 - t * 1.4;
-          el.style.paddingTop = padY + 'rem';
-          el.style.paddingBottom = padBot + 'rem';
+          // Padding — less reduction on mobile since we start smaller
+          if (isMobile) {
+            el.style.paddingTop = (0.7 - t * 0.4) + 'rem';
+            el.style.paddingBottom = (0.5 - t * 0.3) + 'rem';
+          } else {
+            el.style.paddingTop = (1.2 - t * 1.05) + 'rem';
+            el.style.paddingBottom = (0.8 - t * 0.65) + 'rem';
+          }
 
-          // Font size: 3.4rem → 1.35rem
-          var fontSize = 3.4 - t * 2.05;
-          el.style.setProperty('--header-font-size', fontSize + 'rem');
+          // Font size — starts smaller on mobile
+          var baseFontSize = isMobile ? 1.6 : 2;
+          var fontReduction = isMobile ? 0.4 : 0.7;
+          el.style.setProperty('--header-font-size', (baseFontSize - t * fontReduction) + 'rem');
 
-          // Nav margin: 1.5rem → 0
-          var navMargin = 1.5 - t * 1.5;
-          el.style.setProperty('--header-nav-margin', navMargin + 'rem');
+          // Nav
+          el.style.setProperty('--header-nav-margin', (0.5 - t * 0.5) + 'rem');
+          el.style.setProperty('--header-nav-font', (0.82 - t * 0.06) + 'rem');
 
-          // Nav font: 0.92rem → 0.82rem
-          var navFont = 0.92 - t * 0.1;
-          el.style.setProperty('--header-nav-font', navFont + 'rem');
+          // Subtitle/tagline collapse
+          var subT = Math.min(t * 3, 1);
+          el.style.setProperty('--header-sub-opacity', String(1 - subT));
+          el.style.setProperty('--header-sub-height', (1 - Math.min(t * 2, 1)) + 'em');
 
-          // Subtitle/tagline opacity
-          var subOpacity = 1 - Math.min(t * 3, 1);
-          el.style.setProperty('--header-sub-opacity', String(subOpacity));
-          var subHeight = (1 - Math.min(t * 2, 1));
-          el.style.setProperty('--header-sub-height', subHeight + 'em');
+          // Backdrop blur intensifies: 6px → 16px
+          var blur = 6 + t * 10;
+          el.style.backdropFilter = 'blur(' + blur + 'px) saturate(' + (1 + t * 0.3) + ')';
+          el.style.setProperty('-webkit-backdrop-filter', 'blur(' + blur + 'px) saturate(' + (1 + t * 0.3) + ')');
 
-          if (t > 0.5) {
+          // Background opacity increases
+          var bgAlpha = 0.8 + t * 0.12;
+          var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          if (isDark) {
+            el.style.background = 'rgba(18, 16, 11, ' + (bgAlpha * 0.85) + ')';
+          } else {
+            el.style.background = 'rgba(250, 246, 236, ' + bgAlpha + ')';
+          }
+
+          if (t > 0.4) {
             el.classList.add('scrolled');
           } else {
             el.classList.remove('scrolled');
           }
-        }
 
-        window.addEventListener('scroll', update, { passive: true });
-        update();
+          requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
       }
       initScrollHeader();
       document.addEventListener('astro:after-swap', initScrollHeader);
+
+      function initHeroBanner() {
+        var banner = document.querySelector('.hero-banner') as HTMLElement | null;
+        var hero = document.querySelector('.hero') as HTMLElement | null;
+        var footer = document.querySelector('.site-footer') as HTMLElement | null;
+        var lines = banner ? banner.querySelectorAll('.hero-banner-line') as NodeListOf<HTMLElement> : null;
+        if (!banner || !hero || !lines || lines.length < 2) return;
+
+        var line1 = lines[0];
+        var line2 = lines[1];
+        var startY = window.innerHeight * 0.38;
+
+        // Lerp state
+        var currentY = startY;
+        var currentOpacity = 1;
+        var currentSplit = 0;
+        var currentScale = 1;
+
+        // Split config — scale spread to viewport width
+        var splitStart = 60;   // px of scroll before split begins
+        var splitEnd = 500;    // px of scroll where split is fully spread
+        var vw = window.innerWidth;
+        var maxSpread = vw < 700 ? 20 : 42;    // vw units of max spread from center
+        var minScale = vw < 700 ? 0.7 : 0.55;  // smallest font scale at max spread
+
+        var isMobileBanner = window.innerWidth <= 750;
+        window.addEventListener('resize', function() { isMobileBanner = window.innerWidth <= 750; });
+
+        function updateBanner() {
+          var scrollY = window.scrollY;
+          var heroRect = hero!.getBoundingClientRect();
+          var heroBottom = heroRect.bottom;
+          var heroH = hero!.offsetHeight - 300;
+
+          if (isMobileBanner) {
+            // MOBILE: no split, no fade — stick to hero bottom edge
+            // Keep lines stacked centered
+            line1.style.transform = 'translateX(-50%)';
+            line2.style.transform = 'translateX(-50%) translateY(1.2em)';
+
+            // Clamp banner above hero's fade-out gradient (bottom 25% of hero)
+            var bannerH = banner!.offsetHeight;
+            var visibleHeroBottom = heroBottom - hero!.offsetHeight * 0.25;
+            var maxTop = visibleHeroBottom - bannerH - 20;
+            var targetY = Math.min(startY, maxTop);
+            currentY += (targetY - currentY) * 0.2;
+
+            banner!.style.top = currentY + 'px';
+            banner!.style.opacity = '1';
+
+            // Hide once hero is fully scrolled past
+            if (heroBottom < 0) {
+              banner!.style.opacity = '0';
+            }
+
+            banner!.classList.remove('on-content');
+          } else {
+            // DESKTOP: split animation + fade behavior
+            // Stay fixed at startY (follows viewport), no vertical drift
+            var targetY = startY;
+            currentY += (targetY - currentY) * 0.15;
+
+            // Split: eased progress from center to sides
+            var splitProgress = 0;
+            if (scrollY > splitStart) {
+              splitProgress = Math.min((scrollY - splitStart) / (splitEnd - splitStart), 1);
+            }
+            // Ease out cubic for smooth deceleration
+            var easedSplit = 1 - Math.pow(1 - splitProgress, 3);
+            currentSplit += (easedSplit - currentSplit) * 0.12;
+
+            // Scale down as they spread out
+            var targetScale = 1 - currentSplit * (1 - minScale);
+            currentScale += (targetScale - currentScale) * 0.12;
+
+            var spread = currentSplit * maxSpread;
+            var spreadRight = spread * 0.9;
+            var verticalOffset = (1 - currentSplit) * 1.2;
+            line1.style.transform = 'translateX(calc(-50% - ' + spread + 'vw)) scale(' + currentScale + ')';
+            line2.style.transform = 'translateX(calc(-50% + ' + spreadRight + 'vw)) translateY(' + verticalOffset + 'em) scale(' + currentScale + ')';
+
+            // Fade out towards end of hero
+            var scrollT = Math.min(Math.max(scrollY / heroH, 0), 1);
+            var targetOpacity = scrollT > 0.7 ? Math.max(1 - (scrollT - 0.7) / 0.3, 0) : 1;
+
+            if (footer && footer.getBoundingClientRect().top < banner!.offsetHeight + 40) {
+              targetOpacity = 0;
+            }
+
+            currentOpacity += (targetOpacity - currentOpacity) * 0.15;
+
+            banner!.style.top = currentY + 'px';
+            banner!.style.opacity = String(currentOpacity);
+
+            var pastHero = heroBottom < startY + 20;
+            banner!.classList.toggle('on-content', pastHero);
+          }
+        }
+        function tick() {
+          updateBanner();
+          requestAnimationFrame(tick);
+        }
+        window.addEventListener('resize', function() {
+          startY = window.innerHeight * 0.38;
+          vw = window.innerWidth;
+          maxSpread = vw < 700 ? 20 : 42;
+          minScale = vw < 700 ? 0.7 : 0.55;
+        });
+        requestAnimationFrame(tick);
+      }
+      initHeroBanner();
+      document.addEventListener('astro:after-swap', initHeroBanner);
+
+      // Hero image parallax — heavy effect with translate, scale and fade
+      function initHeroParallax() {
+        var heroImgs = document.querySelectorAll('.hero .hero-light, .hero .hero-dark') as NodeListOf<HTMLElement>;
+        var hero = document.querySelector('.hero') as HTMLElement | null;
+        if (heroImgs.length === 0 || !hero) return;
+        function updateParallax() {
+          var heroH = hero!.offsetHeight - 300;
+          var scrollY = window.scrollY;
+          var t = Math.min(Math.max(scrollY / heroH, 0), 1);
+
+          // Strong upward drift
+          var offset = scrollY * 0.5;
+          // Subtle zoom in as you scroll
+          var scale = 1 + t * 0.12;
+          // Fade out toward bottom of hero via brightness (not opacity — that's used for crossfade)
+          var brightness = 1 - t * 0.4;
+
+          heroImgs.forEach(function(img) {
+            img.style.transform = 'translateY(' + offset + 'px) scale(' + scale + ')';
+            img.style.filter = 'brightness(' + brightness + ')';
+          });
+        }
+        window.addEventListener('scroll', updateParallax, { passive: true });
+        updateParallax();
+      }
+      initHeroParallax();
+      document.addEventListener('astro:after-swap', initHeroParallax);
+
+      // Ornament parallax — moves at different speed
+      function initOrnamentParallax() {
+        var style = document.documentElement.style;
+        function updateOrnament() {
+          var offset = 40 + window.scrollY * 0.05;
+          style.setProperty('--ornament-top', offset + 'vh');
+        }
+        window.addEventListener('scroll', updateOrnament, { passive: true });
+        updateOrnament();
+      }
+      initOrnamentParallax();
+      document.addEventListener('astro:after-swap', initOrnamentParallax);
+
+      // Footer illustration parallax — continuous rAF loop like hero
+      function initFooterParallax() {
+        var footerIll = document.querySelector('.footer-illustration') as HTMLElement | null;
+        var footerImgs = document.querySelectorAll('.footer-img') as NodeListOf<HTMLElement>;
+        if (!footerIll || footerImgs.length === 0) return;
+
+        // Disable parallax on mobile — container is too short for the offset
+        if (window.innerWidth <= 750) return;
+
+        var currentY = 0;
+
+        function tick() {
+          var rect = footerIll!.getBoundingClientRect();
+          var viewH = window.innerHeight;
+
+          // How far the illustration is scrolled into view: 0 = just entering, 1 = top at viewport top
+          var t = Math.min(Math.max((viewH - rect.top) / (viewH + rect.height), 0), 1);
+
+          // Parallax offset: image drifts upward as you scroll down (negative = up)
+          var targetY = -(t * 80);
+
+          // Smooth lerp for buttery feel
+          currentY += (targetY - currentY) * 0.1;
+
+          footerImgs.forEach(function(img) {
+            img.style.transform = 'translateY(' + currentY + 'px)';
+          });
+
+          requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+      initFooterParallax();
+      document.addEventListener('astro:after-swap', initFooterParallax);
+
+      // Fake-sticky cards: view-transition-name breaks CSS sticky,
+      // so we simulate it with JS transform
+      function initStickyCards() {
+        var wrap = document.querySelector('.sticky-cards-wrap') as HTMLElement | null;
+        var cards = document.querySelector('.sticky-cards') as HTMLElement | null;
+        if (!wrap || !cards) return;
+
+        // Disable sticky effect on mobile — layout flows normally
+        if (window.innerWidth <= 750) {
+          cards.style.transform = 'translateY(0)';
+          return;
+        }
+
+        var stickyTop = 64; // ~4rem in px
+
+        function tick() {
+          var wrapRect = wrap!.getBoundingClientRect();
+          var cardsH = cards!.offsetHeight;
+
+          if (wrapRect.top <= stickyTop) {
+            // How far past the stick point we've scrolled
+            var offset = stickyTop - wrapRect.top;
+            // Don't push cards below the wrapper bottom
+            var maxOffset = wrap!.offsetHeight - cardsH;
+            if (maxOffset < 0) maxOffset = 0;
+            offset = Math.min(offset, maxOffset);
+            cards!.style.transform = 'translateY(' + offset + 'px)';
+          } else {
+            cards!.style.transform = 'translateY(0)';
+          }
+          requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+      initStickyCards();
+      document.addEventListener('astro:after-swap', initStickyCards);
+
+      // Scroll-reveal with IntersectionObserver
+      function initScrollReveal() {
+        var els = document.querySelectorAll('.scroll-reveal');
+        if (els.length === 0) return;
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        els.forEach(function(el) { observer.observe(el); });
+      }
+      initScrollReveal();
+      document.addEventListener('astro:after-swap', initScrollReveal);
+
+      function applyTheme(setting: string) {
+        var html = document.documentElement;
+        html.setAttribute('data-theme-setting', setting);
+        var isDark = setting === 'dark' || (setting === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (isDark) {
+          html.setAttribute('data-theme', 'dark');
+        } else {
+          html.removeAttribute('data-theme');
+        }
+        // Update active state on buttons
+        document.querySelectorAll('.theme-btn').forEach(function(btn) {
+          if ((btn as HTMLElement).dataset.themeValue === setting) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
+
+      function initThemeToggle() {
+        var current = localStorage.getItem('theme') || 'system';
+        applyTheme(current);
+
+        document.querySelectorAll('.theme-btn').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            var value = (btn as HTMLElement).dataset.themeValue!;
+            var html = document.documentElement;
+            html.classList.add('theme-transition');
+            localStorage.setItem('theme', value);
+            applyTheme(value);
+            setTimeout(function() { html.classList.remove('theme-transition'); }, 800);
+          });
+        });
+
+        // Listen for system theme changes when in "system" mode
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+          var setting = localStorage.getItem('theme') || 'system';
+          if (setting === 'system') {
+            applyTheme('system');
+          }
+        });
+      }
+      initThemeToggle();
+      document.addEventListener('astro:after-swap', function() {
+        var saved = localStorage.getItem('theme') || 'system';
+        applyTheme(saved);
+        initThemeToggle();
+      });
     </script>
   </body>
 </html>

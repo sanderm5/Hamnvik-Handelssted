@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { reader } from '../utils/reader';
+
+const bilder = await reader.singletons.bilder.read();
+if (!bilder) throw new Error('Bilder-innhold mangler');
+---
+
+<BaseLayout title="Bilder" currentPath="/bilder">
+  <main id="main-content" class="main-content">
+    <h1>{bilder.heading}</h1>
+    <p class="article-deck">{bilder.deck}</p>
+    <p class="byline">{bilder.byline}</p>
+
+    <p class="page-intro">{bilder.intro}</p>
+
+    {bilder.gallerySections.map((section) => (
+      <>
+        <hr class="divider" />
+
+        <h2 class="section-heading">{section.heading}</h2>
+
+        {section.description && <p>{section.description}</p>}
+        {section.photoCredit && <p class="photo-credit">{section.photoCredit}</p>}
+
+        <div class="image-gallery">
+          {section.images.map((img) => (
+            <figure class="vintage-frame">
+              <img src={img.image} alt={img.alt} />
+              {img.caption && <figcaption class="vintage-frame-caption">{img.caption}</figcaption>}
+            </figure>
+          ))}
+        </div>
+      </>
+    ))}
+
+    <hr class="divider" />
+
+    <h2 class="section-heading">{bilder.restaureringHeading}</h2>
+    <p class="drop-cap">{bilder.restaureringText}</p>
+  </main>
+</BaseLayout>
