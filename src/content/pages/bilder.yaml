@@ -43,13 +43,13 @@ gallerySections:
     description: ""
     photoCredit: ""
     images:
-      - image: /images/galleri/Bryllup 08 176.jpg
+      - image: /images/galleri/Bryllup_08_176.jpg
         alt: Nybrygga
         caption: Nybrygga
-      - image: /images/galleri/Bryllup 08 177.jpg
+      - image: /images/galleri/Bryllup_08_177.jpg
         alt: Gammelbrygga
         caption: Gammelbrygga
-      - image: /images/galleri/Bryllup 08 178.jpg
+      - image: /images/galleri/Bryllup_08_178.jpg
         alt: "Stabbur, Bakeriet og Rulleboden"
         caption: "Stabbur, Bakeriet og Rulleboden"
       - image: /images/galleri/166-6663_IMG.jpg
@@ -121,7 +121,7 @@ gallerySections:
       - image: /images/galleri/149-4945_IMG.jpg
         alt: Jazztrompetist Stian Omenås
         caption: "Jazztrompetist Stian Omenås, konsert 23. sept. 2006"
-      - image: /images/galleri/Slvi 063.jpg
+      - image: /images/galleri/Slvi_063.jpg
         alt: Jamming med Ronaldo og Vidar Nilsen
         caption: Jamming med Ronaldo og Vidar Nilsen
       - image: /images/galleri/157-5715_IMG.jpg
@@ -167,7 +167,7 @@ gallerySections:
       - image: /images/galleri/034.jpg
         alt: Jektekartene blir studert
         caption: Jektekartene blir studert
-      - image: /images/galleri/Ordfrer Marit Johansen og kulturminister Trond Giske.jpg
+      - image: /images/galleri/Ordfrer_Marit_Johansen_og_kulturminister_Trond_Giske.jpg
         alt: Ordfører Marit Johansen og kulturminister Trond Giske
         caption: Ordfører Marit Johansen og kulturminister Trond Giske
       - image: /images/galleri/056.jpg
@@ -198,7 +198,7 @@ gallerySections:
       - image: /images/galleri/Tore20Meyer.jpg
         alt: Forfatter Tore Meyer
         caption: Forfatter Tore Meyer
-      - image: /images/galleri/Sonja Westrheim.jpg
+      - image: /images/galleri/Sonja_Westrheim.jpg
         alt: Sonja Westrheim
         caption: Sonja Westrheim fortalte om merkedagene på primstaven
       - image: /images/galleri/Tilhoerere3.jpg
