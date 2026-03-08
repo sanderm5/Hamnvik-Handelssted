@@ -6,7 +6,7 @@ const omOss = await reader.singletons.omOss.read();
 if (!omOss) throw new Error('Om oss-innhold mangler');
 ---
 
-<BaseLayout title="Om oss" currentPath="/om-oss">
+<BaseLayout title="Om oss" currentPath="/om-oss" description="Historien om Hamnvik Handelssted og Donsegården – et fredet handelssted fra 1794 i Ibestad kommune, Troms.">
   <main id="main-content" class="main-content">
     <h1>{omOss.heading}</h1>
     <p class="article-deck">{omOss.deck}</p>

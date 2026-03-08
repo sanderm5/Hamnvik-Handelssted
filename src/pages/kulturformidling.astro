@@ -7,7 +7,16 @@ const kultur = await reader.singletons.kulturformidling.read();
 if (!kultur) throw new Error('Kulturformidling-innhold mangler');
 ---
 
-<BaseLayout title="Kulturformidling" currentPath="/kulturformidling">
+<BaseLayout title="Kulturformidling" currentPath="/kulturformidling" description="Kulturformidling på Hamnvik Handelssted. Omvisninger, foredrag og historiefortelling i Donsegården, Ibestad." jsonLd={{
+  "@context": "https://schema.org",
+  "@type": "TouristAttraction",
+  "name": "Hamnvik Handelssted – Kulturformidling",
+  "description": "Omvisninger, foredrag og historiefortelling på det fredede handelsstedet Donsegården i Ibestad.",
+  "url": "https://hamnvikhandelssted.com/kulturformidling",
+  "touristType": "Kulturinteresserte",
+  "address": { "@type": "PostalAddress", "streetAddress": "Hamnvik", "addressLocality": "Ibestad", "addressRegion": "Troms", "addressCountry": "NO" },
+  "isPartOf": { "@type": "LocalBusiness", "name": "Hamnvik Handelssted", "url": "https://hamnvikhandelssted.com" }
+}}>
   <main id="main-content" class="main-content">
     <h1>{kultur.heading}</h1>
     <p class="article-deck">{kultur.deck}</p>

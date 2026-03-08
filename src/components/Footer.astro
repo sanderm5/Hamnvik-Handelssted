@@ -3,8 +3,16 @@
 
 <footer class="site-footer" transition:name="footer" transition:animate="none">
   <div class="footer-illustration">
-    <img src="/images/footer-light.png" alt="Hamnvik handelssted i vinterlandskap med dagslys" class="footer-img footer-img-light" width="1536" height="512" loading="lazy" />
-    <img src="/images/footer-dark.png" alt="Hamnvik handelssted med nordlys" class="footer-img footer-img-dark" width="1536" height="512" loading="lazy" />
+    <div class="footer-parallax-layer">
+      <picture>
+        <source srcset="/images/footer-light.webp" type="image/webp" />
+        <img src="/images/footer-light.png" alt="Hamnvik handelssted i vinterlandskap med dagslys" class="footer-img footer-img-light" width="1536" height="512" loading="lazy" decoding="async" />
+      </picture>
+      <picture>
+        <source srcset="/images/footer-dark.webp" type="image/webp" />
+        <img src="/images/footer-dark.png" alt="Hamnvik handelssted med nordlys" class="footer-img footer-img-dark" width="1536" height="512" loading="lazy" decoding="async" />
+      </picture>
+    </div>
   </div>
   <div class="site-footer-content">
     <div class="site-footer-col">
@@ -18,14 +26,18 @@
       <p>Donseg&aring;rden, Hamnvik</p>
       <p>Ibestad kommune, Troms</p>
     </div>
-    <div class="site-footer-col">
+    <nav class="site-footer-col" aria-label="Relaterte lenker">
       <p class="site-footer-label">Se ogs&aring;</p>
-      <p><a href="https://www.sorenskrivergarden.hamnvikhandelssted.com/Sorenskrivergarden/Ibestad_Ovre.html">Sorenskriverg&aring;rden<br/>Ibestad &Oslash;vre</a></p>
-      <p><a href="https://www.facebook.com/groups/hamnvikhandelssted">Facebook</a></p>
+      <p><a href="https://www.sorenskrivergarden.hamnvikhandelssted.com/Sorenskrivergarden/Ibestad_Ovre.html" target="_blank" rel="noopener noreferrer">Sorenskriverg&aring;rden<br/>Ibestad &Oslash;vre <span class="sr-only">(åpnes i nytt vindu)</span></a></p>
+      <p><a href="https://www.facebook.com/groups/hamnvikhandelssted" target="_blank" rel="noopener noreferrer">Facebook <span class="sr-only">(åpnes i nytt vindu)</span></a></p>
       <p><a href="/referanser">Referanser</a></p>
-    </div>
+    </nav>
   </div>
   <div class="site-footer-bottom">
     <span>&copy; Hamnvik Handelssted &middot; Ibestad kommunes fotefarprosjekt</span>
+    <span class="footer-legal">
+      <a href="/personvern">Personvern</a> &middot; <a href="/vilkar">Vilk&aring;r</a>
+    </span>
+    <span class="footer-credit">Utviklet av <a href="https://www.efffekt.no/" target="_blank" rel="noopener noreferrer">Efffekt AS</a></span>
   </div>
 </footer>

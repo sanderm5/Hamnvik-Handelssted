@@ -7,10 +7,21 @@ import '../styles/global.css';
 interface Props {
   title: string;
   currentPath?: string;
+  description?: string;
+  ogImage?: string;
+  jsonLd?: Record<string, unknown>;
 }
 
-const { title, currentPath = '/' } = Astro.props;
+const { title, currentPath = '/', description, ogImage, jsonLd } = Astro.props;
 const isFrontPage = currentPath === '/';
+
+const siteName = 'Hamnvik Handelssted';
+const siteUrl = 'https://hamnvikhandelssted.com';
+const defaultDescription = 'Hamnvik Handelssted - Donsegården. Fredet handelssted fra 1794 i Ibestad kommune. Servering, overnatting, kulturformidling og krambu.';
+const pageDescription = description || defaultDescription;
+const canonicalUrl = `${siteUrl}${currentPath}`;
+const pageOgImage = ogImage || `${siteUrl}/images/HAMNVIK.png`;
+const fullTitle = `${title} | ${siteName}`;
 ---
 
 <!DOCTYPE html>
@@ -18,9 +29,101 @@ const isFrontPage = currentPath === '/';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Hamnvik Handelssted - Donsegården. Fredet handelssted fra 1794 i Ibestad kommune. Servering, overnatting, kulturformidling og krambu." />
+    <meta name="description" content={pageDescription} />
     <link rel="icon" type="image/png" href="/images/4_stamp_ship.png" />
-    <title>{title} | Hamnvik Handelssted</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display+SC:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500;600;700&display=optional" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display+SC:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500;600;700&display=optional" rel="stylesheet" media="print" onload="this.media='all'" />
+
+    <title>{fullTitle}</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={pageOgImage} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="nb_NO" />
+    <meta property="og:site_name" content={siteName} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={pageOgImage} />
+
+    <meta name="theme-color" content="#f6f0e0" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1610" media="(prefers-color-scheme: dark)" />
+    <link rel="apple-touch-icon" href="/images/4_stamp_ship.png" />
+
+    {isFrontPage && (
+      <link rel="preload" as="image" type="image/webp" href="/images/HAMNVIK.webp" />
+    )}
+
+    {isFrontPage && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Hamnvik Handelssted",
+        "description": defaultDescription,
+        "url": siteUrl,
+        "image": `${siteUrl}/images/HAMNVIK.png`,
+        "email": "post@hamnvikhandelssted.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Hamnvik",
+          "addressLocality": "Ibestad",
+          "addressRegion": "Troms",
+          "addressCountry": "NO"
+        },
+        "foundingDate": "1794",
+        "additionalType": [
+          "https://schema.org/Restaurant",
+          "https://schema.org/LodgingBusiness",
+          "https://schema.org/Store"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Tjenester",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Servering" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Overnatting" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kulturformidling" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Krambu" } }
+          ]
+        }
+      })} />
+    )}
+
+    {!isFrontPage && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Hjem",
+            "item": siteUrl
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": title,
+            "item": canonicalUrl
+          }
+        ]
+      })} />
+    )}
+
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
+    <noscript><style>.scroll-reveal{opacity:1;transform:none}</style></noscript>
     <ClientRouter />
     <script is:inline>
       // Apply theme immediately to prevent flash
@@ -48,6 +151,46 @@ const isFrontPage = currentPath === '/';
     </div>
 
     <script>
+      // --- Shared state ---
+      var isMobile = window.innerWidth <= 750;
+      var resizeTimer: number;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(function() {
+          isMobile = window.innerWidth <= 750;
+        }, 150) as unknown as number;
+      });
+
+      // --- Unified rAF loop ---
+      // Consolidates all continuous animations into a single requestAnimationFrame
+      var rafCallbacks: Array<() => void> = [];
+      var rafRunning = false;
+
+      function rafLoop() {
+        for (var i = 0; i < rafCallbacks.length; i++) {
+          rafCallbacks[i]();
+        }
+        if (rafCallbacks.length > 0) {
+          requestAnimationFrame(rafLoop);
+        } else {
+          rafRunning = false;
+        }
+      }
+
+      function addRafCallback(cb: () => void) {
+        rafCallbacks.push(cb);
+        if (!rafRunning) {
+          rafRunning = true;
+          requestAnimationFrame(rafLoop);
+        }
+      }
+
+      function clearRafCallbacks() {
+        rafCallbacks = [];
+        rafRunning = false;
+      }
+
+      // --- Header scroll animation ---
       function initScrollHeader() {
         var header = document.querySelector('.site-header-front') as HTMLElement | null;
         if (!header) return;
@@ -55,16 +198,11 @@ const isFrontPage = currentPath === '/';
         var end = 120;
         var current = 0;
 
-        var isMobile = window.innerWidth <= 750;
-        window.addEventListener('resize', function() { isMobile = window.innerWidth <= 750; });
-
-        function update() {
+        addRafCallback(function updateHeader() {
           var target = Math.min(Math.max(window.scrollY / end, 0), 1);
-          // Smooth lerp for buttery animation
           current += (target - current) * 0.12;
           var t = current;
 
-          // Padding — less reduction on mobile since we start smaller
           if (isMobile) {
             el.style.paddingTop = (0.7 - t * 0.4) + 'rem';
             el.style.paddingBottom = (0.5 - t * 0.3) + 'rem';
@@ -73,26 +211,21 @@ const isFrontPage = currentPath === '/';
             el.style.paddingBottom = (0.8 - t * 0.65) + 'rem';
           }
 
-          // Font size — starts smaller on mobile
           var baseFontSize = isMobile ? 1.6 : 2;
           var fontReduction = isMobile ? 0.4 : 0.7;
           el.style.setProperty('--header-font-size', (baseFontSize - t * fontReduction) + 'rem');
 
-          // Nav
           el.style.setProperty('--header-nav-margin', (0.5 - t * 0.5) + 'rem');
           el.style.setProperty('--header-nav-font', (0.82 - t * 0.06) + 'rem');
 
-          // Subtitle/tagline collapse
           var subT = Math.min(t * 3, 1);
           el.style.setProperty('--header-sub-opacity', String(1 - subT));
           el.style.setProperty('--header-sub-height', (1 - Math.min(t * 2, 1)) + 'em');
 
-          // Backdrop blur intensifies: 6px → 16px
           var blur = 6 + t * 10;
           el.style.backdropFilter = 'blur(' + blur + 'px) saturate(' + (1 + t * 0.3) + ')';
           el.style.setProperty('-webkit-backdrop-filter', 'blur(' + blur + 'px) saturate(' + (1 + t * 0.3) + ')');
 
-          // Background opacity increases
           var bgAlpha = 0.8 + t * 0.12;
           var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
           if (isDark) {
@@ -106,127 +239,10 @@ const isFrontPage = currentPath === '/';
           } else {
             el.classList.remove('scrolled');
           }
-
-          requestAnimationFrame(update);
-        }
-        requestAnimationFrame(update);
-      }
-      initScrollHeader();
-      document.addEventListener('astro:after-swap', initScrollHeader);
-
-      function initHeroBanner() {
-        var banner = document.querySelector('.hero-banner') as HTMLElement | null;
-        var hero = document.querySelector('.hero') as HTMLElement | null;
-        var footer = document.querySelector('.site-footer') as HTMLElement | null;
-        var lines = banner ? banner.querySelectorAll('.hero-banner-line') as NodeListOf<HTMLElement> : null;
-        if (!banner || !hero || !lines || lines.length < 2) return;
-
-        var line1 = lines[0];
-        var line2 = lines[1];
-        var startY = window.innerHeight * 0.38;
-
-        // Lerp state
-        var currentY = startY;
-        var currentOpacity = 1;
-        var currentSplit = 0;
-        var currentScale = 1;
-
-        // Split config — scale spread to viewport width
-        var splitStart = 60;   // px of scroll before split begins
-        var splitEnd = 500;    // px of scroll where split is fully spread
-        var vw = window.innerWidth;
-        var maxSpread = vw < 700 ? 20 : 42;    // vw units of max spread from center
-        var minScale = vw < 700 ? 0.7 : 0.55;  // smallest font scale at max spread
-
-        var isMobileBanner = window.innerWidth <= 750;
-        window.addEventListener('resize', function() { isMobileBanner = window.innerWidth <= 750; });
-
-        function updateBanner() {
-          var scrollY = window.scrollY;
-          var heroRect = hero!.getBoundingClientRect();
-          var heroBottom = heroRect.bottom;
-          var heroH = hero!.offsetHeight - 300;
-
-          if (isMobileBanner) {
-            // MOBILE: no split, no fade — stick to hero bottom edge
-            // Keep lines stacked centered
-            line1.style.transform = 'translateX(-50%)';
-            line2.style.transform = 'translateX(-50%) translateY(1.2em)';
-
-            // Clamp banner above hero's fade-out gradient (bottom 25% of hero)
-            var bannerH = banner!.offsetHeight;
-            var visibleHeroBottom = heroBottom - hero!.offsetHeight * 0.25;
-            var maxTop = visibleHeroBottom - bannerH - 20;
-            var targetY = Math.min(startY, maxTop);
-            currentY += (targetY - currentY) * 0.2;
-
-            banner!.style.top = currentY + 'px';
-            banner!.style.opacity = '1';
-
-            // Hide once hero is fully scrolled past
-            if (heroBottom < 0) {
-              banner!.style.opacity = '0';
-            }
-
-            banner!.classList.remove('on-content');
-          } else {
-            // DESKTOP: split animation + fade behavior
-            // Stay fixed at startY (follows viewport), no vertical drift
-            var targetY = startY;
-            currentY += (targetY - currentY) * 0.15;
-
-            // Split: eased progress from center to sides
-            var splitProgress = 0;
-            if (scrollY > splitStart) {
-              splitProgress = Math.min((scrollY - splitStart) / (splitEnd - splitStart), 1);
-            }
-            // Ease out cubic for smooth deceleration
-            var easedSplit = 1 - Math.pow(1 - splitProgress, 3);
-            currentSplit += (easedSplit - currentSplit) * 0.12;
-
-            // Scale down as they spread out
-            var targetScale = 1 - currentSplit * (1 - minScale);
-            currentScale += (targetScale - currentScale) * 0.12;
-
-            var spread = currentSplit * maxSpread;
-            var spreadRight = spread * 0.9;
-            var verticalOffset = (1 - currentSplit) * 1.2;
-            line1.style.transform = 'translateX(calc(-50% - ' + spread + 'vw)) scale(' + currentScale + ')';
-            line2.style.transform = 'translateX(calc(-50% + ' + spreadRight + 'vw)) translateY(' + verticalOffset + 'em) scale(' + currentScale + ')';
-
-            // Fade out towards end of hero
-            var scrollT = Math.min(Math.max(scrollY / heroH, 0), 1);
-            var targetOpacity = scrollT > 0.7 ? Math.max(1 - (scrollT - 0.7) / 0.3, 0) : 1;
-
-            if (footer && footer.getBoundingClientRect().top < banner!.offsetHeight + 40) {
-              targetOpacity = 0;
-            }
-
-            currentOpacity += (targetOpacity - currentOpacity) * 0.15;
-
-            banner!.style.top = currentY + 'px';
-            banner!.style.opacity = String(currentOpacity);
-
-            var pastHero = heroBottom < startY + 20;
-            banner!.classList.toggle('on-content', pastHero);
-          }
-        }
-        function tick() {
-          updateBanner();
-          requestAnimationFrame(tick);
-        }
-        window.addEventListener('resize', function() {
-          startY = window.innerHeight * 0.38;
-          vw = window.innerWidth;
-          maxSpread = vw < 700 ? 20 : 42;
-          minScale = vw < 700 ? 0.7 : 0.55;
         });
-        requestAnimationFrame(tick);
       }
-      initHeroBanner();
-      document.addEventListener('astro:after-swap', initHeroBanner);
 
-      // Hero image parallax — heavy effect with translate, scale and fade
+      // --- Hero image parallax ---
       function initHeroParallax() {
         var heroImgs = document.querySelectorAll('.hero .hero-light, .hero .hero-dark') as NodeListOf<HTMLElement>;
         var hero = document.querySelector('.hero') as HTMLElement | null;
@@ -235,12 +251,8 @@ const isFrontPage = currentPath === '/';
           var heroH = hero!.offsetHeight - 300;
           var scrollY = window.scrollY;
           var t = Math.min(Math.max(scrollY / heroH, 0), 1);
-
-          // Strong upward drift
           var offset = scrollY * 0.5;
-          // Subtle zoom in as you scroll
           var scale = 1 + t * 0.12;
-          // Fade out toward bottom of hero via brightness (not opacity — that's used for crossfade)
           var brightness = 1 - t * 0.4;
 
           heroImgs.forEach(function(img) {
@@ -251,10 +263,8 @@ const isFrontPage = currentPath === '/';
         window.addEventListener('scroll', updateParallax, { passive: true });
         updateParallax();
       }
-      initHeroParallax();
-      document.addEventListener('astro:after-swap', initHeroParallax);
 
-      // Ornament parallax — moves at different speed
+      // --- Ornament parallax ---
       function initOrnamentParallax() {
         var style = document.documentElement.style;
         function updateOrnament() {
@@ -264,67 +274,64 @@ const isFrontPage = currentPath === '/';
         window.addEventListener('scroll', updateOrnament, { passive: true });
         updateOrnament();
       }
-      initOrnamentParallax();
-      document.addEventListener('astro:after-swap', initOrnamentParallax);
 
-      // Footer illustration parallax — continuous rAF loop like hero
+      // --- Footer parallax with visibility gating ---
       function initFooterParallax() {
         var footerIll = document.querySelector('.footer-illustration') as HTMLElement | null;
-        var footerImgs = document.querySelectorAll('.footer-img') as NodeListOf<HTMLElement>;
-        if (!footerIll || footerImgs.length === 0) return;
+        var footerLayer = document.querySelector('.footer-parallax-layer') as HTMLElement | null;
+        if (!footerIll || !footerLayer) return;
+        if (isMobile) return;
 
-        // Disable parallax on mobile — container is too short for the offset
-        if (window.innerWidth <= 750) return;
-
+        var footerVisible = false;
         var currentY = 0;
 
-        function tick() {
+        var observer = new IntersectionObserver(function(entries) {
+          footerVisible = entries[0].isIntersecting;
+        }, { rootMargin: '100px' });
+        observer.observe(footerIll);
+
+        addRafCallback(function tickFooter() {
+          if (!footerVisible) return;
+          // Freeze parallax during theme transition to prevent image shifting
+          if (document.documentElement.classList.contains('theme-transition')) return;
+
           var rect = footerIll!.getBoundingClientRect();
           var viewH = window.innerHeight;
-
-          // How far the illustration is scrolled into view: 0 = just entering, 1 = top at viewport top
           var t = Math.min(Math.max((viewH - rect.top) / (viewH + rect.height), 0), 1);
-
-          // Parallax offset: image drifts upward as you scroll down (negative = up)
           var targetY = -(t * 80);
-
-          // Smooth lerp for buttery feel
           currentY += (targetY - currentY) * 0.1;
 
-          footerImgs.forEach(function(img) {
-            img.style.transform = 'translateY(' + currentY + 'px)';
-          });
-
-          requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
+          footerLayer!.style.transform = 'translateY(' + currentY + 'px)';
+        });
       }
-      initFooterParallax();
-      document.addEventListener('astro:after-swap', initFooterParallax);
 
-      // Fake-sticky cards: view-transition-name breaks CSS sticky,
-      // so we simulate it with JS transform
+      // --- Sticky cards with visibility gating ---
       function initStickyCards() {
         var wrap = document.querySelector('.sticky-cards-wrap') as HTMLElement | null;
         var cards = document.querySelector('.sticky-cards') as HTMLElement | null;
         if (!wrap || !cards) return;
 
-        // Disable sticky effect on mobile — layout flows normally
-        if (window.innerWidth <= 750) {
+        if (isMobile) {
           cards.style.transform = 'translateY(0)';
           return;
         }
 
-        var stickyTop = 64; // ~4rem in px
+        var stickyVisible = false;
+        var stickyTop = 64;
 
-        function tick() {
+        var observer = new IntersectionObserver(function(entries) {
+          stickyVisible = entries[0].isIntersecting;
+        }, { rootMargin: '200px' });
+        observer.observe(wrap);
+
+        addRafCallback(function tickSticky() {
+          if (!stickyVisible) return;
+
           var wrapRect = wrap!.getBoundingClientRect();
           var cardsH = cards!.offsetHeight;
 
           if (wrapRect.top <= stickyTop) {
-            // How far past the stick point we've scrolled
             var offset = stickyTop - wrapRect.top;
-            // Don't push cards below the wrapper bottom
             var maxOffset = wrap!.offsetHeight - cardsH;
             if (maxOffset < 0) maxOffset = 0;
             offset = Math.min(offset, maxOffset);
@@ -332,14 +339,10 @@ const isFrontPage = currentPath === '/';
           } else {
             cards!.style.transform = 'translateY(0)';
           }
-          requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
+        });
       }
-      initStickyCards();
-      document.addEventListener('astro:after-swap', initStickyCards);
 
-      // Scroll-reveal with IntersectionObserver
+      // --- Scroll-reveal with IntersectionObserver ---
       function initScrollReveal() {
         var els = document.querySelectorAll('.scroll-reveal');
         if (els.length === 0) return;
@@ -353,9 +356,8 @@ const isFrontPage = currentPath === '/';
         }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
         els.forEach(function(el) { observer.observe(el); });
       }
-      initScrollReveal();
-      document.addEventListener('astro:after-swap', initScrollReveal);
 
+      // --- Theme ---
       function applyTheme(setting: string) {
         var html = document.documentElement;
         html.setAttribute('data-theme-setting', setting);
@@ -365,13 +367,14 @@ const isFrontPage = currentPath === '/';
         } else {
           html.removeAttribute('data-theme');
         }
-        // Update active state on buttons
         document.querySelectorAll('.theme-btn').forEach(function(btn) {
-          if ((btn as HTMLElement).dataset.themeValue === setting) {
+          var isActive = (btn as HTMLElement).dataset.themeValue === setting;
+          if (isActive) {
             btn.classList.add('active');
           } else {
             btn.classList.remove('active');
           }
+          btn.setAttribute('aria-checked', String(isActive));
         });
       }
 
@@ -390,7 +393,6 @@ const isFrontPage = currentPath === '/';
           });
         });
 
-        // Listen for system theme changes when in "system" mode
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
           var setting = localStorage.getItem('theme') || 'system';
           if (setting === 'system') {
@@ -398,11 +400,24 @@ const isFrontPage = currentPath === '/';
           }
         });
       }
-      initThemeToggle();
+
+      // --- Init all ---
+      function initAll() {
+        clearRafCallbacks();
+        initScrollHeader();
+        initHeroParallax();
+        initOrnamentParallax();
+        initFooterParallax();
+        initStickyCards();
+        initScrollReveal();
+        initThemeToggle();
+      }
+
+      initAll();
       document.addEventListener('astro:after-swap', function() {
         var saved = localStorage.getItem('theme') || 'system';
         applyTheme(saved);
-        initThemeToggle();
+        initAll();
       });
     </script>
   </body>

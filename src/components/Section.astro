@@ -26,12 +26,18 @@ const hasImage = section.image;
     </div>
     {section.imageCaption ? (
       <figure class="vintage-frame" style="max-width: 280px;">
-        <img src={section.image} alt={section.imageAlt} />
+        <picture>
+          <source srcset={section.image.replace(/\.(jpg|png)$/, '.webp')} type="image/webp" />
+          <img src={section.image} alt={section.imageAlt} loading="lazy" decoding="async" />
+        </picture>
         <figcaption class="vintage-frame-caption">{section.imageCaption}</figcaption>
       </figure>
     ) : (
       <figure class="vintage-frame straight" style="max-width: 100%;">
-        <img src={section.image} alt={section.imageAlt} />
+        <picture>
+          <source srcset={section.image.replace(/\.(jpg|png)$/, '.webp')} type="image/webp" />
+          <img src={section.image} alt={section.imageAlt} loading="lazy" decoding="async" />
+        </picture>
       </figure>
     )}
   </div>

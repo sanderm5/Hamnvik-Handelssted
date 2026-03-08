@@ -6,7 +6,7 @@ const bilder = await reader.singletons.bilder.read();
 if (!bilder) throw new Error('Bilder-innhold mangler');
 ---
 
-<BaseLayout title="Bilder" currentPath="/bilder">
+<BaseLayout title="Bilder" currentPath="/bilder" description="Bildegalleri fra Hamnvik Handelssted – fotografier av det fredede handelsstedet Donsegården i Ibestad.">
   <main id="main-content" class="main-content">
     <h1>{bilder.heading}</h1>
     <p class="article-deck">{bilder.deck}</p>
@@ -26,7 +26,10 @@ if (!bilder) throw new Error('Bilder-innhold mangler');
         <div class="image-gallery">
           {section.images.map((img) => (
             <figure class="vintage-frame">
-              <img src={img.image} alt={img.alt} />
+              <picture>
+                <source srcset={img.image.replace(/\.jpg$/, '.webp')} type="image/webp" />
+                <img src={img.image} alt={img.alt} loading="lazy" decoding="async" />
+              </picture>
               {img.caption && <figcaption class="vintage-frame-caption">{img.caption}</figcaption>}
             </figure>
           ))}

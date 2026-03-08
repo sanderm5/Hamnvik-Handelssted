@@ -6,7 +6,7 @@ const allRefs = await reader.collections.referanser.all();
 const referanser = allRefs.sort((a, b) => (a.entry.sortOrder ?? 0) - (b.entry.sortOrder ?? 0));
 ---
 
-<BaseLayout title="Referanser" currentPath="/referanser">
+<BaseLayout title="Referanser" currentPath="/referanser" description="Referanser og kilder knyttet til Hamnvik Handelssted og Donsegården i Ibestad.">
   <main id="main-content" class="main-content">
     <h1>Referanser</h1>
     <p class="article-deck">Hva gjestene sier om Hamnvik Handelssted</p>

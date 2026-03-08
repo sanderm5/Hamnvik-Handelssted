@@ -7,7 +7,7 @@ const kontakt = await reader.singletons.kontakt.read();
 if (!kontakt) throw new Error('Kontakt-innhold mangler');
 ---
 
-<BaseLayout title="Kontakt" currentPath="/kontakt">
+<BaseLayout title="Kontakt" currentPath="/kontakt" description="Kontakt Hamnvik Handelssted. Henvendelser om servering, overnatting og arrangement i Ibestad, Troms.">
   <main id="main-content" class="main-content">
     <h1>{kontakt.heading}</h1>
     <p class="article-deck">{kontakt.deck}</p>

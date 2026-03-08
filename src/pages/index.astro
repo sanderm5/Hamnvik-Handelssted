@@ -6,18 +6,17 @@ const hjem = await reader.singletons.hjem.read();
 if (!hjem) throw new Error('Forside-innhold mangler');
 ---
 
-<BaseLayout title="Velkommen" currentPath="/">
+<BaseLayout title="Velkommen" currentPath="/" description="Velkommen til Hamnvik Handelssted – fredet handelssted fra 1794 i Ibestad, Troms. Servering, overnatting, kulturformidling og krambu.">
   <div class="hero">
     <picture class="hero-light">
       <source srcset="/images/HAMNVIK.webp" type="image/webp" />
-      <img src="/images/HAMNVIK.png" alt="Illustrasjon av Hamnvik Handelssted med gule sjøhus, seilbåt og fjell i vinterlandskap" />
+      <img src="/images/HAMNVIK.png" alt="Illustrasjon av Hamnvik Handelssted med gule sjøhus, seilbåt og fjell i vinterlandskap" width="2048" height="2048" fetchpriority="high" />
     </picture>
-    <img class="hero-dark" src="/images/hamnvik-nordlys.png" alt="Hamnvik Handelssted under nordlyset, gule sjøhus speiler seg i fjorden" />
-    <div class="hero-banner" aria-hidden="true">
-      <span class="hero-banner-line">Velkommen til</span>
-      <span class="hero-banner-line">Hamnvik Handelssted</span>
-    </div>
-    <div class="scroll-hint" aria-hidden="true">
+    <picture class="hero-dark">
+      <source srcset="/images/hamnvik-nordlys.webp" type="image/webp" />
+      <img src="/images/hamnvik-nordlys.png" alt="Hamnvik Handelssted under nordlyset, gule sjøhus speiler seg i fjorden" width="1024" height="1024" fetchpriority="high" />
+    </picture>
+<div class="scroll-hint" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 5v14M5 12l7 7 7-7"/>
       </svg>
@@ -58,7 +57,10 @@ if (!hjem) throw new Error('Forside-innhold mangler');
       <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start;">
         {hjem.dampskipImage && (
           <figure class="vintage-frame scroll-reveal" style="max-width: 260px;">
-            <img src={hjem.dampskipImage} alt={hjem.dampskipImageAlt} />
+            <picture>
+              <source srcset={hjem.dampskipImage.replace(/\.(jpg|png)$/, '.webp')} type="image/webp" />
+              <img src={hjem.dampskipImage} alt={hjem.dampskipImageAlt} loading="lazy" decoding="async" />
+            </picture>
             <figcaption class="vintage-frame-caption">{hjem.dampskipImageCaption}</figcaption>
           </figure>
         )}

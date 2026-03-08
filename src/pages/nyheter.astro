@@ -6,7 +6,7 @@ import { reader } from '../utils/reader';
 const allArticles = await reader.collections.nyheter.all();
 ---
 
-<BaseLayout title="Nyheter" currentPath="/nyheter">
+<BaseLayout title="Nyheter" currentPath="/nyheter" description="Nyheter og aktuelt fra Hamnvik Handelssted i Ibestad, Troms.">
   <main id="main-content" class="main-content">
     <h1>Nyheter</h1>
     <p class="article-deck">Hendelser og øyeblikk fra livet på handelsstedet</p>
@@ -35,7 +35,10 @@ const allArticles = await reader.collections.nyheter.all();
               <div class="image-gallery">
                 {article.entry.galleryImages.map((img) => (
                   <figure class="vintage-frame">
-                    <img src={img.image} alt={img.alt} />
+                    <picture>
+                      <source srcset={img.image.replace(/\.jpg$/, '.webp')} type="image/webp" />
+                      <img src={img.image} alt={img.alt} loading="lazy" decoding="async" />
+                    </picture>
                   </figure>
                 ))}
               </div>

@@ -7,7 +7,16 @@ const overnatting = await reader.singletons.overnatting.read();
 if (!overnatting) throw new Error('Overnatting-innhold mangler');
 ---
 
-<BaseLayout title="Overnatting" currentPath="/overnatting">
+<BaseLayout title="Overnatting" currentPath="/overnatting" description="Overnatting på Hamnvik Handelssted. Bo i historiske rom på det fredede handelsstedet Donsegården i Ibestad, Troms." jsonLd={{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "Hamnvik Handelssted – Overnatting",
+  "description": "Overnatting i historiske rom på det fredede handelsstedet Donsegården i Ibestad.",
+  "url": "https://hamnvikhandelssted.com/overnatting",
+  "email": "post@hamnvikhandelssted.com",
+  "address": { "@type": "PostalAddress", "streetAddress": "Hamnvik", "addressLocality": "Ibestad", "addressRegion": "Troms", "addressCountry": "NO" },
+  "isPartOf": { "@type": "LocalBusiness", "name": "Hamnvik Handelssted", "url": "https://hamnvikhandelssted.com" }
+}}>
   <main id="main-content" class="main-content">
     <h1>{overnatting.heading}</h1>
     <p class="article-deck">{overnatting.deck}</p>

@@ -7,7 +7,16 @@ const krambu = await reader.singletons.krambu.read();
 if (!krambu) throw new Error('Krambu-innhold mangler');
 ---
 
-<BaseLayout title="Krambu" currentPath="/krambu">
+<BaseLayout title="Krambu" currentPath="/krambu" description="Krambu på Hamnvik Handelssted. Lokal krambu med håndverk og suvenirer i Donsegården, Ibestad." jsonLd={{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "Hamnvik Handelssted – Krambu",
+  "description": "Lokal krambu med håndverk og suvenirer i Donsegården, Ibestad.",
+  "url": "https://hamnvikhandelssted.com/krambu",
+  "email": "post@hamnvikhandelssted.com",
+  "address": { "@type": "PostalAddress", "streetAddress": "Hamnvik", "addressLocality": "Ibestad", "addressRegion": "Troms", "addressCountry": "NO" },
+  "isPartOf": { "@type": "LocalBusiness", "name": "Hamnvik Handelssted", "url": "https://hamnvikhandelssted.com" }
+}}>
   <main id="main-content" class="main-content">
     <h1>{krambu.heading}</h1>
     <p class="article-deck">{krambu.deck}</p>
