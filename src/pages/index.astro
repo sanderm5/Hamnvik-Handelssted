@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Velkommen" currentPath="/">
+  <div class="hero">
+    <img src="/images/IMG_1853.jpg" alt="Hamnvik Handelssted sett fra sjøen, med gule sjøhus og brygge" />
+    <div class="hero-overlay">
+      <h2>Velkommen til Hamnvik Handelssted</h2>
+    </div>
+  </div>
+
+  <main class="main-content">
+    <h1>Der historien lever videre</h1>
+    <p class="article-deck">Et fredet handelssted fra 1794 &mdash; ved fjorden i Hamnvik, Ibestad</p>
+    <p class="byline">Donseg&aring;rden &middot; Hamnvik, Troms</p>
+
+    <p class="page-intro">
+      Der fjorden møter fjellet i Hamnvik ligger Donsegården &mdash; et fredet handelssted
+      der historien lever videre gjennom mat, kultur og gjestfrihet.
+    </p>
+
+    <div class="columns-2">
+      <p>
+        Siden 1794 har dette vært et samlingspunkt på kysten av Troms. Det som begynte
+        som Jens Bing Dons og Ingeborg Anna Normann Dons sitt handelssted, er i dag et
+        levende kulturminne der du kan spise godt, overnatte i historiske rom og oppleve
+        fortellingene fra over to hundre år med kystkultur.
+      </p>
+
+      <p>
+        Vi åpner dørene for deg som vil oppleve noe utenom det vanlige &mdash; enten det er
+        et selskap med hjemmelagd tradisjonsmat, en natt i de gamle bygningene, eller en
+        stund i krambua mellom husflid og håndverk.
+      </p>
+    </div>
+
+    <div class="pull-quote">
+      Et levende kulturminne der du kan spise godt, overnatte i historiske rom
+      og oppleve fortellingene fra over to hundre år med kystkultur.
+    </div>
+
+    <div class="divider"></div>
+
+    <h2 class="section-heading">Opplev handelsstedet</h2>
+
+    <div class="info-cards">
+      <div class="info-card">
+        <h3><a href="/servering">Servering</a></h3>
+        <p>Norsk tradisjonsmat tilberedt med omtanke, servert i autentiske omgivelser. Alle rettigheter.</p>
+      </div>
+      <div class="info-card">
+        <h3><a href="/overnatting">Overnatting</a></h3>
+        <p>Sov i bygninger med sjel og historie, med utsikt over fjord og fjell.</p>
+      </div>
+      <div class="info-card">
+        <h3>M&oslash;te &amp; Fest</h3>
+        <p>Lokaler med karakter for jubileum, selskap, møter og sammenkomster.</p>
+      </div>
+      <div class="info-card">
+        <h3><a href="/kulturformidling">Kulturformidling</a></h3>
+        <p>Omvisning, kåserier og bildevisning i museale rom fulle av fortellinger.</p>
+      </div>
+      <div class="info-card">
+        <h3><a href="/krambu">Krambu</a></h3>
+        <p>Husflidsutsalg i den gamle krambua &mdash; ta med et stykke kystkultur hjem.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start;">
+      <div class="vintage-frame" style="max-width: 260px;">
+        <img src="/images/maleri.png" alt="Maleri av Hamnvik Handelssted med dampskip i havna" />
+        <div class="vintage-frame-caption">Dampskibet Prins Gustav ankommer Havnviken, 1838</div>
+      </div>
+      <div style="flex: 1; min-width: 200px;">
+        <h2>Fra dampskip til d&oslash;rterskel</h2>
+        <p>
+          En gang la dampskipene til kai her og brakte varer fra hele verden til handelsstedet
+          i Hamnvik. I dag er det gjestene som ankommer &mdash; til et sted der tiden har
+          stått stille, men vertskapet er like varmt som det alltid har vært.
+        </p>
+        <p>
+          Handelsstedet er en del av Ibestad kommunes fotefarprosjekt.
+        </p>
+
+        <div class="notice-box notice-box-small">
+          <h3>Bestilling</h3>
+          <p><a href="/kontakt">Ta kontakt</a> for tilbud og bestilling.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

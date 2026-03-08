@@ -1,0 +1,50 @@
+---
+const { currentPath = '/' } = Astro.props;
+
+const navItems = [
+  { href: '/om-oss', label: 'Om oss' },
+  { href: '/overnatting', label: 'Overnatting' },
+  { href: '/servering', label: 'Servering' },
+  { href: '/krambu', label: 'Krambu' },
+  { href: '/kulturformidling', label: 'Kulturformidling' },
+  { href: '/nyheter', label: 'Nyheter' },
+  { href: '/kontakt', label: 'Kontakt' },
+];
+---
+
+<header class="masthead" transition:name="masthead" transition:animate="none">
+  <div class="masthead-top-rule"></div>
+  <div class="masthead-dateline">
+    <span class="masthead-dateline-left">Vol. CCXXXI &middot; Grunnlagt 1794</span>
+    <span class="masthead-dateline-ornament">&#10038;</span>
+    <span class="masthead-dateline-right">Ibestad kommune, Troms</span>
+  </div>
+  <div class="masthead-rule-thin"></div>
+  <div class="masthead-title">
+    <a href="/">
+      <div class="masthead-name">Hamnvik Handelssted</div>
+      <div class="masthead-sub">&#10087; Donseg&aring;rden &#10087;</div>
+    </a>
+  </div>
+  <div class="masthead-rule-thin"></div>
+  <div class="masthead-edition">
+    <span>Fredet handelssted</span>
+    <span class="masthead-dot">&middot;</span>
+    <span>Servering &amp; Overnatting</span>
+    <span class="masthead-dot">&middot;</span>
+    <span>Kulturformidling &amp; Krambu</span>
+  </div>
+  <div class="masthead-rule-thick"></div>
+  <nav class="masthead-nav">
+    <ul>
+      {navItems.map(item => (
+        <li>
+          <a href={item.href} class={currentPath === item.href ? 'active' : ''}>
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+  <div class="masthead-rule-double"></div>
+</header>

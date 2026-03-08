@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Krambu" currentPath="/krambu">
+  <main class="main-content">
+    <h1>Krambu</h1>
+    <p class="article-deck">Husflidsutsalg i den gamle krambua &mdash; ta med et stykke kystkultur hjem</p>
+    <p class="byline">Donseg&aring;rden &middot; Hamnvik, Ibestad</p>
+
+    <p class="page-intro">
+      Tre inn i krambua der handelsfolk har solgt sine varer siden 1700-tallets slutt.
+    </p>
+
+    <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start;">
+      <div style="flex: 1; min-width: 250px;">
+        <p class="drop-cap">
+          Krambua er hjertet i ethvert handelssted. Det var her folk fra bygd og fjord
+          kom for å bytte fisk mot mel, kaffe, sukker og verktøy. På Hamnvik
+          Handelssted lever denne tradisjonen videre &mdash; om enn i ny form.
+        </p>
+        <p>
+          I dag fungerer krambua som husflidsutsalg der du finner lokalt håndverk og
+          produkter med tilknytning til kysten og regionen. Det er et sted å ta seg
+          god tid, se seg rundt og finne noe du ikke visste du trengte.
+        </p>
+      </div>
+      <div class="vintage-frame" style="max-width: 260px;">
+        <img src="/images/maleri.png" alt="Historisk maleri av handelsstedet" />
+        <div class="vintage-frame-caption">Handelen har alltid vært kjernen i Donsegården</div>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      Et sted å ta seg god tid, se seg rundt
+      og finne noe du ikke visste du trengte.
+    </div>
+
+    <div class="divider"></div>
+
+    <h2 class="section-heading">Husflid fra kysten</h2>
+    <p>
+      I utsalget finner du håndlagde produkter som bærer preg av den nordnorske
+      håndverkstradisjonen. Besøk krambua og ta med deg et stykke kystkultur hjem
+      fra handelsstedet.
+    </p>
+
+    <div class="notice-box notice-box-small">
+      <h3>&Aring;pningstider</h3>
+      <p><a href="/kontakt">Ta kontakt</a> for åpningstider og mer informasjon.</p>
+    </div>
+  </main>
+</BaseLayout>
