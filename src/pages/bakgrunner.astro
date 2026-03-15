@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Bakgrunnsdesign" currentPath="/bakgrunner">
+  <main class="content-width" style="padding-top: 8rem; padding-bottom: 4rem;">
+    <h1 style="font-family: var(--font-display); font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 400; font-style: italic;">Bakgrunnsdesign</h1>
+    <p style="font-family: var(--font-body); color: var(--ink-light); margin-bottom: 2.5rem; font-size: 1.1rem;">Velg et bakgrunnsdesign for å forhåndsvise det live på siden. Klikk på et konsept for å bytte bakgrunnen.</p>
+
+    <div class="bg-grid">
+      <button class="bg-card active" data-bg="original" data-size="700px">
+        <div class="bg-preview">
+          <img src="/images/ornament.svg" alt="Original kompassrose" width="200" height="200" />
+        </div>
+        <h3>Original</h3>
+        <p>Eksisterende kompassrose-ornament</p>
+      </button>
+
+      <button class="bg-card" data-bg="nautisk-sjokart" data-size="1200px">
+        <div class="bg-preview">
+          <img src="/images/backgrounds/nautisk-sjokart.svg" alt="Nautisk sjøkart" width="200" height="200" />
+        </div>
+        <h3>Nautisk sjøkart</h3>
+        <p>Dybdekurver, kystlinjer og loddskudd-tall</p>
+      </button>
+
+      <button class="bg-card" data-bg="vindrose-peilingslinjer" data-size="1200px">
+        <div class="bg-preview">
+          <img src="/images/backgrounds/vindrose-peilingslinjer.svg" alt="Vindrose med peilingslinjer" width="200" height="200" />
+        </div>
+        <h3>Vindrose + peilingslinjer</h3>
+        <p>Geometriske navigasjonslinjer i portolankart-stil</p>
+      </button>
+
+      <button class="bg-card" data-bg="tauverk" data-size="1200px">
+        <div class="bg-preview">
+          <img src="/images/backgrounds/tauverk.svg" alt="Tauverks-ornament" width="200" height="200" />
+        </div>
+        <h3>Tauverk</h3>
+        <p>Sjømannsknuter og tau-ornamentikk</p>
+      </button>
+
+      <button class="bg-card" data-bg="bolger" data-size="1200px">
+        <div class="bg-preview">
+          <img src="/images/backgrounds/bolger.svg" alt="Bølgemønster" width="200" height="200" />
+        </div>
+        <h3>Bølger</h3>
+        <p>Stiliserte bølger i kobberstikk-stil</p>
+      </button>
+
+      <button class="bg-card" data-bg="maritime-symboler" data-size="1200px">
+        <div class="bg-preview">
+          <img src="/images/backgrounds/maritime-symboler.svg" alt="Maritime symboler" width="200" height="200" />
+        </div>
+        <h3>Maritime symboler</h3>
+        <p>Anker, sekstant, ror og mer som stempel-collage</p>
+      </button>
+
+      <button class="bg-card" data-bg="handelsstempel" data-size="1200px">
+        <div class="bg-preview">
+          <img src="/images/backgrounds/handelsstempel.svg" alt="Handelsstempel" width="200" height="200" />
+        </div>
+        <h3>Handelsstempel 1794</h3>
+        <p>Handelshus-segl med årstall som vannmerke</p>
+      </button>
+
+      <button class="bg-card" data-bg="kystlinje" data-size="1200px">
+        <div class="bg-preview">
+          <img src="/images/backgrounds/kystlinje.svg" alt="Nordnorsk kystlinje" width="200" height="200" />
+        </div>
+        <h3>Kystlinje</h3>
+        <p>Abstrakt kystlinje med fjorder og holmer</p>
+      </button>
+
+      <button class="bg-card" data-bg="sjokart-kompass-combo" data-size="1200px">
+        <div class="bg-preview">
+          <img src="/images/backgrounds/sjokart-kompass-combo.svg" alt="Sjøkart + kompass combo" width="200" height="200" />
+        </div>
+        <h3>Sjøkart + kompass</h3>
+        <p>Kompassrose med dybdekurver som sirkler ut</p>
+      </button>
+    </div>
+
+    <div class="current-label">
+      Aktiv bakgrunn: <span id="current-bg-name">Original</span>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .bg-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 750px) {
+    .bg-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .bg-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .bg-card {
+    background: var(--paper);
+    border: 1px solid var(--rule-faint);
+    border-radius: 6px;
+    padding: 0;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    text-align: left;
+    font-family: inherit;
+    color: var(--ink);
+    overflow: hidden;
+  }
+
+  .bg-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 2px 12px var(--shadow-soft);
+  }
+
+  .bg-card.active {
+    border-color: var(--accent);
+    border-width: 2px;
+    box-shadow: 0 2px 16px rgba(139, 0, 0, 0.15);
+  }
+
+  .bg-preview {
+    width: 100%;
+    aspect-ratio: 1;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .bg-preview img {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    opacity: 0.7;
+  }
+
+  .bg-card h3 {
+    font-family: var(--font-display-sc);
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    padding: 0.6rem 0.8rem 0.1rem;
+    margin: 0;
+  }
+
+  .bg-card p {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    padding: 0 0.8rem 0.6rem;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .current-label {
+    font-family: var(--font-nav);
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  #current-bg-name {
+    color: var(--accent);
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const cards = document.querySelectorAll('.bg-card');
+    const label = document.getElementById('current-bg-name');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const bg = (card as HTMLElement).dataset.bg;
+        const size = (card as HTMLElement).dataset.size || '700px';
+        const name = card.querySelector('h3')?.textContent || '';
+
+        // Update active state
+        cards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+
+        // Update label
+        if (label) label.textContent = name;
+
+        // Apply background
+        const root = document.documentElement;
+        if (bg === 'original') {
+          root.style.setProperty('--bg-ornament', "url('/images/ornament.svg')");
+          root.style.setProperty('--bg-ornament-size', '700px');
+        } else {
+          root.style.setProperty('--bg-ornament', `url('/images/backgrounds/${bg}.svg')`);
+          root.style.setProperty('--bg-ornament-size', size);
+        }
+      });
+    });
+  });
+</script>

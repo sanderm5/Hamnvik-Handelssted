@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Lightbox from '../components/Lightbox.astro';
 import { reader } from '../utils/reader';
 
 const bilder = await reader.singletons.bilder.read();
@@ -27,8 +28,8 @@ if (!bilder) throw new Error('Bilder-innhold mangler');
           {section.images.map((img) => (
             <figure class="vintage-frame">
               <picture>
-                <source srcset={img.image.replace(/\.jpg$/, '.webp')} type="image/webp" />
-                <img src={img.image} alt={img.alt} loading="lazy" decoding="async" />
+                <source srcset={img.image.replace(/\.(jpg|png)$/i, '.webp')} type="image/webp" />
+                <img src={img.image} alt={img.alt} width="600" height="450" loading="lazy" decoding="async" sizes="(max-width: 750px) 100vw, 50vw" />
               </picture>
               {img.caption && <figcaption class="vintage-frame-caption">{img.caption}</figcaption>}
             </figure>
@@ -41,5 +42,7 @@ if (!bilder) throw new Error('Bilder-innhold mangler');
 
     <h2 class="section-heading">{bilder.restaureringHeading}</h2>
     <p class="drop-cap">{bilder.restaureringText}</p>
+
+    <Lightbox />
   </main>
 </BaseLayout>

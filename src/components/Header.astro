@@ -1,5 +1,7 @@
 ---
-const { currentPath = '/', isFrontPage = false } = Astro.props;
+import ThemeToggle from './ThemeToggle.astro';
+
+const { currentPath = '/', isFrontPage = false, showBooking = false } = Astro.props;
 
 const navItems = [
   { href: '/om-oss', label: 'Om oss' },
@@ -19,6 +21,12 @@ const navItems = [
     <div class="site-name"><a href="/">Hamnvik Handelssted</a></div>
     <div class="site-subtitle">Donseg&aring;rden &middot; Grunnlagt 1794</div>
     <div class="site-tagline">Fredet handelssted &middot; Ibestad kommune, Troms</div>
+    <ThemeToggle class="header-theme-mobile" />
+    <button class="nav-toggle" aria-expanded="false" aria-label="Meny" type="button">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
     <nav aria-label="Hovedmeny">
       <ul>
         {navItems.map(item => (
@@ -32,16 +40,8 @@ const navItems = [
             </a>
           </li>
         ))}
-        <li class="theme-switcher" role="radiogroup" aria-label="Fargetema">
-          <button class="theme-btn" data-theme-value="light" role="radio" aria-checked="false" aria-label="Lyst tema" type="button">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          </button>
-          <button class="theme-btn" data-theme-value="system" role="radio" aria-checked="true" aria-label="Systemtema" type="button">
-            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </button>
-          <button class="theme-btn" data-theme-value="dark" role="radio" aria-checked="false" aria-label="Mørkt tema" type="button">
-            <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          </button>
+        <li class="theme-switcher">
+          <ThemeToggle />
         </li>
       </ul>
     </nav>
@@ -49,6 +49,12 @@ const navItems = [
 ) : (
   <header class="site-header-sticky">
     <div class="site-name"><a href="/">Hamnvik Handelssted</a></div>
+    <ThemeToggle class="header-theme-mobile" />
+    <button class="nav-toggle" aria-expanded="false" aria-label="Meny" type="button">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
     <nav aria-label="Hovedmeny">
       <ul>
         {navItems.map(item => (
@@ -62,18 +68,11 @@ const navItems = [
             </a>
           </li>
         ))}
-        <li class="theme-switcher" role="radiogroup" aria-label="Fargetema">
-          <button class="theme-btn" data-theme-value="light" role="radio" aria-checked="false" aria-label="Lyst tema" type="button">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          </button>
-          <button class="theme-btn" data-theme-value="system" role="radio" aria-checked="true" aria-label="Systemtema" type="button">
-            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </button>
-          <button class="theme-btn" data-theme-value="dark" role="radio" aria-checked="false" aria-label="Mørkt tema" type="button">
-            <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          </button>
+        <li class="theme-switcher">
+          <ThemeToggle />
         </li>
       </ul>
+      {showBooking && <a href="/kontakt" class="header-cta">Bestill</a>}
     </nav>
   </header>
 )}

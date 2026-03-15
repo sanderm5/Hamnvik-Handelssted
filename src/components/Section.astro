@@ -18,25 +18,25 @@ const hasImage = section.image;
 {section.heading && <h2 class="section-heading">{section.heading}</h2>}
 
 {hasImage ? (
-  <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start;">
-    <div style="flex: 1; min-width: 250px;">
+  <div class="section-with-image">
+    <div class="section-text-col">
       {paragraphs.map((p, i) => (
         <p class={i === 0 ? 'drop-cap' : ''}>{p}</p>
       ))}
     </div>
     {section.imageCaption ? (
-      <figure class="vintage-frame" style="max-width: 280px;">
+      <figure class="vintage-frame section-image-small">
         <picture>
-          <source srcset={section.image.replace(/\.(jpg|png)$/, '.webp')} type="image/webp" />
-          <img src={section.image} alt={section.imageAlt} loading="lazy" decoding="async" />
+          <source srcset={section.image!.replace(/\.(jpg|png)$/i, '.webp')} type="image/webp" />
+          <img src={section.image!} alt={section.imageAlt || ''} width="280" height="370" loading="lazy" decoding="async" />
         </picture>
         <figcaption class="vintage-frame-caption">{section.imageCaption}</figcaption>
       </figure>
     ) : (
-      <figure class="vintage-frame straight" style="max-width: 100%;">
+      <figure class="vintage-frame straight section-image-full">
         <picture>
-          <source srcset={section.image.replace(/\.(jpg|png)$/, '.webp')} type="image/webp" />
-          <img src={section.image} alt={section.imageAlt} loading="lazy" decoding="async" />
+          <source srcset={section.image!.replace(/\.(jpg|png)$/i, '.webp')} type="image/webp" />
+          <img src={section.image} alt={section.imageAlt || ''} loading="lazy" decoding="async" />
         </picture>
       </figure>
     )}

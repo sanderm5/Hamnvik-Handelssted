@@ -1,0 +1,117 @@
+---
+---
+
+<dialog class="lightbox" id="lightbox" aria-label="Bildegalleri">
+  <button class="lightbox-close" aria-label="Lukk" type="button">&times;</button>
+  <button class="lightbox-prev" aria-label="Forrige bilde" type="button">&#8249;</button>
+  <button class="lightbox-next" aria-label="Neste bilde" type="button">&#8250;</button>
+  <figure class="lightbox-figure">
+    <img class="lightbox-img" src="" alt="" />
+    <figcaption class="lightbox-caption"></figcaption>
+  </figure>
+  <div class="lightbox-counter"></div>
+</dialog>
+
+<script>
+  function initLightbox() {
+    const dialog = document.getElementById('lightbox') as HTMLDialogElement | null;
+    if (!dialog) return;
+
+    const img = dialog.querySelector('.lightbox-img') as HTMLImageElement;
+    const caption = dialog.querySelector('.lightbox-caption') as HTMLElement;
+    const counter = dialog.querySelector('.lightbox-counter') as HTMLElement;
+    const btnClose = dialog.querySelector('.lightbox-close') as HTMLButtonElement;
+    const btnPrev = dialog.querySelector('.lightbox-prev') as HTMLButtonElement;
+    const btnNext = dialog.querySelector('.lightbox-next') as HTMLButtonElement;
+
+    interface GalleryItem { src: string; alt: string; caption: string; }
+    let items: GalleryItem[] = [];
+    let current = 0;
+
+    function collectImages() {
+      items = [];
+      document.querySelectorAll('.image-gallery .vintage-frame').forEach(frame => {
+        const imgEl = frame.querySelector('img') as HTMLImageElement | null;
+        const capEl = frame.querySelector('.vintage-frame-caption') as HTMLElement | null;
+        if (!imgEl) return;
+
+        // Prefer WebP source if available
+        const source = frame.querySelector('source[type="image/webp"]') as HTMLSourceElement | null;
+        const src = source?.srcset || imgEl.src;
+
+        items.push({
+          src,
+          alt: imgEl.alt || '',
+          caption: capEl?.textContent || '',
+        });
+      });
+    }
+
+    function show(index: number) {
+      current = index;
+      const item = items[current];
+      img.src = item.src;
+      img.alt = item.alt;
+      caption.textContent = item.caption;
+      caption.style.display = item.caption ? '' : 'none';
+      counter.textContent = (current + 1) + ' / ' + items.length;
+
+      // Preload neighbors
+      [current - 1, current + 1].forEach(i => {
+        if (i >= 0 && i < items.length) {
+          const preload = new Image();
+          preload.src = items[i].src;
+        }
+      });
+    }
+
+    function next() { if (items.length > 0) show((current + 1) % items.length); }
+    function prev() { if (items.length > 0) show((current - 1 + items.length) % items.length); }
+
+    // Click on gallery images
+    function attachClickHandlers() {
+      document.querySelectorAll('.image-gallery .vintage-frame').forEach((frame, i) => {
+        (frame as HTMLElement).style.cursor = 'zoom-in';
+        frame.addEventListener('click', () => {
+          collectImages();
+          if (items.length === 0) return;
+          show(i);
+          dialog!.showModal();
+        });
+      });
+    }
+
+    btnClose.addEventListener('click', () => dialog!.close());
+    btnPrev.addEventListener('click', prev);
+    btnNext.addEventListener('click', next);
+
+    // Close on backdrop click
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+
+    // Keyboard navigation
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { next(); e.preventDefault(); }
+      if (e.key === 'ArrowLeft') { prev(); e.preventDefault(); }
+    });
+
+    // Touch swipe
+    let touchStartX = 0;
+    dialog.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
+
+    dialog.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50) {
+        if (dx < 0) next(); else prev();
+      }
+    }, { passive: true });
+
+    attachClickHandlers();
+  }
+
+  initLightbox();
+  document.addEventListener('astro:after-swap', initLightbox);
+</script>

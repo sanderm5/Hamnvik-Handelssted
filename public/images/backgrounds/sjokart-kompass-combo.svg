@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" fill="none" stroke="#c8b898" stroke-width="0.6" opacity="1">
+  <!-- Kompassrose i sentrum med sjøkart-elementer som stråler ut -->
+
+  <!-- Dybdekurver som konsentriske sirkler rundt kompassrosen -->
+  <g stroke-width="0.3" opacity="0.15" fill="none">
+    <circle cx="600" cy="600" r="380" stroke-dasharray="none"/>
+    <circle cx="600" cy="600" r="420" stroke-dasharray="none"/>
+    <circle cx="600" cy="600" r="470"/>
+    <circle cx="600" cy="600" r="530"/>
+  </g>
+
+  <!-- Uregelmessige dybdekurver (mer organiske, som ekte sjøkart) -->
+  <g stroke-width="0.4" opacity="0.2" fill="none">
+    <path d="M 220,600 Q 250,480 350,400 Q 460,310 600,280 Q 740,310 850,400 Q 950,480 980,600 Q 950,720 850,800 Q 740,890 600,920 Q 460,890 350,800 Q 250,720 220,600"/>
+    <path d="M 160,600 Q 190,440 310,340 Q 440,240 600,200 Q 760,240 890,340 Q 1010,440 1040,600 Q 1010,760 890,860 Q 760,960 600,1000 Q 440,960 310,860 Q 190,760 160,600"/>
+    <path d="M 100,600 Q 130,400 270,280 Q 420,160 600,120 Q 780,160 930,280 Q 1070,400 1100,600 Q 1070,800 930,920 Q 780,1040 600,1080 Q 420,1040 270,920 Q 130,800 100,600"/>
+  </g>
+
+  <!-- Kompassrose — ytre sirkler -->
+  <circle cx="600" cy="600" r="300" stroke-width="0.8" opacity="0.3"/>
+  <circle cx="600" cy="600" r="292" stroke-width="0.3" opacity="0.25"/>
+  <circle cx="600" cy="600" r="270" stroke-width="0.5" opacity="0.25"/>
+  <circle cx="600" cy="600" r="264" stroke-width="0.2" opacity="0.2"/>
+
+  <!-- Gradmerker -->
+  <g stroke-width="0.3" opacity="0.2">
+    <!-- Hoved (N,E,S,W) -->
+    <line x1="600" y1="300" x2="600" y2="326"/>
+    <line x1="600" y1="874" x2="600" y2="900"/>
+    <line x1="300" y1="600" x2="326" y2="600"/>
+    <line x1="874" y1="600" x2="900" y2="600"/>
+    <!-- Mellom -->
+    <line x1="812" y1="388" x2="798" y2="402"/>
+    <line x1="812" y1="812" x2="798" y2="798"/>
+    <line x1="388" y1="812" x2="402" y2="798"/>
+    <line x1="388" y1="388" x2="402" y2="402"/>
+  </g>
+
+  <!-- Kompassrose — hovedpunkter -->
+  <g stroke-width="0.6" opacity="0.4">
+    <!-- Nord (lang, prominent) -->
+    <polygon points="600,320 616,500 600,470 584,500" fill="#c8b898" fill-opacity="0.15"/>
+    <polygon points="600,320 616,500 600,470 584,500"/>
+    <!-- Sør -->
+    <polygon points="600,880 616,700 600,730 584,700" fill="#c8b898" fill-opacity="0.1"/>
+    <polygon points="600,880 616,700 600,730 584,700"/>
+    <!-- Øst -->
+    <polygon points="880,600 700,584 730,600 700,616" fill="#c8b898" fill-opacity="0.1"/>
+    <polygon points="880,600 700,584 730,600 700,616"/>
+    <!-- Vest -->
+    <polygon points="320,600 500,584 470,600 500,616" fill="#c8b898" fill-opacity="0.1"/>
+    <polygon points="320,600 500,584 470,600 500,616"/>
+  </g>
+
+  <!-- Kompassrose — diagonaler -->
+  <g stroke-width="0.4" opacity="0.25">
+    <polygon points="788,412 670,540 678,530 658,548" fill="#c8b898" fill-opacity="0.06"/>
+    <polygon points="788,412 670,540 678,530 658,548"/>
+    <polygon points="788,788 670,660 678,670 658,652" fill="#c8b898" fill-opacity="0.06"/>
+    <polygon points="788,788 670,660 678,670 658,652"/>
+    <polygon points="412,788 540,660 530,670 548,652" fill="#c8b898" fill-opacity="0.06"/>
+    <polygon points="412,788 540,660 530,670 548,652"/>
+    <polygon points="412,412 540,540 530,530 548,548" fill="#c8b898" fill-opacity="0.06"/>
+    <polygon points="412,412 540,540 530,530 548,548"/>
+  </g>
+
+  <!-- Senter -->
+  <circle cx="600" cy="600" r="50" stroke-width="0.5" opacity="0.25"/>
+  <circle cx="600" cy="600" r="42" stroke-width="0.3" opacity="0.2"/>
+  <circle cx="600" cy="600" r="6" fill="#c8b898" fill-opacity="0.2" stroke-width="0.4" opacity="0.3"/>
+
+  <!-- Retningsbokstaver -->
+  <g fill="#c8b898" font-family="'Playfair Display', serif" font-size="14" text-anchor="middle" stroke="none" opacity="0.3">
+    <text x="600" y="296">N</text>
+    <text x="600" y="918">S</text>
+    <text x="914" y="605">&#xD8;</text>
+    <text x="286" y="605">V</text>
+  </g>
+
+  <!-- Rhumb lines som strekker seg ut fra kompassrosen -->
+  <g stroke-width="0.2" opacity="0.1">
+    <line x1="600" y1="300" x2="600" y2="0"/>
+    <line x1="600" y1="900" x2="600" y2="1200"/>
+    <line x1="300" y1="600" x2="0" y2="600"/>
+    <line x1="900" y1="600" x2="1200" y2="600"/>
+    <line x1="812" y1="388" x2="1200" y2="0"/>
+    <line x1="812" y1="812" x2="1200" y2="1200"/>
+    <line x1="388" y1="812" x2="0" y2="1200"/>
+    <line x1="388" y1="388" x2="0" y2="0"/>
+  </g>
+
+  <!-- Loddskudd-tall rundt dybdekurvene -->
+  <g fill="#c8b898" font-family="'Cormorant Garamond', serif" font-size="10" opacity="0.25" stroke="none">
+    <text x="600" y="195">5</text>
+    <text x="820" y="340">10</text>
+    <text x="1000" y="500">20</text>
+    <text x="1060" y="610">30</text>
+    <text x="180" y="340">10</text>
+    <text x="95" y="510">20</text>
+    <text x="70" y="620">30</text>
+    <text x="600" y="1020">5</text>
+    <text x="380" y="920">10</text>
+    <text x="250" y="830">20</text>
+    <text x="830" y="900">10</text>
+    <text x="960" y="810">20</text>
+  </g>
+
+  <!-- Små kors for posisjonsmålinger -->
+  <g stroke-width="0.3" opacity="0.15">
+    <line x1="295" y1="350" x2="305" y2="350"/><line x1="300" y1="345" x2="300" y2="355"/>
+    <line x1="895" y1="450" x2="905" y2="450"/><line x1="900" y1="445" x2="900" y2="455"/>
+    <line x1="350" y1="900" x2="360" y2="900"/><line x1="355" y1="895" x2="355" y2="905"/>
+    <line x1="900" y1="850" x2="910" y2="850"/><line x1="905" y1="845" x2="905" y2="855"/>
+    <line x1="200" y1="700" x2="210" y2="700"/><line x1="205" y1="695" x2="205" y2="705"/>
+    <line x1="1000" y1="700" x2="1010" y2="700"/><line x1="1005" y1="695" x2="1005" y2="705"/>
+  </g>
+
+  <!-- Dekorative victoranske buer ved kompassrosen -->
+  <g stroke-width="0.3" opacity="0.15" fill="none">
+    <path d="M 560,310 Q 580,295 600,290 Q 620,295 640,310"/>
+    <path d="M 565,316 Q 582,304 600,300 Q 618,304 635,316"/>
+    <path d="M 560,890 Q 580,905 600,910 Q 620,905 640,890"/>
+    <path d="M 565,884 Q 582,896 600,900 Q 618,896 635,884"/>
+    <path d="M 310,560 Q 295,580 290,600 Q 295,620 310,640"/>
+    <path d="M 890,560 Q 905,580 910,600 Q 905,620 890,640"/>
+  </g>
+
+  <!-- Skala -->
+  <g stroke-width="0.3" opacity="0.15" transform="translate(100, 1120)">
+    <line x1="0" y1="0" x2="150" y2="0"/>
+    <line x1="0" y1="-4" x2="0" y2="4"/>
+    <line x1="75" y1="-3" x2="75" y2="3"/>
+    <line x1="150" y1="-4" x2="150" y2="4"/>
+    <text fill="#c8b898" font-family="'Cormorant Garamond', serif" font-size="7" stroke="none" opacity="0.4" y="12" x="75" text-anchor="middle">Nautiske mil</text>
+  </g>
+</svg>

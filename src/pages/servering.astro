@@ -7,7 +7,7 @@ const servering = await reader.singletons.servering.read();
 if (!servering) throw new Error('Servering-innhold mangler');
 ---
 
-<BaseLayout title="Servering" currentPath="/servering" description="Servering på Hamnvik Handelssted. Nyt lokale retter i historiske omgivelser på Donsegården i Ibestad, Troms." jsonLd={{
+<BaseLayout title="Servering" currentPath="/servering" showBooking={true} description="Servering på Hamnvik Handelssted. Nyt lokale retter i historiske omgivelser på Donsegården i Ibestad, Troms." jsonLd={{
   "@context": "https://schema.org",
   "@type": "Restaurant",
   "name": "Hamnvik Handelssted – Servering",

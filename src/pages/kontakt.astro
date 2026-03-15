@@ -15,6 +15,69 @@ if (!kontakt) throw new Error('Kontakt-innhold mangler');
 
     <p class="page-intro">{kontakt.intro}</p>
 
+    <!-- ── Skjema ── -->
+    <h2 class="section-heading">Send oss en henvendelse</h2>
+
+    <form class="booking-form" id="booking-form" method="POST" action="/api/bestilling">
+      <div class="form-honeypot" aria-hidden="true">
+        <label for="website">Ikke fyll ut dette feltet</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="navn">Navn <span class="required">*</span></label>
+          <input type="text" id="navn" name="navn" required autocomplete="name" placeholder="Ditt fulle navn" />
+        </div>
+        <div class="form-group">
+          <label for="epost">E-post <span class="required">*</span></label>
+          <input type="email" id="epost" name="epost" required autocomplete="email" placeholder="din@epost.no" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="telefon">Telefon</label>
+          <input type="tel" id="telefon" name="telefon" autocomplete="tel" placeholder="Eks. 912 34 567" />
+        </div>
+        <div class="form-group">
+          <label for="type">Type henvendelse <span class="required">*</span></label>
+          <select id="type" name="type" required>
+            <option value="">Velg type …</option>
+            <option value="servering">Servering</option>
+            <option value="overnatting">Overnatting</option>
+            <option value="selskap">Selskap / arrangement</option>
+            <option value="omvisning">Omvisning</option>
+            <option value="annet">Annet</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="dato">Ønsket dato</label>
+          <input type="date" id="dato" name="dato" />
+        </div>
+        <div class="form-group">
+          <label for="antall">Antall gjester</label>
+          <input type="number" id="antall" name="antall" min="1" max="200" placeholder="Ca. antall" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="melding">Melding <span class="required">*</span></label>
+        <textarea id="melding" name="melding" rows="5" required placeholder="Fortell oss gjerne hva du ønsker, så finner vi en løsning sammen."></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">Send henvendelse</button>
+      <p class="form-status" id="form-status" aria-live="polite"></p>
+    </form>
+
+    <hr class="divider" />
+
+    <!-- ── Kontaktinformasjon ── -->
+    <h2 class="section-heading">Kontaktinformasjon</h2>
+
     <div class="contact-grid">
       {kontakt.contacts.map((c) => (
         <div class="contact-card">
@@ -25,20 +88,71 @@ if (!kontakt) throw new Error('Kontakt-innhold mangler');
       ))}
     </div>
 
-    <hr class="divider" />
-
-    <div class="notice-box" style="max-width: 400px; margin: 1.2rem auto;">
+    <div class="notice-box notice-box-narrow">
       <h3>{kontakt.businessName}</h3>
       <p><a href={`mailto:${kontakt.generalEmail}`}>{kontakt.generalEmail}</a></p>
       <p>{kontakt.addressLine1}</p>
       <p>{kontakt.addressLine2}</p>
     </div>
 
-    {kontakt.sections.map((section) => (
-      <>
-        <hr class="divider" />
-        <Section section={section} />
-      </>
+    <hr class="divider" />
+
+    <!-- ── Finn oss ── -->
+    <h2 class="section-heading">Finn oss</h2>
+
+    {kontakt.sections.filter((s) => s.heading === 'Finn oss').map((section) => (
+      <Section section={section} />
     ))}
+
+    <div class="map-embed">
+      <iframe
+        src="https://www.openstreetmap.org/export/embed.html?bbox=17.03,68.79,17.12,68.81&layer=mapnik&marker=68.7993,17.0712"
+        width="100%"
+        height="400"
+        loading="lazy"
+        title="Kart over Hamnvik Handelssted i Ibestad, Troms"
+      ></iframe>
+      <a href="https://www.google.com/maps/search/Hamnvik+Handelssted+Ibestad" target="_blank" rel="noopener noreferrer" class="map-link-label">
+        &Aring;pne i Google Maps <span class="sr-only">(åpnes i nytt vindu)</span>
+      </a>
+    </div>
   </main>
 </BaseLayout>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const form = document.getElementById('booking-form') as HTMLFormElement | null;
+    const status = document.getElementById('form-status');
+    if (!form || !status) return;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      btn.disabled = true;
+      btn.textContent = 'Sender …';
+      status.textContent = '';
+      status.className = 'form-status';
+
+      try {
+        const res = await fetch('/api/bestilling', {
+          method: 'POST',
+          body: new FormData(form),
+        });
+
+        if (res.ok) {
+          status.textContent = 'Takk for din henvendelse! Vi tar kontakt så snart vi kan.';
+          status.className = 'form-status success';
+          form.reset();
+        } else {
+          throw new Error('Noe gikk galt');
+        }
+      } catch {
+        status.textContent = 'Beklager, noe gikk galt. Prøv igjen eller kontakt oss direkte.';
+        status.className = 'form-status error';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Send henvendelse';
+      }
+    });
+  });
+</script>

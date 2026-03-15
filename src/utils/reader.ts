@@ -5,8 +5,28 @@ import { parse } from 'yaml';
 const contentDir = path.join(process.cwd(), 'src/content');
 
 function readYaml<T>(filePath: string): T {
-  const raw = fs.readFileSync(filePath, 'utf-8');
-  return parse(raw) as T;
+  try {
+    const raw = fs.readFileSync(filePath, 'utf-8');
+    return parse(raw) as T;
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    throw new Error(`Kunne ikke lese innholdsfil: ${filePath}\n${message}`);
+  }
+}
+
+function readCollection<T>(dirName: string): Array<{ slug: string; entry: T }> {
+  const dir = path.join(contentDir, dirName);
+  try {
+    return fs.readdirSync(dir)
+      .filter((f) => f.endsWith('.yaml'))
+      .map((f) => ({
+        slug: f.replace('.yaml', ''),
+        entry: readYaml<T>(path.join(dir, f)),
+      }));
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    throw new Error(`Kunne ikke lese innholdsmappe: ${dir}\n${message}`);
+  }
 }
 
 export const reader = {
@@ -22,26 +42,10 @@ export const reader = {
   },
   collections: {
     referanser: {
-      all: () => {
-        const dir = path.join(contentDir, 'referanser');
-        return fs.readdirSync(dir)
-          .filter((f) => f.endsWith('.yaml'))
-          .map((f) => ({
-            slug: f.replace('.yaml', ''),
-            entry: readYaml(path.join(dir, f)),
-          }));
-      },
+      all: () => readCollection('referanser'),
     },
     nyheter: {
-      all: () => {
-        const dir = path.join(contentDir, 'nyheter');
-        return fs.readdirSync(dir)
-          .filter((f) => f.endsWith('.yaml'))
-          .map((f) => ({
-            slug: f.replace('.yaml', ''),
-            entry: readYaml(path.join(dir, f)),
-          }));
-      },
+      all: () => readCollection('nyheter'),
     },
   },
 };

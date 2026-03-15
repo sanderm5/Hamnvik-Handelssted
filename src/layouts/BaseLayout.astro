@@ -2,7 +2,33 @@
 import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import MobileContactBar from '../components/MobileContactBar.astro';
 import '../styles/global.css';
+
+// Self-hosted fonts — Playfair Display
+import '@fontsource/playfair-display/400.css';
+import '@fontsource/playfair-display/700.css';
+import '@fontsource/playfair-display/900.css';
+import '@fontsource/playfair-display/400-italic.css';
+import '@fontsource/playfair-display/700-italic.css';
+import '@fontsource/playfair-display/900-italic.css';
+// Playfair Display SC
+import '@fontsource/playfair-display-sc/400.css';
+import '@fontsource/playfair-display-sc/700.css';
+import '@fontsource/playfair-display-sc/900.css';
+// Cormorant Garamond
+import '@fontsource/cormorant-garamond/400.css';
+import '@fontsource/cormorant-garamond/500.css';
+import '@fontsource/cormorant-garamond/600.css';
+import '@fontsource/cormorant-garamond/700.css';
+import '@fontsource/cormorant-garamond/400-italic.css';
+import '@fontsource/cormorant-garamond/500-italic.css';
+import '@fontsource/cormorant-garamond/600-italic.css';
+// Cormorant SC
+import '@fontsource/cormorant-sc/400.css';
+import '@fontsource/cormorant-sc/500.css';
+import '@fontsource/cormorant-sc/600.css';
+import '@fontsource/cormorant-sc/700.css';
 
 interface Props {
   title: string;
@@ -10,9 +36,10 @@ interface Props {
   description?: string;
   ogImage?: string;
   jsonLd?: Record<string, unknown>;
+  showBooking?: boolean;
 }
 
-const { title, currentPath = '/', description, ogImage, jsonLd } = Astro.props;
+const { title, currentPath = '/', description, ogImage, jsonLd, showBooking = false } = Astro.props;
 const isFrontPage = currentPath === '/';
 
 const siteName = 'Hamnvik Handelssted';
@@ -33,11 +60,6 @@ const fullTitle = `${title} | ${siteName}`;
     <link rel="icon" type="image/png" href="/images/4_stamp_ship.png" />
     <link rel="manifest" href="/manifest.json" />
     <link rel="canonical" href={canonicalUrl} />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display+SC:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500;600;700&display=optional" />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display+SC:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500;600;700&display=optional" rel="stylesheet" media="print" onload="this.media='all'" />
 
     <title>{fullTitle}</title>
 
@@ -143,282 +165,17 @@ const fullTitle = `${title} | ${siteName}`;
   <body>
     <a href="#main-content" class="skip-link">Hopp til hovedinnhold</a>
     <div class="site-wrapper">
-      <Header currentPath={currentPath} isFrontPage={isFrontPage} />
+      <Header currentPath={currentPath} isFrontPage={isFrontPage} showBooking={showBooking} />
       <div class="page-content" transition:name="page-content">
         <slot />
       </div>
       <Footer />
     </div>
+    <div class="nav-overlay"></div>
+    <MobileContactBar />
 
     <script>
-      // --- Shared state ---
-      var isMobile = window.innerWidth <= 750;
-      var resizeTimer: number;
-      window.addEventListener('resize', function() {
-        clearTimeout(resizeTimer);
-        resizeTimer = window.setTimeout(function() {
-          isMobile = window.innerWidth <= 750;
-        }, 150) as unknown as number;
-      });
-
-      // --- Unified rAF loop ---
-      // Consolidates all continuous animations into a single requestAnimationFrame
-      var rafCallbacks: Array<() => void> = [];
-      var rafRunning = false;
-
-      function rafLoop() {
-        for (var i = 0; i < rafCallbacks.length; i++) {
-          rafCallbacks[i]();
-        }
-        if (rafCallbacks.length > 0) {
-          requestAnimationFrame(rafLoop);
-        } else {
-          rafRunning = false;
-        }
-      }
-
-      function addRafCallback(cb: () => void) {
-        rafCallbacks.push(cb);
-        if (!rafRunning) {
-          rafRunning = true;
-          requestAnimationFrame(rafLoop);
-        }
-      }
-
-      function clearRafCallbacks() {
-        rafCallbacks = [];
-        rafRunning = false;
-      }
-
-      // --- Header scroll animation ---
-      function initScrollHeader() {
-        var header = document.querySelector('.site-header-front') as HTMLElement | null;
-        if (!header) return;
-        var el = header;
-        var end = 120;
-        var current = 0;
-
-        addRafCallback(function updateHeader() {
-          var target = Math.min(Math.max(window.scrollY / end, 0), 1);
-          current += (target - current) * 0.12;
-          var t = current;
-
-          if (isMobile) {
-            el.style.paddingTop = (0.7 - t * 0.4) + 'rem';
-            el.style.paddingBottom = (0.5 - t * 0.3) + 'rem';
-          } else {
-            el.style.paddingTop = (1.2 - t * 1.05) + 'rem';
-            el.style.paddingBottom = (0.8 - t * 0.65) + 'rem';
-          }
-
-          var baseFontSize = isMobile ? 1.6 : 2;
-          var fontReduction = isMobile ? 0.4 : 0.7;
-          el.style.setProperty('--header-font-size', (baseFontSize - t * fontReduction) + 'rem');
-
-          el.style.setProperty('--header-nav-margin', (0.5 - t * 0.5) + 'rem');
-          el.style.setProperty('--header-nav-font', (0.82 - t * 0.06) + 'rem');
-
-          var subT = Math.min(t * 3, 1);
-          el.style.setProperty('--header-sub-opacity', String(1 - subT));
-          el.style.setProperty('--header-sub-height', (1 - Math.min(t * 2, 1)) + 'em');
-
-          var blur = 6 + t * 10;
-          el.style.backdropFilter = 'blur(' + blur + 'px) saturate(' + (1 + t * 0.3) + ')';
-          el.style.setProperty('-webkit-backdrop-filter', 'blur(' + blur + 'px) saturate(' + (1 + t * 0.3) + ')');
-
-          var bgAlpha = 0.8 + t * 0.12;
-          var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-          if (isDark) {
-            el.style.background = 'rgba(18, 16, 11, ' + (bgAlpha * 0.85) + ')';
-          } else {
-            el.style.background = 'rgba(250, 246, 236, ' + bgAlpha + ')';
-          }
-
-          if (t > 0.4) {
-            el.classList.add('scrolled');
-          } else {
-            el.classList.remove('scrolled');
-          }
-        });
-      }
-
-      // --- Hero image parallax ---
-      function initHeroParallax() {
-        var heroImgs = document.querySelectorAll('.hero .hero-light, .hero .hero-dark') as NodeListOf<HTMLElement>;
-        var hero = document.querySelector('.hero') as HTMLElement | null;
-        if (heroImgs.length === 0 || !hero) return;
-        function updateParallax() {
-          var heroH = hero!.offsetHeight - 300;
-          var scrollY = window.scrollY;
-          var t = Math.min(Math.max(scrollY / heroH, 0), 1);
-          var offset = scrollY * 0.5;
-          var scale = 1 + t * 0.12;
-          var brightness = 1 - t * 0.4;
-
-          heroImgs.forEach(function(img) {
-            img.style.transform = 'translateY(' + offset + 'px) scale(' + scale + ')';
-            img.style.filter = 'brightness(' + brightness + ')';
-          });
-        }
-        window.addEventListener('scroll', updateParallax, { passive: true });
-        updateParallax();
-      }
-
-      // --- Ornament parallax ---
-      function initOrnamentParallax() {
-        var style = document.documentElement.style;
-        function updateOrnament() {
-          var offset = 40 + window.scrollY * 0.05;
-          style.setProperty('--ornament-top', offset + 'vh');
-        }
-        window.addEventListener('scroll', updateOrnament, { passive: true });
-        updateOrnament();
-      }
-
-      // --- Footer parallax with visibility gating ---
-      function initFooterParallax() {
-        var footerIll = document.querySelector('.footer-illustration') as HTMLElement | null;
-        var footerLayer = document.querySelector('.footer-parallax-layer') as HTMLElement | null;
-        if (!footerIll || !footerLayer) return;
-        if (isMobile) return;
-
-        var footerVisible = false;
-        var currentY = 0;
-
-        var observer = new IntersectionObserver(function(entries) {
-          footerVisible = entries[0].isIntersecting;
-        }, { rootMargin: '100px' });
-        observer.observe(footerIll);
-
-        addRafCallback(function tickFooter() {
-          if (!footerVisible) return;
-          // Freeze parallax during theme transition to prevent image shifting
-          if (document.documentElement.classList.contains('theme-transition')) return;
-
-          var rect = footerIll!.getBoundingClientRect();
-          var viewH = window.innerHeight;
-          var t = Math.min(Math.max((viewH - rect.top) / (viewH + rect.height), 0), 1);
-          var targetY = -(t * 80);
-          currentY += (targetY - currentY) * 0.1;
-
-          footerLayer!.style.transform = 'translateY(' + currentY + 'px)';
-        });
-      }
-
-      // --- Sticky cards with visibility gating ---
-      function initStickyCards() {
-        var wrap = document.querySelector('.sticky-cards-wrap') as HTMLElement | null;
-        var cards = document.querySelector('.sticky-cards') as HTMLElement | null;
-        if (!wrap || !cards) return;
-
-        if (isMobile) {
-          cards.style.transform = 'translateY(0)';
-          return;
-        }
-
-        var stickyVisible = false;
-        var stickyTop = 64;
-
-        var observer = new IntersectionObserver(function(entries) {
-          stickyVisible = entries[0].isIntersecting;
-        }, { rootMargin: '200px' });
-        observer.observe(wrap);
-
-        addRafCallback(function tickSticky() {
-          if (!stickyVisible) return;
-
-          var wrapRect = wrap!.getBoundingClientRect();
-          var cardsH = cards!.offsetHeight;
-
-          if (wrapRect.top <= stickyTop) {
-            var offset = stickyTop - wrapRect.top;
-            var maxOffset = wrap!.offsetHeight - cardsH;
-            if (maxOffset < 0) maxOffset = 0;
-            offset = Math.min(offset, maxOffset);
-            cards!.style.transform = 'translateY(' + offset + 'px)';
-          } else {
-            cards!.style.transform = 'translateY(0)';
-          }
-        });
-      }
-
-      // --- Scroll-reveal with IntersectionObserver ---
-      function initScrollReveal() {
-        var els = document.querySelectorAll('.scroll-reveal');
-        if (els.length === 0) return;
-        var observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('revealed');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-        els.forEach(function(el) { observer.observe(el); });
-      }
-
-      // --- Theme ---
-      function applyTheme(setting: string) {
-        var html = document.documentElement;
-        html.setAttribute('data-theme-setting', setting);
-        var isDark = setting === 'dark' || (setting === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        if (isDark) {
-          html.setAttribute('data-theme', 'dark');
-        } else {
-          html.removeAttribute('data-theme');
-        }
-        document.querySelectorAll('.theme-btn').forEach(function(btn) {
-          var isActive = (btn as HTMLElement).dataset.themeValue === setting;
-          if (isActive) {
-            btn.classList.add('active');
-          } else {
-            btn.classList.remove('active');
-          }
-          btn.setAttribute('aria-checked', String(isActive));
-        });
-      }
-
-      function initThemeToggle() {
-        var current = localStorage.getItem('theme') || 'system';
-        applyTheme(current);
-
-        document.querySelectorAll('.theme-btn').forEach(function(btn) {
-          btn.addEventListener('click', function() {
-            var value = (btn as HTMLElement).dataset.themeValue!;
-            var html = document.documentElement;
-            html.classList.add('theme-transition');
-            localStorage.setItem('theme', value);
-            applyTheme(value);
-            setTimeout(function() { html.classList.remove('theme-transition'); }, 800);
-          });
-        });
-
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
-          var setting = localStorage.getItem('theme') || 'system';
-          if (setting === 'system') {
-            applyTheme('system');
-          }
-        });
-      }
-
-      // --- Init all ---
-      function initAll() {
-        clearRafCallbacks();
-        initScrollHeader();
-        initHeroParallax();
-        initOrnamentParallax();
-        initFooterParallax();
-        initStickyCards();
-        initScrollReveal();
-        initThemeToggle();
-      }
-
-      initAll();
-      document.addEventListener('astro:after-swap', function() {
-        var saved = localStorage.getItem('theme') || 'system';
-        applyTheme(saved);
-        initAll();
-      });
+      import '../scripts/init';
     </script>
   </body>
 </html>

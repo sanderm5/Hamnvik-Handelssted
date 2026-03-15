@@ -10,13 +10,14 @@ if (!hjem) throw new Error('Forside-innhold mangler');
   <div class="hero">
     <picture class="hero-light">
       <source srcset="/images/HAMNVIK.webp" type="image/webp" />
-      <img src="/images/HAMNVIK.png" alt="Illustrasjon av Hamnvik Handelssted med gule sjøhus, seilbåt og fjell i vinterlandskap" width="2048" height="2048" fetchpriority="high" />
+      <img src="/images/HAMNVIK.png" alt="Illustrasjon av Hamnvik Handelssted med gule sjøhus, seilbåt og fjell i vinterlandskap" width="1184" height="761" sizes="100vw" fetchpriority="high" />
     </picture>
     <picture class="hero-dark">
       <source srcset="/images/hamnvik-nordlys.webp" type="image/webp" />
-      <img src="/images/hamnvik-nordlys.png" alt="Hamnvik Handelssted under nordlyset, gule sjøhus speiler seg i fjorden" width="1024" height="1024" fetchpriority="high" />
+      <img src="/images/hamnvik-nordlys.png" alt="Hamnvik Handelssted under nordlyset, gule sjøhus speiler seg i fjorden" width="1184" height="761" sizes="100vw" fetchpriority="high" />
     </picture>
 <div class="scroll-hint" aria-hidden="true">
+      <span class="scroll-hint-label">Scroll ned</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 5v14M5 12l7 7 7-7"/>
       </svg>
@@ -54,17 +55,17 @@ if (!hjem) throw new Error('Forside-innhold mangler');
 
       <hr class="divider" />
 
-      <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start;">
+      <div class="section-with-image">
         {hjem.dampskipImage && (
-          <figure class="vintage-frame scroll-reveal" style="max-width: 260px;">
+          <figure class="vintage-frame scroll-reveal section-image-small">
             <picture>
-              <source srcset={hjem.dampskipImage.replace(/\.(jpg|png)$/, '.webp')} type="image/webp" />
-              <img src={hjem.dampskipImage} alt={hjem.dampskipImageAlt} loading="lazy" decoding="async" />
+              <source srcset={hjem.dampskipImage.replace(/\.(jpg|png)$/i, '.webp')} type="image/webp" />
+              <img src={hjem.dampskipImage} alt={hjem.dampskipImageAlt} width="260" height="340" loading="lazy" decoding="async" />
             </picture>
             <figcaption class="vintage-frame-caption">{hjem.dampskipImageCaption}</figcaption>
           </figure>
         )}
-        <div style="flex: 1; min-width: 200px;">
+        <div class="section-text-col">
           <h2>{hjem.dampskipHeading}</h2>
           <p>{hjem.dampskipText}</p>
           <p>{hjem.dampskipFotefarText}</p>
@@ -89,7 +90,7 @@ if (!hjem) throw new Error('Forside-innhold mangler');
         </blockquote>
       ))}
 
-      <p style="text-align: center;"><a href="/referanser">Les flere referanser</a></p>
+      <p class="text-center"><a href="/referanser">Les flere referanser</a></p>
     </div>
   </section>
 </BaseLayout>
