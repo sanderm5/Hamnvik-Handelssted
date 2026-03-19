@@ -5,30 +5,21 @@ import Footer from '../components/Footer.astro';
 import MobileContactBar from '../components/MobileContactBar.astro';
 import '../styles/global.css';
 
-// Self-hosted fonts — Playfair Display
-import '@fontsource/playfair-display/400.css';
-import '@fontsource/playfair-display/700.css';
+// Self-hosted fonts — only weights actually used in CSS
+// Playfair Display: h1 (900-italic), drop-cap (900), h3 (700-italic)
 import '@fontsource/playfair-display/900.css';
-import '@fontsource/playfair-display/400-italic.css';
 import '@fontsource/playfair-display/700-italic.css';
 import '@fontsource/playfair-display/900-italic.css';
-// Playfair Display SC
-import '@fontsource/playfair-display-sc/400.css';
+// Playfair Display SC: h2 / section headings (700)
 import '@fontsource/playfair-display-sc/700.css';
-import '@fontsource/playfair-display-sc/900.css';
-// Cormorant Garamond
-import '@fontsource/cormorant-garamond/400.css';
+// Cormorant Garamond: body (500), italic (500-italic), UI (600), bold (700)
 import '@fontsource/cormorant-garamond/500.css';
 import '@fontsource/cormorant-garamond/600.css';
 import '@fontsource/cormorant-garamond/700.css';
-import '@fontsource/cormorant-garamond/400-italic.css';
 import '@fontsource/cormorant-garamond/500-italic.css';
-import '@fontsource/cormorant-garamond/600-italic.css';
-// Cormorant SC
+// Cormorant SC: subtitle (400), nav/labels (600)
 import '@fontsource/cormorant-sc/400.css';
-import '@fontsource/cormorant-sc/500.css';
 import '@fontsource/cormorant-sc/600.css';
-import '@fontsource/cormorant-sc/700.css';
 
 interface Props {
   title: string;

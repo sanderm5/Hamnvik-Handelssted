@@ -41,6 +41,7 @@ function applyHeaderState(el: HTMLElement, t: number) {
 export function initScrollHeader() {
   const header = document.querySelector('.site-header-front') as HTMLElement | null;
   if (!header) return;
+  if (isMobile) return; // Skip expensive backdrop-filter animation on mobile
   const el = header;
   const end = 120;
   let current = Math.min(Math.max(window.scrollY / end, 0), 1);
@@ -54,6 +55,7 @@ export function initScrollHeader() {
 }
 
 export function initHeroParallax() {
+  if (isMobile) return; // Skip parallax on mobile for performance
   const heroImgs = document.querySelectorAll('.hero .hero-light, .hero .hero-dark') as NodeListOf<HTMLElement>;
   const hero = document.querySelector('.hero') as HTMLElement | null;
   if (heroImgs.length === 0 || !hero) return;
@@ -75,6 +77,7 @@ export function initHeroParallax() {
 }
 
 export function initOrnamentParallax() {
+  if (isMobile) return; // Skip on mobile for performance
   const style = document.documentElement.style;
   function updateOrnament() {
     const offset = 40 + window.scrollY * 0.05;
