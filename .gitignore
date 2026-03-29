@@ -8,7 +8,6 @@
 /out/
 
 # tinacms
-/tina/__generated__
 
 # production
 /build
