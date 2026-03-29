@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" fill="none" stroke="#c8b898" stroke-width="0.6" opacity="1">
+  <!-- Abstrakt kystlinje inspirert av Ibestad/Hamnvik-området -->
+  <!-- Fjorder, holmer og sund i nordnorsk stil -->
+
+  <!-- Hovedkystlinje — kompleks, fjord-aktig -->
+  <g stroke-width="0.8" opacity="0.35" fill="none">
+    <path d="M 0,300 Q 40,290 80,310 Q 120,330 140,300 Q 160,260 200,280
+             Q 240,300 260,260 Q 280,220 320,250 Q 360,280 380,240
+             Q 400,200 440,230 Q 480,260 500,220 Q 520,180 560,210
+             Q 580,230 600,200 Q 620,170 660,190 Q 700,210 720,180
+             Q 740,150 780,170 Q 820,190 840,160 Q 860,130 900,150
+             Q 940,170 960,140 Q 980,110 1020,130 Q 1060,150 1080,120
+             Q 1100,90 1140,110 Q 1180,130 1200,100"/>
+  </g>
+
+  <!-- Fjord som skjærer innover -->
+  <g stroke-width="0.6" opacity="0.3" fill="none">
+    <path d="M 380,240 Q 370,280 360,320 Q 350,380 370,420
+             Q 390,460 380,500 Q 370,540 390,570 Q 410,590 400,620"/>
+    <path d="M 500,220 Q 510,280 520,340 Q 530,400 520,450
+             Q 510,500 530,540 Q 540,560 530,590"/>
+  </g>
+
+  <!-- Fjord 2 — bredere -->
+  <g stroke-width="0.5" opacity="0.25" fill="none">
+    <path d="M 720,180 Q 700,240 710,300 Q 720,360 700,420
+             Q 690,480 710,530 Q 720,560 710,600 Q 700,640 720,680"/>
+    <path d="M 780,170 Q 800,230 790,290 Q 780,350 800,410
+             Q 810,470 790,520 Q 780,560 800,600 Q 810,640 790,680"/>
+  </g>
+
+  <!-- Holmer og småøyer -->
+  <g stroke-width="0.5" opacity="0.25">
+    <!-- Holme 1 -->
+    <path d="M 200,450 Q 220,430 250,440 Q 270,450 260,470 Q 240,490 220,480 Q 200,470 200,450"/>
+    <!-- Holme 2 -->
+    <path d="M 850,350 Q 870,340 890,350 Q 900,360 890,375 Q 870,385 855,375 Q 845,365 850,350"/>
+    <!-- Holme 3 (større) -->
+    <path d="M 100,550 Q 130,530 170,540 Q 200,555 190,580 Q 170,600 140,595 Q 110,585 100,565 Q 95,555 100,550"/>
+    <!-- Holme 4 -->
+    <path d="M 950,500 Q 970,490 990,500 Q 1005,510 995,525 Q 980,535 960,525 Q 948,515 950,500"/>
+    <!-- Holme 5 -->
+    <path d="M 600,700 Q 630,680 660,695 Q 680,710 670,730 Q 645,745 620,735 Q 600,720 600,700"/>
+  </g>
+
+  <!-- Skjærgård — prikker for grunner og skjær -->
+  <g fill="#c8b898" fill-opacity="0.15" stroke="none">
+    <circle cx="180" cy="380" r="3"/>
+    <circle cx="220" cy="400" r="2"/>
+    <circle cx="160" cy="420" r="2.5"/>
+    <circle cx="300" cy="360" r="2"/>
+    <circle cx="330" cy="400" r="3"/>
+    <circle cx="280" cy="430" r="2"/>
+    <circle cx="620" cy="350" r="2.5"/>
+    <circle cx="650" cy="380" r="2"/>
+    <circle cx="680" cy="340" r="3"/>
+    <circle cx="900" cy="420" r="2"/>
+    <circle cx="930" cy="450" r="2.5"/>
+    <circle cx="870" cy="460" r="2"/>
+    <circle cx="440" cy="480" r="2"/>
+    <circle cx="470" cy="500" r="3"/>
+    <circle cx="500" cy="470" r="2"/>
+    <circle cx="1050" cy="350" r="2.5"/>
+    <circle cx="1080" cy="380" r="2"/>
+    <circle cx="1100" cy="330" r="3"/>
+  </g>
+
+  <!-- Land-skravering (nordvestlig del — "land") -->
+  <g stroke-width="0.2" opacity="0.12">
+    <line x1="20" y1="250" x2="20" y2="290"/>
+    <line x1="40" y1="240" x2="40" y2="280"/>
+    <line x1="60" y1="245" x2="60" y2="285"/>
+    <line x1="80" y1="260" x2="80" y2="300"/>
+    <line x1="100" y1="255" x2="100" y2="295"/>
+    <line x1="120" y1="265" x2="120" y2="305"/>
+    <line x1="140" y1="250" x2="140" y2="290"/>
+    <line x1="160" y1="230" x2="160" y2="260"/>
+    <line x1="180" y1="240" x2="180" y2="270"/>
+    <line x1="200" y1="245" x2="200" y2="275"/>
+    <line x1="220" y1="230" x2="220" y2="260"/>
+    <line x1="240" y1="240" x2="240" y2="260"/>
+    <line x1="260" y1="225" x2="260" y2="255"/>
+    <line x1="280" y1="210" x2="280" y2="240"/>
+    <line x1="300" y1="220" x2="300" y2="248"/>
+  </g>
+
+  <!-- Dybdekurver rundt øyene -->
+  <g stroke-width="0.3" opacity="0.15" fill="none">
+    <path d="M 180,430 Q 210,410 250,425 Q 280,440 270,465 Q 250,485 220,475 Q 190,460 180,430"/>
+    <path d="M 80,530 Q 120,505 175,520 Q 215,540 205,570 Q 180,595 140,588 Q 100,575 85,555 Q 78,540 80,530"/>
+    <path d="M 580,680 Q 620,655 670,675 Q 700,695 690,720 Q 660,745 625,735 Q 590,720 580,680"/>
+  </g>
+
+  <!-- Nedre havbunn — rolige dybdekurver -->
+  <g stroke-width="0.3" opacity="0.15" fill="none">
+    <path d="M 0,850 Q 150,830 300,850 Q 450,870 600,850 Q 750,830 900,850 Q 1050,870 1200,850"/>
+    <path d="M 0,950 Q 180,930 360,950 Q 540,970 720,950 Q 900,930 1080,950 Q 1150,960 1200,950"/>
+    <path d="M 0,1050 Q 200,1030 400,1050 Q 600,1070 800,1050 Q 1000,1030 1200,1050"/>
+  </g>
+
+  <!-- Stedsnavn (subtile) -->
+  <g fill="#c8b898" font-family="'Cormorant Garamond', serif" font-size="10" opacity="0.2" stroke="none" font-style="italic">
+    <text x="350" y="615">Sundet</text>
+    <text x="730" y="690">Fjorden</text>
+    <text x="140" y="590">Holmen</text>
+    <text x="580" y="400">Vågen</text>
+  </g>
+
+  <!-- Kompassindikator liten -->
+  <g transform="translate(1080, 180)" stroke-width="0.4" opacity="0.2">
+    <line x1="0" y1="-30" x2="0" y2="30"/>
+    <line x1="-30" y1="0" x2="30" y2="0"/>
+    <polygon points="0,-30 3,-20 0,-18 -3,-20" fill="#c8b898" fill-opacity="0.2"/>
+    <text fill="#c8b898" font-family="'Playfair Display', serif" font-size="8" text-anchor="middle" stroke="none" opacity="0.4" y="-35">N</text>
+  </g>
+</svg>

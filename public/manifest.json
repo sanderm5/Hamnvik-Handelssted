@@ -1,0 +1,16 @@
+{
+  "name": "Hamnvik Handelssted",
+  "short_name": "Hamnvik",
+  "description": "Fredet handelssted fra 1794 i Ibestad kommune, Troms",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f0e0",
+  "theme_color": "#f6f0e0",
+  "icons": [
+    {
+      "src": "/images/4_stamp_ship.png",
+      "sizes": "197x142",
+      "type": "image/png"
+    }
+  ]
+}

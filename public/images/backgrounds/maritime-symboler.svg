@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" fill="none" stroke="#c8b898" stroke-width="0.8" opacity="1">
+  <!-- Anker — senter -->
+  <g transform="translate(600, 500)" stroke-width="0.8" opacity="0.3">
+    <!-- Ring -->
+    <circle cx="0" cy="-100" r="18" stroke-width="0.8"/>
+    <!-- Skaft -->
+    <line x1="0" y1="-82" x2="0" y2="80"/>
+    <!-- Tverrstang -->
+    <line x1="-50" y1="-40" x2="50" y2="-40"/>
+    <!-- Små kuler på tverrstang -->
+    <circle cx="-50" cy="-40" r="4" fill="#c8b898" fill-opacity="0.15"/>
+    <circle cx="50" cy="-40" r="4" fill="#c8b898" fill-opacity="0.15"/>
+    <!-- Armer (fluke) -->
+    <path d="M 0,80 Q -10,70 -60,50 Q -70,48 -65,40" stroke-linecap="round"/>
+    <path d="M 0,80 Q 10,70 60,50 Q 70,48 65,40" stroke-linecap="round"/>
+    <!-- Spiss -->
+    <polygon points="-65,40 -68,30 -55,38" fill="#c8b898" fill-opacity="0.1"/>
+    <polygon points="65,40 68,30 55,38" fill="#c8b898" fill-opacity="0.1"/>
+  </g>
+
+  <!-- Sekstant — øvre venstre -->
+  <g transform="translate(200, 220)" stroke-width="0.6" opacity="0.2">
+    <!-- Bue -->
+    <path d="M -60,30 A 70 70 0 0 1 60,30"/>
+    <!-- Gradmerker på buen -->
+    <line x1="-58" y1="28" x2="-52" y2="22"/>
+    <line x1="-45" y1="15" x2="-40" y2="8"/>
+    <line x1="-28" y1="5" x2="-24" y2="-3"/>
+    <line x1="-8" y1="0" x2="-6" y2="-8"/>
+    <line x1="12" y1="0" x2="14" y2="-8"/>
+    <line x1="32" y1="5" x2="36" y2="-3"/>
+    <line x1="48" y1="15" x2="52" y2="8"/>
+    <line x1="58" y1="28" x2="52" y2="22"/>
+    <!-- Rammer -->
+    <line x1="-60" y1="30" x2="0" y2="-60"/>
+    <line x1="60" y1="30" x2="0" y2="-60"/>
+    <!-- Speil -->
+    <rect x="-6" y="-65" width="12" height="10" rx="1"/>
+    <!-- Kikkert -->
+    <line x1="0" y1="-55" x2="30" y2="-75"/>
+    <rect x="28" y="-80" width="12" height="8" rx="1" transform="rotate(-35, 34, -76)"/>
+  </g>
+
+  <!-- Skipskrone / Steuerrad — øvre høyre -->
+  <g transform="translate(980, 250)" stroke-width="0.6" opacity="0.2">
+    <circle cx="0" cy="0" r="50"/>
+    <circle cx="0" cy="0" r="42"/>
+    <circle cx="0" cy="0" r="10"/>
+    <!-- Håndtak (8 stk) -->
+    <line x1="0" y1="-42" x2="0" y2="-65"/>
+    <line x1="30" y1="-30" x2="46" y2="-46"/>
+    <line x1="42" y1="0" x2="65" y2="0"/>
+    <line x1="30" y1="30" x2="46" y2="46"/>
+    <line x1="0" y1="42" x2="0" y2="65"/>
+    <line x1="-30" y1="30" x2="-46" y2="46"/>
+    <line x1="-42" y1="0" x2="-65" y2="0"/>
+    <line x1="-30" y1="-30" x2="-46" y2="-46"/>
+    <!-- Kuler på endene -->
+    <circle cx="0" cy="-65" r="4" fill="#c8b898" fill-opacity="0.1"/>
+    <circle cx="46" cy="-46" r="4" fill="#c8b898" fill-opacity="0.1"/>
+    <circle cx="65" cy="0" r="4" fill="#c8b898" fill-opacity="0.1"/>
+    <circle cx="46" cy="46" r="4" fill="#c8b898" fill-opacity="0.1"/>
+    <circle cx="0" cy="65" r="4" fill="#c8b898" fill-opacity="0.1"/>
+    <circle cx="-46" cy="46" r="4" fill="#c8b898" fill-opacity="0.1"/>
+    <circle cx="-65" cy="0" r="4" fill="#c8b898" fill-opacity="0.1"/>
+    <circle cx="-46" cy="-46" r="4" fill="#c8b898" fill-opacity="0.1"/>
+  </g>
+
+  <!-- Tønne — nedre venstre -->
+  <g transform="translate(180, 900)" stroke-width="0.5" opacity="0.2">
+    <ellipse cx="0" cy="-40" rx="30" ry="10"/>
+    <ellipse cx="0" cy="40" rx="30" ry="10"/>
+    <path d="M -30,-40 Q -35,0 -30,40"/>
+    <path d="M 30,-40 Q 35,0 30,40"/>
+    <!-- Jernbånd -->
+    <ellipse cx="0" cy="-15" rx="32" ry="8" stroke-dasharray="3 2"/>
+    <ellipse cx="0" cy="15" rx="32" ry="8" stroke-dasharray="3 2"/>
+  </g>
+
+  <!-- Fiskekrok — midt venstre -->
+  <g transform="translate(130, 620)" stroke-width="0.6" opacity="0.2">
+    <line x1="0" y1="-40" x2="0" y2="20"/>
+    <path d="M 0,20 Q 0,40 -15,35 Q -20,30 -15,25"/>
+    <line x1="-14" y1="26" x2="-8" y2="15"/>
+    <!-- Øye -->
+    <circle cx="0" cy="-40" r="6"/>
+  </g>
+
+  <!-- Kompass (lommekompass) — nedre høyre -->
+  <g transform="translate(1000, 880)" stroke-width="0.5" opacity="0.2">
+    <circle cx="0" cy="0" r="40"/>
+    <circle cx="0" cy="0" r="36"/>
+    <!-- Nål -->
+    <polygon points="0,-28 3,-5 0,0 -3,-5" fill="#c8b898" fill-opacity="0.1"/>
+    <polygon points="0,28 3,5 0,0 -3,5" fill="#c8b898" fill-opacity="0.08"/>
+    <!-- Merker -->
+    <line x1="0" y1="-36" x2="0" y2="-32"/>
+    <line x1="36" y1="0" x2="32" y2="0"/>
+    <line x1="0" y1="36" x2="0" y2="32"/>
+    <line x1="-36" y1="0" x2="-32" y2="0"/>
+    <!-- Bokstaver -->
+    <text fill="#c8b898" font-family="'Playfair Display', serif" font-size="7" text-anchor="middle" stroke="none" y="-24" opacity="0.5">N</text>
+  </g>
+
+  <!-- Lanterne — midt høyre -->
+  <g transform="translate(1050, 600)" stroke-width="0.5" opacity="0.2">
+    <!-- Oppheng -->
+    <path d="M -5,-50 Q 0,-55 5,-50"/>
+    <line x1="0" y1="-55" x2="0" y2="-60"/>
+    <!-- Topp -->
+    <path d="M -12,-50 L 12,-50"/>
+    <!-- Glass -->
+    <rect x="-10" y="-50" width="20" height="35" rx="2"/>
+    <!-- Flamme -->
+    <path d="M 0,-40 Q 3,-35 0,-28 Q -3,-35 0,-40" fill="#c8b898" fill-opacity="0.08"/>
+    <!-- Bunn -->
+    <path d="M -12,-15 L 12,-15"/>
+    <path d="M -8,-15 L -6,-8 L 6,-8 L 8,-15"/>
+  </g>
+
+  <!-- Skipsklocke — øverst senter -->
+  <g transform="translate(600, 150)" stroke-width="0.5" opacity="0.2">
+    <path d="M -20,0 Q -25,-30 0,-35 Q 25,-30 20,0"/>
+    <line x1="-20" y1="0" x2="20" y2="0"/>
+    <circle cx="0" cy="-38" r="4"/>
+    <line x1="0" y1="-42" x2="0" y2="-50"/>
+    <!-- Klokkeknep -->
+    <circle cx="0" cy="-4" r="3" fill="#c8b898" fill-opacity="0.1"/>
+  </g>
+
+  <!-- Tau-knute liten — spredt -->
+  <g stroke-width="0.4" opacity="0.12">
+    <path d="M 400,750 Q 410,740 420,750 Q 430,760 420,770 Q 410,760 400,750"/>
+    <path d="M 800,700 Q 810,690 820,700 Q 830,710 820,720 Q 810,710 800,700"/>
+    <path d="M 350,350 Q 360,340 370,350 Q 380,360 370,370 Q 360,360 350,350"/>
+    <path d="M 850,400 Q 860,390 870,400 Q 880,410 870,420 Q 860,410 850,400"/>
+  </g>
+</svg>

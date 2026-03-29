@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" fill="none" stroke="#c8b898" stroke-width="0.6" opacity="1">
+  <!-- Rhumb lines (peilingslinjer) som stråler ut fra sentrum -->
+  <g stroke-width="0.3" opacity="0.2">
+    <!-- 32 retningslinjer (hver 11.25 grader) -->
+    <line x1="600" y1="600" x2="600" y2="0"/>
+    <line x1="600" y1="600" x2="717" y2="4"/>
+    <line x1="600" y1="600" x2="830" y2="30"/>
+    <line x1="600" y1="600" x2="930" y2="70"/>
+    <line x1="600" y1="600" x2="1024" y2="176"/>
+    <line x1="600" y1="600" x2="1100" y2="270"/>
+    <line x1="600" y1="600" x2="1170" y2="370"/>
+    <line x1="600" y1="600" x2="1196" y2="483"/>
+    <line x1="600" y1="600" x2="1200" y2="600"/>
+    <line x1="600" y1="600" x2="1196" y2="717"/>
+    <line x1="600" y1="600" x2="1170" y2="830"/>
+    <line x1="600" y1="600" x2="1100" y2="930"/>
+    <line x1="600" y1="600" x2="1024" y2="1024"/>
+    <line x1="600" y1="600" x2="930" y2="1100"/>
+    <line x1="600" y1="600" x2="830" y2="1170"/>
+    <line x1="600" y1="600" x2="717" y2="1196"/>
+    <line x1="600" y1="600" x2="600" y2="1200"/>
+    <line x1="600" y1="600" x2="483" y2="1196"/>
+    <line x1="600" y1="600" x2="370" y2="1170"/>
+    <line x1="600" y1="600" x2="270" y2="1100"/>
+    <line x1="600" y1="600" x2="176" y2="1024"/>
+    <line x1="600" y1="600" x2="100" y2="930"/>
+    <line x1="600" y1="600" x2="30" y2="830"/>
+    <line x1="600" y1="600" x2="4" y2="717"/>
+    <line x1="600" y1="600" x2="0" y2="600"/>
+    <line x1="600" y1="600" x2="4" y2="483"/>
+    <line x1="600" y1="600" x2="30" y2="370"/>
+    <line x1="600" y1="600" x2="100" y2="270"/>
+    <line x1="600" y1="600" x2="176" y2="176"/>
+    <line x1="600" y1="600" x2="270" y2="100"/>
+    <line x1="600" y1="600" x2="370" y2="30"/>
+    <line x1="600" y1="600" x2="483" y2="4"/>
+  </g>
+
+  <!-- Kardinalretninger — tykkere linjer -->
+  <g stroke-width="0.6" opacity="0.3">
+    <line x1="600" y1="600" x2="600" y2="0"/>
+    <line x1="600" y1="600" x2="1200" y2="600"/>
+    <line x1="600" y1="600" x2="600" y2="1200"/>
+    <line x1="600" y1="600" x2="0" y2="600"/>
+    <line x1="600" y1="600" x2="1024" y2="176"/>
+    <line x1="600" y1="600" x2="1024" y2="1024"/>
+    <line x1="600" y1="600" x2="176" y2="1024"/>
+    <line x1="600" y1="600" x2="176" y2="176"/>
+  </g>
+
+  <!-- Ytre sirkler -->
+  <circle cx="600" cy="600" r="520" stroke-width="0.8" opacity="0.25"/>
+  <circle cx="600" cy="600" r="510" stroke-width="0.3" opacity="0.2"/>
+  <circle cx="600" cy="600" r="480" stroke-width="0.4" opacity="0.2"/>
+  <circle cx="600" cy="600" r="470" stroke-width="0.2" opacity="0.15"/>
+
+  <!-- Gradmerker på ytre sirkel -->
+  <g stroke-width="0.4" opacity="0.3">
+    <!-- Hoved-ticks (N, E, S, W) -->
+    <line x1="600" y1="80" x2="600" y2="110"/>
+    <line x1="600" y1="1090" x2="600" y2="1120"/>
+    <line x1="80" y1="600" x2="110" y2="600"/>
+    <line x1="1090" y1="600" x2="1120" y2="600"/>
+    <!-- Mellom-ticks -->
+    <line x1="968" y1="232" x2="950" y2="250"/>
+    <line x1="968" y1="968" x2="950" y2="950"/>
+    <line x1="232" y1="968" x2="250" y2="950"/>
+    <line x1="232" y1="232" x2="250" y2="250"/>
+  </g>
+
+  <!-- Vindrose — hovedpunkter -->
+  <g stroke-width="0.6" opacity="0.45">
+    <!-- Nord -->
+    <polygon points="600,120 618,420 600,380 582,420" fill="#c8b898" fill-opacity="0.12"/>
+    <polygon points="600,120 618,420 600,380 582,420"/>
+    <!-- Sør -->
+    <polygon points="600,1080 618,780 600,820 582,780" fill="#c8b898" fill-opacity="0.08"/>
+    <polygon points="600,1080 618,780 600,820 582,780"/>
+    <!-- Øst -->
+    <polygon points="1080,600 780,582 820,600 780,618" fill="#c8b898" fill-opacity="0.08"/>
+    <polygon points="1080,600 780,582 820,600 780,618"/>
+    <!-- Vest -->
+    <polygon points="120,600 420,582 380,600 420,618" fill="#c8b898" fill-opacity="0.08"/>
+    <polygon points="120,600 420,582 380,600 420,618"/>
+  </g>
+
+  <!-- Vindrose — diagonaler (kortere) -->
+  <g stroke-width="0.4" opacity="0.3">
+    <polygon points="932,268 720,500 730,490 700,510" fill="#c8b898" fill-opacity="0.06"/>
+    <polygon points="932,268 720,500 730,490 700,510"/>
+    <polygon points="932,932 720,700 730,710 700,690" fill="#c8b898" fill-opacity="0.06"/>
+    <polygon points="932,932 720,700 730,710 700,690"/>
+    <polygon points="268,932 480,700 470,710 500,690" fill="#c8b898" fill-opacity="0.06"/>
+    <polygon points="268,932 480,700 470,710 500,690"/>
+    <polygon points="268,268 480,500 470,490 500,510" fill="#c8b898" fill-opacity="0.06"/>
+    <polygon points="268,268 480,500 470,490 500,510"/>
+  </g>
+
+  <!-- Senter-ornament -->
+  <circle cx="600" cy="600" r="80" stroke-width="0.6" opacity="0.3"/>
+  <circle cx="600" cy="600" r="70" stroke-width="0.3" opacity="0.25"/>
+  <circle cx="600" cy="600" r="12" fill="#c8b898" fill-opacity="0.2" stroke-width="0.4" opacity="0.4"/>
+
+  <!-- Dekorative buer mellom punktene -->
+  <g stroke-width="0.3" opacity="0.2" fill="none">
+    <path d="M 640,560 Q 720,480 750,490 Q 730,500 640,560"/>
+    <path d="M 640,640 Q 720,720 750,710 Q 730,700 640,640"/>
+    <path d="M 560,640 Q 480,720 450,710 Q 470,700 560,640"/>
+    <path d="M 560,560 Q 480,480 450,490 Q 470,500 560,560"/>
+  </g>
+
+  <!-- Retningsbokstaver -->
+  <g fill="#c8b898" font-family="'Playfair Display', serif" font-size="18" text-anchor="middle" stroke="none" opacity="0.3">
+    <text x="600" y="70">N</text>
+    <text x="600" y="1148">S</text>
+    <text x="1140" y="606">E</text>
+    <text x="60" y="606">W</text>
+  </g>
+
+  <!-- Sekundære rhumb-sentre (mindre, i hjørnene) -->
+  <g stroke-width="0.15" opacity="0.1">
+    <!-- Øvre venstre -->
+    <line x1="150" y1="150" x2="0" y2="0"/>
+    <line x1="150" y1="150" x2="150" y2="0"/>
+    <line x1="150" y1="150" x2="300" y2="0"/>
+    <line x1="150" y1="150" x2="300" y2="150"/>
+    <line x1="150" y1="150" x2="0" y2="150"/>
+    <!-- Øvre høyre -->
+    <line x1="1050" y1="150" x2="1200" y2="0"/>
+    <line x1="1050" y1="150" x2="1050" y2="0"/>
+    <line x1="1050" y1="150" x2="900" y2="0"/>
+    <line x1="1050" y1="150" x2="900" y2="150"/>
+    <line x1="1050" y1="150" x2="1200" y2="150"/>
+    <!-- Nedre venstre -->
+    <line x1="150" y1="1050" x2="0" y2="1200"/>
+    <line x1="150" y1="1050" x2="150" y2="1200"/>
+    <line x1="150" y1="1050" x2="300" y2="1200"/>
+    <line x1="150" y1="1050" x2="300" y2="1050"/>
+    <line x1="150" y1="1050" x2="0" y2="1050"/>
+    <!-- Nedre høyre -->
+    <line x1="1050" y1="1050" x2="1200" y2="1200"/>
+    <line x1="1050" y1="1050" x2="1050" y2="1200"/>
+    <line x1="1050" y1="1050" x2="900" y2="1200"/>
+    <line x1="1050" y1="1050" x2="900" y2="1050"/>
+    <line x1="1050" y1="1050" x2="1200" y2="1050"/>
+  </g>
+</svg>

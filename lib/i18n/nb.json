@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "historie": "Historie",
+    "servering": "Servering",
+    "kulturformidling": "Kulturformidling",
+    "restaurering": "Restaurering",
+    "arkiv": "Arkiv",
+    "program": "Program",
+    "referanser": "Referanser",
+    "finnOss": "Finn oss",
+    "kontakt": "Kontakt"
+  },
+  "header": {
+    "siteName": "Hamnvik Handelssted",
+    "subtitle": "Donsegården · Grunnlagt 1794",
+    "tagline": "Fredet handelssted · Ibestad kommune, Troms",
+    "menu": "Meny",
+    "booking": "Bestill",
+    "skipLink": "Hopp til hovedinnhold"
+  },
+  "footer": {
+    "inquiries": "Henvendelser",
+    "location": "Hamnvik, Ibestad kommune",
+    "heritage": "Fredet handelssted · Grunnlagt 1794",
+    "address": "Donsegården, Hamnvik",
+    "municipality": "Ibestad kommune, Troms",
+    "seeAlso": "Se også",
+    "facebook": "Følg oss på Facebook",
+    "references": "Referanser",
+    "copyright": "Hamnvik Handelssted · Ibestad kommunes fotefarprosjekt · Alle rettigheter forbeholdt",
+    "privacy": "Personvern",
+    "terms": "Vilkår",
+    "developedBy": "Utviklet av"
+  },
+  "form": {
+    "heading": "Send oss en henvendelse",
+    "name": "Navn",
+    "email": "E-post",
+    "phone": "Telefon",
+    "phonePlaceholder": "Eks. 912 34 567",
+    "type": "Type henvendelse",
+    "typeSelect": "Velg type …",
+    "typeServering": "Servering",
+    "typeSelskap": "Selskap / arrangement",
+    "typeOmvisning": "Omvisning",
+    "typeAnnet": "Annet",
+    "date": "Ønsket dato",
+    "guests": "Antall gjester",
+    "guestsPlaceholder": "Ca. antall",
+    "message": "Melding",
+    "messagePlaceholder": "Fortell oss gjerne hva du ønsker, så finner vi en løsning sammen.",
+    "submit": "Send henvendelse",
+    "sending": "Sender …",
+    "success": "Takk for din henvendelse! Vi tar kontakt så snart vi kan.",
+    "error": "Beklager, noe gikk galt. Prøv igjen eller kontakt oss direkte.",
+    "required": "*",
+    "honeypot": "Ikke fyll ut dette feltet"
+  },
+  "frontPage": {
+    "bookingHeading": "Planlegg ditt besøk",
+    "bookingIntro": "Vi tilbyr servering for grupper fra 10 personer, omvisning og kulturformidling. Send oss en henvendelse, så finner vi en løsning sammen.",
+    "testimonials": "Hva gjestene sier",
+    "moreReferences": "Les flere referanser",
+    "experience": "Opplev handelsstedet",
+    "scrollDown": "Scroll ned"
+  },
+  "program": {
+    "deck": "Hendelser og opplevelser på handelsstedet",
+    "byline": "Redaksjonen · Hamnvik",
+    "empty": "Programmet for {year} er under planlegging. Følg med!",
+    "archive": "Arkiv",
+    "gallery": "Bilder fra dagen"
+  },
+  "meta": {
+    "opensNewWindow": "(åpnes i nytt vindu)",
+    "lang": "NO",
+    "switchLang": "EN"
+  }
+}

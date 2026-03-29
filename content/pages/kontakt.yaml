@@ -1,0 +1,26 @@
+heading: Kontakt oss
+deck: Henvendelser om servering, selskaper og omvisning
+byline: Donsegården · Hamnvik, Ibestad
+intro: >-
+  Vi tar gjerne imot henvendelser om servering, selskaper eller
+  bare en hyggelig prat om stedet. Ring eller skriv — vi svarer så snart vi kan.
+contacts:
+  - name: Gunn Torild Dons
+    email: g.t.dons@online.no
+    phone: 418 06 970
+  - name: Einar Johan Dons
+    email: e.j.dons@online.no
+    phone: 976 40 360
+generalEmail: post@hamnvikhandelssted.com
+businessName: Hamnvik Handelssted
+addressLine1: Hamnvik, Ibestad kommune
+addressLine2: Troms
+sections:
+  - heading: Finn oss
+    content: >-
+      Hamnvik Handelssted ligger i Hamnvik i Ibestad kommune, Troms. Handelsstedet
+      er lett synlig fra sjøsiden med sine gule sjøhus langs brygga.
+    image: /images/findUsImage.jpg
+    imageAlt: Hamnvik Handelssted sett fra sjøen med gule sjøhus
+    imageCaption: De gule sjøhusene ved brygga — velkommen til oss
+    pullQuote: ""

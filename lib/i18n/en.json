@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "historie": "History",
+    "servering": "Dining",
+    "kulturformidling": "Culture",
+    "restaurering": "Restoration",
+    "arkiv": "Archive",
+    "program": "Program",
+    "referanser": "Testimonials",
+    "finnOss": "Find us",
+    "kontakt": "Contact"
+  },
+  "header": {
+    "siteName": "Hamnvik Trading Post",
+    "subtitle": "Donsegården · Founded 1794",
+    "tagline": "Protected trading post · Ibestad municipality, Troms",
+    "menu": "Menu",
+    "booking": "Book",
+    "skipLink": "Skip to main content"
+  },
+  "footer": {
+    "inquiries": "Inquiries",
+    "location": "Hamnvik, Ibestad municipality",
+    "heritage": "Protected trading post · Founded 1794",
+    "address": "Donsegården, Hamnvik",
+    "municipality": "Ibestad municipality, Troms",
+    "seeAlso": "See also",
+    "facebook": "Follow us on Facebook",
+    "references": "Testimonials",
+    "copyright": "Hamnvik Trading Post · Ibestad municipality's heritage trail project · All rights reserved",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "developedBy": "Developed by"
+  },
+  "form": {
+    "heading": "Send us an inquiry",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "phonePlaceholder": "E.g. +47 912 34 567",
+    "type": "Type of inquiry",
+    "typeSelect": "Select type …",
+    "typeServering": "Dining",
+    "typeSelskap": "Event / celebration",
+    "typeOmvisning": "Guided tour",
+    "typeAnnet": "Other",
+    "date": "Preferred date",
+    "guests": "Number of guests",
+    "guestsPlaceholder": "Approx. number",
+    "message": "Message",
+    "messagePlaceholder": "Tell us what you have in mind, and we'll find a solution together.",
+    "submit": "Send inquiry",
+    "sending": "Sending …",
+    "success": "Thank you for your inquiry! We will be in touch as soon as possible.",
+    "error": "Sorry, something went wrong. Please try again or contact us directly.",
+    "required": "*",
+    "honeypot": "Do not fill out this field"
+  },
+  "frontPage": {
+    "bookingHeading": "Plan your visit",
+    "bookingIntro": "We offer dining for groups of 10 or more, guided tours and cultural experiences. Send us an inquiry, and we'll find a solution together.",
+    "testimonials": "What our guests say",
+    "moreReferences": "Read more testimonials",
+    "experience": "Experience the trading post",
+    "scrollDown": "Scroll down"
+  },
+  "program": {
+    "deck": "Events and experiences at the trading post",
+    "byline": "The editors · Hamnvik",
+    "empty": "The program for {year} is being planned. Stay tuned!",
+    "archive": "Archive",
+    "gallery": "Photos from the day"
+  },
+  "meta": {
+    "opensNewWindow": "(opens in new window)",
+    "lang": "EN",
+    "switchLang": "NO"
+  }
+}

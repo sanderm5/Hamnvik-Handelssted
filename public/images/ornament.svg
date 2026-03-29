@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none" stroke="#c8b898" stroke-width="0.8" opacity="1">
+  <!-- Outer circle with tick marks (compass style) -->
+  <circle cx="400" cy="400" r="360" stroke-width="1.2"/>
+  <circle cx="400" cy="400" r="350" stroke-width="0.4"/>
+  <circle cx="400" cy="400" r="320" stroke-width="0.6"/>
+  <circle cx="400" cy="400" r="310" stroke-width="0.3"/>
+
+  <!-- Compass tick marks -->
+  <g stroke-width="0.8">
+    <!-- Major ticks (N, S, E, W) -->
+    <line x1="400" y1="40" x2="400" y2="80"/>
+    <line x1="400" y1="720" x2="400" y2="760"/>
+    <line x1="40" y1="400" x2="80" y2="400"/>
+    <line x1="720" y1="400" x2="760" y2="400"/>
+    <!-- Minor ticks (NE, SE, SW, NW) -->
+    <line x1="654" y1="146" x2="637" y2="163"/>
+    <line x1="654" y1="654" x2="637" y2="637"/>
+    <line x1="146" y1="654" x2="163" y2="637"/>
+    <line x1="146" y1="146" x2="163" y2="163"/>
+  </g>
+
+  <!-- Compass rose - main points -->
+  <g stroke-width="0.6">
+    <!-- North point -->
+    <polygon points="400,90 415,280 400,260 385,280" fill="#c8b898" fill-opacity="0.15"/>
+    <polygon points="400,90 415,280 400,260 385,280"/>
+    <!-- South point -->
+    <polygon points="400,710 415,520 400,540 385,520" fill="#c8b898" fill-opacity="0.15"/>
+    <polygon points="400,710 415,520 400,540 385,520"/>
+    <!-- East point -->
+    <polygon points="710,400 520,385 540,400 520,415" fill="#c8b898" fill-opacity="0.15"/>
+    <polygon points="710,400 520,385 540,400 520,415"/>
+    <!-- West point -->
+    <polygon points="90,400 280,385 260,400 280,415" fill="#c8b898" fill-opacity="0.15"/>
+    <polygon points="90,400 280,385 260,400 280,415"/>
+  </g>
+
+  <!-- Compass rose - diagonal points (shorter) -->
+  <g stroke-width="0.5">
+    <!-- NE -->
+    <polygon points="619,181 490,340 500,330 470,350" fill="#c8b898" fill-opacity="0.08"/>
+    <polygon points="619,181 490,340 500,330 470,350"/>
+    <!-- SE -->
+    <polygon points="619,619 490,460 500,470 470,450" fill="#c8b898" fill-opacity="0.08"/>
+    <polygon points="619,619 490,460 500,470 470,450"/>
+    <!-- SW -->
+    <polygon points="181,619 310,460 300,470 330,450" fill="#c8b898" fill-opacity="0.08"/>
+    <polygon points="181,619 310,460 300,470 330,450"/>
+    <!-- NW -->
+    <polygon points="181,181 310,340 300,330 330,350" fill="#c8b898" fill-opacity="0.08"/>
+    <polygon points="181,181 310,340 300,330 330,350"/>
+  </g>
+
+  <!-- Center ornamental circle -->
+  <circle cx="400" cy="400" r="60" stroke-width="1"/>
+  <circle cx="400" cy="400" r="50" stroke-width="0.4"/>
+  <circle cx="400" cy="400" r="8" fill="#c8b898" fill-opacity="0.3" stroke-width="0.6"/>
+
+  <!-- Decorative flourishes between main points -->
+  <g stroke-width="0.5">
+    <!-- Between N and E (upper right quadrant) -->
+    <path d="M 430,370 Q 500,300 530,310 Q 510,320 430,370" fill="#c8b898" fill-opacity="0.06"/>
+    <path d="M 430,370 Q 500,300 530,310 Q 510,320 430,370"/>
+    <!-- Between E and S -->
+    <path d="M 430,430 Q 500,500 530,490 Q 510,480 430,430" fill="#c8b898" fill-opacity="0.06"/>
+    <path d="M 430,430 Q 500,500 530,490 Q 510,480 430,430"/>
+    <!-- Between S and W -->
+    <path d="M 370,430 Q 300,500 270,490 Q 290,480 370,430" fill="#c8b898" fill-opacity="0.06"/>
+    <path d="M 370,430 Q 300,500 270,490 Q 290,480 370,430"/>
+    <!-- Between W and N -->
+    <path d="M 370,370 Q 300,300 270,310 Q 290,320 370,370" fill="#c8b898" fill-opacity="0.06"/>
+    <path d="M 370,370 Q 300,300 270,310 Q 290,320 370,370"/>
+  </g>
+
+  <!-- Ornate corner flourishes (Victorian style) -->
+  <g stroke-width="0.5" fill="none">
+    <!-- Top decorative arc -->
+    <path d="M 340,75 Q 370,55 400,50 Q 430,55 460,75"/>
+    <path d="M 350,82 Q 375,68 400,65 Q 425,68 450,82"/>
+    <!-- Bottom decorative arc -->
+    <path d="M 340,725 Q 370,745 400,750 Q 430,745 460,725"/>
+    <path d="M 350,718 Q 375,732 400,735 Q 425,732 450,718"/>
+    <!-- Right decorative arc -->
+    <path d="M 725,340 Q 745,370 750,400 Q 745,430 725,460"/>
+    <path d="M 718,350 Q 732,375 735,400 Q 732,425 718,450"/>
+    <!-- Left decorative arc -->
+    <path d="M 75,340 Q 55,370 50,400 Q 55,430 75,460"/>
+    <path d="M 82,350 Q 68,375 65,400 Q 68,425 82,450"/>
+  </g>
+
+  <!-- Outer decorative ring with small ornaments -->
+  <g stroke-width="0.3">
+    <circle cx="400" cy="400" r="380" stroke-dasharray="4 8"/>
+  </g>
+
+  <!-- Small diamond ornaments at cardinal positions on outer ring -->
+  <g fill="#c8b898" fill-opacity="0.2" stroke-width="0.5">
+    <polygon points="400,16 405,24 400,32 395,24"/>
+    <polygon points="400,768 405,776 400,784 395,776"/>
+    <polygon points="16,400 24,395 32,400 24,405"/>
+    <polygon points="768,400 776,395 784,400 776,405"/>
+  </g>
+</svg>

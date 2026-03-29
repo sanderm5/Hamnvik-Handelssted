@@ -1,0 +1,39 @@
+{
+  "name": "hamnvik-nextjs",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "dev": "tinacms dev -c \"next dev\"",
+    "dev:next": "next dev",
+    "build": "tinacms build --skip-cloud-checks && next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.28.1",
+  "dependencies": {
+    "@fontsource/cormorant-garamond": "^5.2.11",
+    "@fontsource/cormorant-sc": "^5.2.8",
+    "@fontsource/playfair-display": "^5.2.8",
+    "@fontsource/playfair-display-sc": "^5.2.8",
+    "@tinacms/cli": "^2.2.0",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.4.27",
+    "next": "^16.2.1",
+    "postcss": "^8.5.8",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.2.2",
+    "tinacms": "^3.7.0",
+    "typescript": "^6.0.2",
+    "yaml": "^2.8.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.2"
+  }
+}

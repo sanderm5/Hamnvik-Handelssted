@@ -1,0 +1,48 @@
+heading: Where history lives on
+deck: "A protected trading post from 1794 — by the fjord in Hamnvik, Ibestad"
+byline: "Donsegården · Hamnvik, Troms"
+intro: >-
+  Where the fjord meets the mountain in Hamnvik lies Donsegården — a protected
+  trading post where history lives on through food, culture and hospitality.
+bodyText1: >-
+  Since 1794, this has been a gathering point on the coast of Troms. What began
+  as Jens Bing Dons and Ingeborg Anna Normann Dons' trading post is today a
+  living cultural monument where you can enjoy fine food and experience the
+  stories from over two hundred years of coastal culture.
+bodyText2: >-
+  We open our doors for those who want to experience something out of the
+  ordinary — whether it's a celebration with homemade traditional food or a
+  guided tour through the rooms of history.
+pullQuote: >-
+  A living cultural monument where you can enjoy fine food and experience
+  the stories from over two hundred years of coastal culture.
+cards:
+  - title: Dining
+    link: /en/servering
+    description: "Norwegian traditional cuisine prepared with care, served in authentic surroundings."
+  - title: Events & Celebrations
+    link: ""
+    description: "Rooms with character for anniversaries, celebrations, meetings and gatherings."
+  - title: Cultural Experiences
+    link: /en/kulturformidling
+    description: "Guided tours, talks and photo presentations in museum rooms full of stories."
+dampskipHeading: From steamship to doorstep
+dampskipText: >-
+  Once, steamships docked here and brought goods from all over the world to the
+  trading post in Hamnvik. Today it is the guests who arrive — to a place where
+  time has stood still, but the hospitality is as warm as it has always been.
+dampskipImage: /images/maleri.png
+dampskipImageAlt: Painting of Hamnvik Trading Post with steamship in the harbour
+dampskipImageCaption: "The steamship Prins Gustav arrives at Havnviken, 1838"
+dampskipFotefarText: The trading post is part of Ibestad municipality's heritage trail project.
+noticeTitle: Booking
+noticeText: Contact us for offers and reservations.
+testimonials:
+  - quote: >-
+      A very special meal at a very special place.
+      We are enchanted by the buildings, the hosts and the history.
+    source: Ruth and guests
+  - quote: "Incredibly pleasant and exciting tour at a historic site. We will definitely come back!"
+    source: Kjetil Rolnes
+  - quote: "Thank you so much for a wonderful tour, a great meal and fascinating stories."
+    source: "Trond Giske · July 2008"

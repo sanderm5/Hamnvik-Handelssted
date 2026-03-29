@@ -1,0 +1,407 @@
+heading: Arkiv
+deck: Bilder fra lokalitetene og livet på handelsstedet
+byline: "Hamnvik Handelssted · Ibestad"
+intro: >-
+  Her legger vi ut bilder av lokalitetene og fra tidligere besøk og arrangement
+  som har vært siden vi startet opp i 2006 med restaureringa av brygga.
+gallerySections:
+  - heading: Servering og mat
+    description: ""
+    photoCredit: ""
+    images:
+      - image: /images/galleri/tbe1480-torskemiddag.jpg
+        alt: "Anrettet torsk med baconterninger, poteter, eggerøre og rødvin"
+        caption: Torskemiddag
+      - image: /images/galleri/tbe1580-kake-bringebaer.jpg
+        alt: "Kakestykke med krem, friske bringebær og kaffekopp"
+        caption: Kake med bringebær
+      - image: /images/galleri/kaffekopp-donsegarden.jpg
+        alt: "Kaffekopp med Hamnvik Handelssted Donsegården-logo"
+        caption: Kaffe fra Donsegården
+      - image: /images/galleri/fiskesuppe.jpg
+        alt: Fiskesuppe med reker og dill
+        caption: Fiskesuppe
+      - image: /images/galleri/potetsuppe-bacon.jpg
+        alt: Potetsuppe toppet med sprø bacon og brød
+        caption: Potetsuppe med bacon
+      - image: /images/galleri/kyllingsalat.jpg
+        alt: Kyllingsalat i stort fat
+        caption: Kyllingsalat
+      - image: /images/galleri/salatbuffet.jpg
+        alt: "Stor salatbuffet med pasta, egg og kylling"
+        caption: Salatbuffet
+      - image: /images/galleri/gratinert-nachos.jpg
+        alt: Gratinert nachos med rømme
+        caption: Gratinert nachos
+      - image: /images/galleri/fruktterte.jpg
+        alt: "Fruktterter med jordbær, kiwi, blåbær og krem"
+        caption: Fruktterter
+  - heading: Ambassadørbesøk og gjester
+    description: ""
+    photoCredit: ""
+    images:
+      - image: /images/galleri/kinas-ambassador-torrfisk.jpg
+        alt: Vertskap og Kinas ambassadør med tørrfisk foran det gule hovedhuset
+        caption: Besøk av Kinas ambassadør
+      - image: /images/galleri/ambassadorbesok-brygga.jpg
+        alt: "Gjester på trebrygga med norsk flagg, bunad og fjordutsikt"
+        caption: Ambassadørbesøk på brygga
+      - image: /images/galleri/ambassadorbesok-middag.jpg
+        alt: Ambassadørbesøk med middagsselskap i historiske lokaler
+        caption: Middagsselskap med ambassadører
+      - image: /images/galleri/lunsjbesok.jpg
+        alt: Lunsjgjester ved bordet i historiske lokaler
+        caption: Lunsjbesøk
+  - heading: Handelsstedet
+    description: ""
+    photoCredit: ""
+    images:
+      - image: /images/galleri/nordlys-hovedhus.jpg
+        alt: Nordlys over hovedhuset på handelsstedet
+        caption: Nordlys over hovedhuset
+      - image: /images/galleri/nordlys-fjorden-salangen.jpg
+        alt: Nordlys over fjorden mot Salangen med snødekte bygninger
+        caption: Nordlys over fjorden mot Salangen
+      - image: /images/IMG_1853.jpg
+        alt: "Hamnvik Handelssted sett fra sjøen, med gule sjøhus langs brygga"
+        caption: Handelsstedet sett fra sjøsiden
+      - image: /images/maleri.png
+        alt: Historisk maleri av Havnviken med dampskip i havna
+        caption: "Dampskibet Prins Gustav ankommer Havnviken, 1838"
+      - image: /images/galleri/156-5688_IMG.jpg
+        alt: Hamnvik juni 2007
+        caption: Hamnvik juni 2007
+      - image: /images/galleri/158-5852_IMG.jpg
+        alt: Kystmiljø
+        caption: Kystmiljø
+      - image: /images/galleri/IMG_1854.jpg
+        alt: Hamnvik med Folkvang ved kai
+        caption: Hamnvik med Folkvang ved kai
+      - image: /images/galleri/157-5723_IMG.jpg
+        alt: En hyllest til morrasola
+        caption: En hyllest til morrasola
+      - image: /images/galleri/166-6687_IMG.jpg
+        alt: Morrasola
+        caption: Morrasola
+      - image: /images/galleri/IMG_0007.jpg
+        alt: Sommernatt på kaia
+        caption: Sommernatt på kaia
+      - image: /images/galleri/IMG_0010.jpg
+        alt: Sommer i Ibestad
+        caption: Sommer i Ibestad
+      - image: /images/galleri/IMG_0009.jpg
+        alt: Sommernatt
+        caption: Sommernatt
+  - heading: Bygningene
+    description: ""
+    photoCredit: ""
+    images:
+      - image: /images/galleri/boden-2etasje-interior.jpg
+        alt: "Interiør fra ene boden i 2. etasje med antikke møbler og farget glass"
+        caption: "Fra ene boden i 2. etasje"
+      - image: /images/galleri/Bryllup_08_176.jpg
+        alt: Nybrygga
+        caption: Nybrygga
+      - image: /images/galleri/Bryllup_08_177.jpg
+        alt: Gammelbrygga
+        caption: Gammelbrygga
+      - image: /images/galleri/Bryllup_08_178.jpg
+        alt: "Stabbur, Bakeriet og Rulleboden"
+        caption: "Stabbur, Bakeriet og Rulleboden"
+      - image: /images/galleri/166-6663_IMG.jpg
+        alt: Tørrfisk / Ekspedisjonshallen
+        caption: Tørrfisk / Ekspedisjonshallen
+      - image: /images/galleri/IMG_0865.jpg
+        alt: Likkisteboden
+        caption: Likkisteboden
+      - image: /images/galleri/IMG_0863.jpg
+        alt: Fra museumsdelen på brygga
+        caption: Fra museumsdelen på brygga
+  - heading: Puben og kafeen
+    description: ""
+    photoCredit: ""
+    images:
+      - image: /images/galleri/puben-bartender.jpg
+        alt: "Bartender bak baren med SKIOLD- og Øl-Udsalg-skilt og øltønne"
+        caption: Baren med bartender
+      - image: /images/galleri/IMG_0870.jpg
+        alt: Baren
+        caption: Baren
+      - image: /images/galleri/IMG_0869.jpg
+        alt: Baren med Madam Dons
+        caption: Baren med Madam Dons
+      - image: /images/galleri/IMG_0871.jpg
+        alt: Fra puben
+        caption: Fra puben
+      - image: /images/galleri/IMG_0866.jpg
+        alt: Fra puben
+        caption: Fra puben
+      - image: /images/galleri/IMG_0860.jpg
+        alt: Fra kafeen
+        caption: Fra kafeen
+      - image: /images/galleri/IMG_0014.jpg
+        alt: Nok å gjøre i baren
+        caption: Nok å gjøre i baren
+      - image: /images/galleri/149-4966_IMG.jpg
+        alt: Glade gjester prøver ut pubmiljøet
+        caption: Glade gjester prøver ut pubmiljøet
+      - image: /images/galleri/158-5803_IMG.jpg
+        alt: Puben 2007
+        caption: Puben 2007
+  - heading: Husflid og butikk
+    description: ""
+    photoCredit: ""
+    images:
+      - image: /images/galleri/136_3693.jpg
+        alt: Husflidbutikken
+        caption: Husflidbutikken
+      - image: /images/galleri/136_3696.jpg
+        alt: Vindusutstilling
+        caption: Vindusutstilling
+      - image: /images/galleri/136_3695.jpg
+        alt: Butikken
+        caption: Butikken
+      - image: /images/galleri/157-5725_IMG.jpg
+        alt: Husflidsbutikken 2007
+        caption: Husflidsbutikken 2007
+      - image: /images/galleri/158-5818_IMG.jpg
+        alt: Brudekjoleutstilling i butikkjelleren
+        caption: Brudekjoleutstilling i butikkjelleren
+      - image: /images/galleri/158-5819_IMG.jpg
+        alt: Brudekjole til Nanna Dons
+        caption: Brudekjole til Nanna Dons
+  - heading: Konserter og kultur
+    description: ""
+    photoCredit: ""
+    images:
+      - image: /images/galleri/oktoberfest-ryblaes.jpg
+        alt: Ryblæs storband spiller på scenen under Oktoberfest
+        caption: Oktoberfest med Ryblæs
+      - image: /images/galleri/149-4952_IMG.jpg
+        alt: Ronaldo spilte og underholdt
+        caption: Ronaldo spilte og underholdt til bursdagsfesten
+      - image: /images/galleri/149-4945_IMG.jpg
+        alt: Jazztrompetist Stian Omenås
+        caption: "Jazztrompetist Stian Omenås, konsert 23. sept. 2006"
+      - image: /images/galleri/Slvi_063.jpg
+        alt: Jamming med Ronaldo og Vidar Nilsen
+        caption: Jamming med Ronaldo og Vidar Nilsen
+      - image: /images/galleri/157-5715_IMG.jpg
+        alt: Kay med bluesvenner
+        caption: Kay med bluesvenner
+      - image: /images/galleri/159-5926_IMG.jpg
+        alt: Moderne jazzkonsert
+        caption: Moderne jazzkonsert
+      - image: /images/galleri/159-5930_IMG.jpg
+        alt: Stian Omenås og Håvard Volden
+        caption: Stian Omenås og Håvard Volden
+      - image: /images/galleri/181.jpg
+        alt: "Ola Bremnes, Gjermund Silset, Terje Nohr Olsen og Lars Bremnes"
+        caption: "Ola Bremnes, Gjermund Silset, Terje Nohr Olsen og Lars Bremnes"
+      - image: /images/galleri/182.jpg
+        alt: Bremneskonsert
+        caption: Bremneskonsert
+      - image: /images/galleri/IMG_7334.jpg
+        alt: "«Ute på Prøve» spiller til dans"
+        caption: "«Ute på Prøve» spiller til dans"
+      - image: /images/galleri/166-6655_IMG.jpg
+        alt: "Stian Omenås, Marita Røstad og Håvard Stubø"
+        caption: "Stian Omenås, Marita Røstad og Håvard Stubø"
+      - image: /images/galleri/166-6677_IMG.jpg
+        alt: A Tribute to Tom Waits
+        caption: "Øyvind Skarbø, Marita Røstad og Stian Leknes — A Tribute to Tom Waits"
+      - image: /images/galleri/01_01.jpg
+        alt: Teaterensemble Rimfrost
+        caption: "Teaterensemble Rimfrost — «Dommedag i hvorsomhelst»"
+      - image: /images/galleri/03_03.jpg
+        alt: Publikum er med
+        caption: Publikum er med
+      - image: /images/galleri/05_05.jpg
+        alt: Gønnar
+        caption: Gønnar
+  - heading: "Kulturminister Trond Giske på besøk, juli 2008"
+    description: ""
+    photoCredit: ""
+    images:
+      - image: /images/galleri/020.jpg
+        alt: Hilser kulturministeren velkommen til lunsj
+        caption: Hilser kulturministeren velkommen til lunsj
+      - image: /images/galleri/034.jpg
+        alt: Jektekartene blir studert
+        caption: Jektekartene blir studert
+      - image: /images/galleri/Ordfrer_Marit_Johansen_og_kulturminister_Trond_Giske.jpg
+        alt: Ordfører Marit Johansen og kulturminister Trond Giske
+        caption: Ordfører Marit Johansen og kulturminister Trond Giske
+      - image: /images/galleri/056.jpg
+        alt: Giske viser hvor familiens røtter er
+        caption: "Giske viser hvor familiens røtter er, øya Giskø"
+      - image: /images/galleri/060.jpg
+        alt: Studerer den flotte bygdeboka
+        caption: Studerer den flotte bygdeboka
+      - image: /images/galleri/063.jpg
+        alt: Giske og vertskapet i puben
+        caption: Giske og vertskapet i puben
+      - image: /images/galleri/065.jpg
+        alt: Giske skriver i gjesteboka
+        caption: Giske skriver i gjesteboka
+  - heading: Foredrag og kulturformidling
+    description: ""
+    photoCredit: ""
+    images:
+      - image: /images/galleri/einar_johan_foredrag.jpg
+        alt: Forteller om Hamnviks historie
+        caption: Forteller om Hamnviks historie til Årsmøte Troms Historielag
+      - image: /images/galleri/Lars_Ivar_Hansen.jpg
+        alt: Forfatter Lars Ivar Hansen
+        caption: Forfatter Lars Ivar Hansen fortalte om bygdeboka
+      - image: /images/galleri/Oddbjorn_Knudsen.jpg
+        alt: Forfatter Odbjørn Knudsen
+        caption: Forfatter Odbjørn Knudsen fortalte om første bind til Ibestad
+      - image: /images/galleri/Tore20Meyer.jpg
+        alt: Forfatter Tore Meyer
+        caption: Forfatter Tore Meyer
+      - image: /images/galleri/Sonja_Westrheim.jpg
+        alt: Sonja Westrheim
+        caption: Sonja Westrheim fortalte om merkedagene på primstaven
+      - image: /images/galleri/Tilhoerere3.jpg
+        alt: En lydhør forsamling
+        caption: En lydhør forsamling
+  - heading: Kulturminnedagen og Anna Rogde
+    description: ""
+    photoCredit: ""
+    images:
+      - image: /images/galleri/158-5841_IMG.jpg
+        alt: Kulturminnedagen 2007
+        caption: Kulturminnedagen 2007
+      - image: /images/galleri/158-5844_IMG.jpg
+        alt: Anna Rogde legger til kai
+        caption: Anna Rogde legger til kai
+      - image: /images/galleri/158-5845_IMG.jpg
+        alt: Masse folk møtte fram
+        caption: Masse folk møtte fram
+      - image: /images/galleri/158-5851_IMG.jpg
+        alt: Anna Rogde og Lavangen-skuta
+        caption: Anna Rogde og Lavangen-skuta
+      - image: /images/galleri/158-5855_IMG.jpg
+        alt: Prestene blir kjørt til kirka av Stall Meyer
+        caption: Prestene blir kjørt til kirka av Stall Meyer
+      - image: /images/galleri/DSC_0201.jpg
+        alt: Anna Rogde ved kai
+        caption: Anna Rogde ved kai
+      - image: /images/galleri/38275_1326495330541_1475649652_30693696_1877303_n.jpg
+        alt: Anna Rogde
+        caption: Anna Rogde
+      - image: /images/galleri/DSC_0187.jpg
+        alt: Skoleavslutningstur
+        caption: Skoleavslutningstur
+  - heading: Familietreff og selskap
+    description: ""
+    photoCredit: ""
+    images:
+      - image: /images/galleri/pyntet-bryllup.jpg
+        alt: Langbord pyntet til bryllup med hvite duker og blomsteroppsatser
+        caption: Pyntet til bryllup
+      - image: /images/galleri/bursdagspynting.jpg
+        alt: "Bursdagspynting med oransje roser, blå lys og dekorative servietter"
+        caption: Bursdagspynting
+      - image: /images/galleri/bursdagsfeiring-bord.jpg
+        alt: Fullt pyntet bursdagsbord sett ovenfra
+        caption: Pyntet til bursdagsfeiring
+      - image: /images/galleri/pyntet-bursdag-gronneri.jpg
+        alt: Elegant borddekking med grønneri og eukalyptus
+        caption: Pyntet til bursdag
+      - image: /images/galleri/pyntet-bursdag-detalj.jpg
+        alt: "Detalj fra borddekking: vinglass, serviettbretting og grønneri"
+        caption: Detalj fra bursdagsdekking
+      - image: /images/galleri/IMG_2439.jpg
+        alt: Familiene oppstilles
+        caption: Familiene oppstilles
+      - image: /images/galleri/IMG_2455.jpg
+        alt: Familien
+        caption: Familien
+      - image: /images/galleri/IMG_2486.jpg
+        alt: Familietreff
+        caption: Familietreff
+      - image: /images/galleri/IMG_2505.jpg
+        alt: Silje og Einar Johan
+        caption: Silje og Einar Johan
+      - image: /images/galleri/IMG_2516.jpg
+        alt: Familieunderholdning
+        caption: Familieunderholdning
+      - image: /images/galleri/IMG_2499.jpg
+        alt: Fisking på kaia
+        caption: Fisking på kaia
+      - image: /images/galleri/166-6647_IMG.jpg
+        alt: Silje og Stians bryllup
+        caption: "Silje og Stians bryllup — brudgommens tale"
+  - heading: Folkvang og sjøliv
+    description: ""
+    photoCredit: ""
+    images:
+      - image: /images/galleri/IMG_1829.jpg
+        alt: Folkvang har med gjester
+        caption: Folkvang har med gjester
+      - image: /images/galleri/IMG_1860.jpg
+        alt: Snorre tar farvel
+        caption: Snorre tar farvel
+      - image: /images/galleri/IMG_1858.jpg
+        alt: Klar til avreise
+        caption: Klar til avreise
+      - image: /images/galleri/bkk_891.jpg
+        alt: På tur til kai
+        caption: På tur til kai
+      - image: /images/galleri/bkk_892.jpg
+        alt: 16. juli 2010
+        caption: 16. juli 2010
+      - image: /images/galleri/IMG_0017.jpg
+        alt: 28. juli 2010
+        caption: 28. juli 2010
+  - heading: KS Norge og kongebesøket 2011
+    description: "Kong Harald og Dronning Sonja besøkte handelsstedet den 7. juni 2011."
+    photoCredit: "Foto: Ragnar Hansen"
+    images:
+      - image: /images/kongebesok/kongeparet-mottak.png
+        alt: Kongeparet hilser på lokale representanter
+        caption: ""
+      - image: /images/kongebesok/IMG_4917.jpg
+        alt: KS Norge ved kai med folkemengde
+        caption: ""
+      - image: /images/kongebesok/IMG_4823.jpg
+        alt: Sjaluppen legger ut fra kongeskipet
+        caption: ""
+      - image: /images/kongebesok/IMG_4829.jpg
+        alt: Kongeparet går i land på brygga
+        caption: ""
+      - image: /images/kongebesok/IMG_4839.jpg
+        alt: Kongeparet med følge går opp fra brygga
+        caption: ""
+      - image: /images/kongebesok/IMG_4857.jpg
+        alt: Kong Harald og Dronning Sonja i publikum
+        caption: ""
+      - image: /images/kongebesok/IMG_4863.jpg
+        alt: Dronning Sonja holder tale
+        caption: ""
+      - image: /images/kongebesok/IMG_4895.jpg
+        alt: Dronning Sonja i samtale med lokale
+        caption: ""
+      - image: /images/kongebesok/IMG_4901.jpg
+        alt: Kongeparet ankommer hovedhuset
+        caption: ""
+      - image: /images/kongebesok/IMG_4912.jpg
+        alt: Intervju med lokale representanter
+        caption: ""
+      - image: /images/kongebesok/IMG_4918.jpg
+        alt: Folkemengde på brygga
+        caption: ""
+      - image: /images/kongebesok/IMG_4919.jpg
+        alt: Flaggpyntet seilskute ved kai
+        caption: ""
+      - image: /images/kongebesok/IMG_4920.jpg
+        alt: Politibetjenter i galauniform
+        caption: ""
+      - image: /images/kongebesok/IMG_4921.jpg
+        alt: Kongeparet med følge
+        caption: ""
+      - image: /images/kongebesok/IMG_4936.jpg
+        alt: NRK-journalist gjør direktesendt intervju
+        caption: ""
