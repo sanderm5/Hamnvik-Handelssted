@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import type { Locale } from '@/lib/i18n/utils';
-import { readPage } from '@/lib/tina-client';
+import { readPage } from '@/lib/sanity-client';
 import Lightbox from '@/components/Lightbox';
 
 interface GalleryImage {
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function ArkivPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const loc = locale as Locale;
-  const arkiv = readPage<ArkivData>('arkiv', loc);
+  const arkiv = await readPage<ArkivData>('arkiv', loc);
 
   return (
     <main id="main-content" className="main-content">
@@ -63,10 +63,7 @@ export default async function ArkivPage({ params }: { params: Promise<{ locale: 
           <div className="image-gallery">
             {section.images?.map((img, j) => (
               <figure key={j} className="vintage-frame">
-                <picture>
-                  <source srcSet={img.image.replace(/\.(jpg|png)$/i, '.webp')} type="image/webp" />
-                  <img src={img.image} alt={img.alt} width={600} height={450} loading="lazy" decoding="async" sizes="(max-width: 750px) 100vw, 50vw" />
-                </picture>
+                <img src={img.image?.includes('cdn.sanity.io') ? `${img.image}?auto=format&w=600` : img.image} alt={img.alt} width={600} height={450} loading="lazy" decoding="async" sizes="(max-width: 750px) 100vw, 50vw" />
                 {img.caption && <figcaption className="vintage-frame-caption">{img.caption}</figcaption>}
               </figure>
             ))}

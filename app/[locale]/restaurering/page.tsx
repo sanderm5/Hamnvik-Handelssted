@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import type { Locale } from '@/lib/i18n/utils';
-import { readPage } from '@/lib/tina-client';
+import { readPage } from '@/lib/sanity-client';
 import Section from '@/components/Section';
 
 interface RestaureringData {
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function RestaureringPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const loc = locale as Locale;
-  const restaurering = readPage<RestaureringData>('restaurering', loc);
+  const restaurering = await readPage<RestaureringData>('restaurering', loc);
 
   return (
     <main id="main-content" className="main-content">

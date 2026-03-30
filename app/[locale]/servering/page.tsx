@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import type { Locale } from '@/lib/i18n/utils';
 import { localePath } from '@/lib/i18n/utils';
-import { readPage } from '@/lib/tina-client';
+import { readPage } from '@/lib/sanity-client';
 import Section from '@/components/Section';
 
 interface ServeringData {
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function ServeringPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const loc = locale as Locale;
-  const servering = readPage<ServeringData>('servering', loc);
+  const servering = await readPage<ServeringData>('servering', loc);
 
   return (
     <main id="main-content" className="main-content">

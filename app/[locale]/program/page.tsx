@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import type { Locale } from '@/lib/i18n/utils';
 import { t } from '@/lib/i18n/utils';
-import { readAllYaml } from '@/lib/tina-client';
+import { readAllNyheter } from '@/lib/sanity-client';
 import Section from '@/components/Section';
 
 interface NyhetEntry {
@@ -45,7 +45,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ locale
   const { locale } = await params;
   const loc = locale as Locale;
   const currentYear = new Date().getFullYear();
-  const allArticles = readAllYaml<Omit<NyhetEntry, '_filename'>>('nyheter');
+  const allArticles = await readAllNyheter<Omit<NyhetEntry, '_filename'>>();
 
   const currentArticles = allArticles.filter(a => {
     const date = a.date;
@@ -87,10 +87,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ locale
                   <div className="image-gallery">
                     {article.galleryImages.map((img, i) => (
                       <figure key={i} className="vintage-frame">
-                        <picture>
-                          <source srcSet={img.image.replace(/\.jpg$/, '.webp')} type="image/webp" />
-                          <img src={img.image} alt={img.alt} width={600} height={450} loading="lazy" decoding="async" />
-                        </picture>
+                        <img src={img.image?.includes('cdn.sanity.io') ? `${img.image}?auto=format&w=600` : img.image} alt={img.alt} width={600} height={450} loading="lazy" decoding="async" />
                       </figure>
                     ))}
                   </div>

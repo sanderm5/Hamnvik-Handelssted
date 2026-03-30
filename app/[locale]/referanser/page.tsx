@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import type { Locale } from '@/lib/i18n/utils';
 import { localePath } from '@/lib/i18n/utils';
-import { readAllYaml } from '@/lib/tina-client';
+import { readAllReferanser } from '@/lib/sanity-client';
 
 interface ReferanseEntry {
   _filename: string;
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function ReferanserPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const loc = locale as Locale;
-  const allRefs = readAllYaml<Omit<ReferanseEntry, '_filename'>>('referanser');
+  const allRefs = await readAllReferanser<Omit<ReferanseEntry, '_filename'>>();
   const referanser = allRefs.sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
 
   return (

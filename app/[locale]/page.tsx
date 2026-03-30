@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import type { Locale } from '@/lib/i18n/utils';
 import { t, localePath } from '@/lib/i18n/utils';
-import { readPage } from '@/lib/tina-client';
+import { readPage } from '@/lib/sanity-client';
 import BookingForm from '@/components/BookingForm';
 
 interface HjemData {
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const loc = locale as Locale;
-  const hjem = readPage<HjemData>('hjem', loc);
+  const hjem = await readPage<HjemData>('hjem', loc);
 
   return (
     <>
@@ -105,10 +105,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <div className="section-with-image">
             {hjem.dampskipImage && (
               <figure className="vintage-frame scroll-reveal section-image-small">
-                <picture>
-                  <source srcSet={hjem.dampskipImage.replace(/\.(jpg|png)$/i, '.webp')} type="image/webp" />
-                  <img src={hjem.dampskipImage} alt={hjem.dampskipImageAlt} width={260} height={340} loading="lazy" decoding="async" />
-                </picture>
+                <img src={hjem.dampskipImage?.includes('cdn.sanity.io') ? `${hjem.dampskipImage}?auto=format` : hjem.dampskipImage} alt={hjem.dampskipImageAlt} width={260} height={340} loading="lazy" decoding="async" />
                 <figcaption className="vintage-frame-caption">{hjem.dampskipImageCaption}</figcaption>
               </figure>
             )}

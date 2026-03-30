@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import type { Locale } from '@/lib/i18n/utils';
 import { t } from '@/lib/i18n/utils';
-import { readPage } from '@/lib/tina-client';
+import { readPage } from '@/lib/sanity-client';
 import BookingForm from '@/components/BookingForm';
 
 interface KontaktData {
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function KontaktPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const loc = locale as Locale;
-  const kontakt = readPage<KontaktData>('kontakt', loc);
+  const kontakt = await readPage<KontaktData>('kontakt', loc);
 
   return (
     <main id="main-content" className="main-content">

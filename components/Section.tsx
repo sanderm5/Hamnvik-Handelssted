@@ -1,3 +1,8 @@
+function imgUrl(url: string) {
+  if (url.includes('cdn.sanity.io')) return `${url}?auto=format`
+  return url
+}
+
 interface SectionData {
   heading?: string;
   content?: string;
@@ -28,18 +33,12 @@ export default function Section({ section }: SectionProps) {
           </div>
           {section.imageCaption ? (
             <figure className="vintage-frame section-image-small">
-              <picture>
-                <source srcSet={section.image!.replace(/\.(jpg|png)$/i, '.webp')} type="image/webp" />
-                <img src={section.image!} alt={section.imageAlt || section.heading || ''} width={280} height={370} loading="lazy" decoding="async" />
-              </picture>
+              <img src={imgUrl(section.image!)} alt={section.imageAlt || section.heading || ''} width={280} height={370} loading="lazy" decoding="async" />
               <figcaption className="vintage-frame-caption">{section.imageCaption}</figcaption>
             </figure>
           ) : (
             <figure className="vintage-frame straight section-image-full">
-              <picture>
-                <source srcSet={section.image!.replace(/\.(jpg|png)$/i, '.webp')} type="image/webp" />
-                <img src={section.image!} alt={section.imageAlt || section.heading || ''} loading="lazy" decoding="async" />
-              </picture>
+              <img src={imgUrl(section.image!)} alt={section.imageAlt || section.heading || ''} loading="lazy" decoding="async" />
             </figure>
           )}
         </div>

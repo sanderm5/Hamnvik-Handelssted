@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import type { Locale } from '@/lib/i18n/utils';
 import { localePath } from '@/lib/i18n/utils';
-import { readPage } from '@/lib/tina-client';
+import { readPage } from '@/lib/sanity-client';
 import Section from '@/components/Section';
 
 interface KulturData {
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function KulturformidlingPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const loc = locale as Locale;
-  const kultur = readPage<KulturData>('kulturformidling', loc);
+  const kultur = await readPage<KulturData>('kulturformidling', loc);
 
   return (
     <main id="main-content" className="main-content">
