@@ -8,6 +8,7 @@ import arkiv from './documents/arkiv'
 import restaurering from './documents/restaurering'
 import referanse from './documents/referanse'
 import nyhet from './documents/nyhet'
+import programSettings from './documents/programSettings'
 
 export const schemaTypes = [
   // Objects
@@ -23,4 +24,6 @@ export const schemaTypes = [
   // Collections
   referanse,
   nyhet,
+  // Settings
+  programSettings,
 ]

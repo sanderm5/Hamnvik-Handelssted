@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import type { Locale } from '@/lib/i18n/utils';
-import { t } from '@/lib/i18n/utils';
-import { readAllNyheter } from '@/lib/sanity-client';
+import { readAllNyheter, readProgramSettings } from '@/lib/sanity-client';
 import Section from '@/components/Section';
 
 interface NyhetEntry {
@@ -45,6 +44,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ locale
   const { locale } = await params;
   const loc = locale as Locale;
   const currentYear = new Date().getFullYear();
+  const settings = await readProgramSettings(loc);
   const allArticles = await readAllNyheter<Omit<NyhetEntry, '_filename'>>();
 
   const currentArticles = allArticles.filter(a => {
@@ -61,9 +61,9 @@ export default async function ProgramPage({ params }: { params: Promise<{ locale
 
   return (
     <main id="main-content" className="main-content">
-      <h1>Program {currentYear}</h1>
-      <p className="article-deck">{t('program.deck', loc)}</p>
-      <p className="byline">{t('program.byline', loc)}</p>
+      <h1>{settings?.heading || `Program ${currentYear}`}</h1>
+      <p className="article-deck">{settings?.deck || ''}</p>
+      <p className="byline">{settings?.byline || ''}</p>
 
       {currentArticles.length > 0 ? (
         currentArticles.map((article, idx) => (
@@ -82,7 +82,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ locale
               {article.galleryImages && article.galleryImages.length > 0 && (
                 <>
                   <hr className="divider" />
-                  <h3>{t('program.gallery', loc)}</h3>
+                  <h3>{settings?.galleryLabel || 'Bilder fra dagen'}</h3>
                   {article.photoCredit && <p className="photo-credit">{article.photoCredit}</p>}
                   <div className="image-gallery">
                     {article.galleryImages.map((img, i) => (
@@ -97,14 +97,14 @@ export default async function ProgramPage({ params }: { params: Promise<{ locale
           </div>
         ))
       ) : (
-        <p className="page-intro">{t('program.empty', loc).replace('{year}', String(currentYear))}</p>
+        <p className="page-intro">{settings?.emptyMessage || `Programmet for ${currentYear} er under planlegging. Følg med!`}</p>
       )}
 
       {archiveArticles.length > 0 && (
         <>
           <hr className="divider-heavy" />
           <details className="archive-section">
-            <summary className="section-heading archive-toggle">{t('program.archive', loc)}</summary>
+            <summary className="section-heading archive-toggle">{settings?.archiveLabel || 'Arkiv'}</summary>
             {archiveArticles.map((article, idx) => (
               <div key={article._filename}>
                 {idx > 0 && <hr className="divider-heavy" />}
@@ -121,7 +121,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ locale
                   {article.galleryImages && article.galleryImages.length > 0 && (
                     <>
                       <hr className="divider" />
-                      <h3>{t('program.gallery', loc)}</h3>
+                      <h3>{settings?.galleryLabel || 'Bilder fra dagen'}</h3>
                       {article.photoCredit && <p className="photo-credit">{article.photoCredit}</p>}
                       <div className="image-gallery">
                         {article.galleryImages.map((img, i) => (

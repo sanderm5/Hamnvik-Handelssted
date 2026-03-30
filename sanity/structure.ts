@@ -33,4 +33,6 @@ export const structure: StructureResolver = (S) =>
       S.divider(),
       S.documentTypeListItem('referanse').title('Referanser'),
       S.documentTypeListItem('nyhet').title('Program / Nyheter'),
+      S.divider(),
+      S.documentTypeListItem('programSettings').title('Programside-innstillinger'),
     ])

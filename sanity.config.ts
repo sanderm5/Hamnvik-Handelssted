@@ -17,6 +17,7 @@ const i18nTypes = [
   'arkiv',
   'restaurering',
   'nyhet',
+  'programSettings',
 ]
 
 export default defineConfig({

@@ -89,6 +89,15 @@ export async function readPage<T>(pageName: string, locale: string = 'nb'): Prom
   return data as T
 }
 
+export async function readProgramSettings(locale: string = 'nb') {
+  const query = `*[_type == "programSettings" && language == $locale][0]{
+    heading, deck, byline, emptyMessage, archiveLabel, galleryLabel
+  }`
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data } = await baseFetch<any>({ query, params: { locale } })
+  return data
+}
+
 export async function readAllNyheter<T>(): Promise<Array<T & { _filename: string }>> {
   const query = `*[_type == "nyhet"]{
     "_filename": _id,
