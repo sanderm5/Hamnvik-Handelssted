@@ -40,9 +40,9 @@ export default defineType({
                     defineField({ name: 'caption', title: 'Bildetekst (valgfritt)', type: 'string' }),
                   ],
                   preview: {
-                    select: { title: 'alt' },
-                    prepare({ title }) {
-                      return { title: title || 'Bilde' }
+                    select: { title: 'alt', media: 'image' },
+                    prepare({ title, media }) {
+                      return { title: title || 'Bilde', media }
                     },
                   },
                 },

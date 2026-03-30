@@ -3,6 +3,7 @@ import { structureTool } from 'sanity/structure'
 import { presentationTool } from 'sanity/presentation'
 import { visionTool } from '@sanity/vision'
 import { documentInternationalization } from '@sanity/document-internationalization'
+import { nbNOLocale } from '@sanity/locale-nb-no'
 import { schemaTypes } from './sanity/schemas'
 import { structure } from './sanity/structure'
 import { projectId, dataset } from './sanity/env'
@@ -55,6 +56,7 @@ export default defineConfig({
         ],
       },
     }),
+    nbNOLocale(),
     visionTool({ defaultApiVersion: '2024-01-01' }),
     documentInternationalization({
       supportedLanguages: [

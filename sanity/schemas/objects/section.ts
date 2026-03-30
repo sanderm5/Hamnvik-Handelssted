@@ -38,9 +38,14 @@ export default defineType({
     }),
   ],
   preview: {
-    select: { title: 'heading' },
-    prepare({ title }) {
-      return { title: title || '(Uten overskrift)' }
+    select: { title: 'heading', content: 'content', media: 'image' },
+    prepare({ title, content, media }) {
+      const subtitle = content ? content.substring(0, 80) + (content.length > 80 ? '...' : '') : ''
+      return {
+        title: title || '(Uten overskrift)',
+        subtitle,
+        media,
+      }
     },
   },
 })
