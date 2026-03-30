@@ -1,5 +1,6 @@
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
+import { presentationTool } from 'sanity/presentation'
 import { visionTool } from '@sanity/vision'
 import { documentInternationalization } from '@sanity/document-internationalization'
 import { schemaTypes } from './sanity/schemas'
@@ -25,6 +26,13 @@ export default defineConfig({
   basePath: '/studio',
   plugins: [
     structureTool({ structure }),
+    presentationTool({
+      previewUrl: {
+        previewMode: {
+          enable: '/api/draft-mode/enable',
+        },
+      },
+    }),
     visionTool({ defaultApiVersion: '2024-01-01' }),
     documentInternationalization({
       supportedLanguages: [
