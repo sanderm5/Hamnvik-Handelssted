@@ -47,26 +47,14 @@ export default async function ProgramPage({ params }: { params: Promise<{ locale
   const settings = await readProgramSettings(loc);
   const allArticles = await readAllNyheter<Omit<NyhetEntry, '_filename'>>();
 
-  const currentArticles = allArticles.filter(a => {
-    const date = a.date;
-    if (!date) return true;
-    return new Date(date).getFullYear() >= currentYear;
-  });
-
-  const archiveArticles = allArticles.filter(a => {
-    const date = a.date;
-    if (!date) return false;
-    return new Date(date).getFullYear() < currentYear;
-  });
-
   return (
     <main id="main-content" className="main-content">
       <h1>{settings?.heading || `Program ${currentYear}`}</h1>
       <p className="article-deck">{settings?.deck || ''}</p>
       <p className="byline">{settings?.byline || ''}</p>
 
-      {currentArticles.length > 0 ? (
-        currentArticles.map((article, idx) => (
+      {allArticles.length > 0 ? (
+        allArticles.map((article, idx) => (
           <div key={article._filename}>
             {idx > 0 && <hr className="divider-heavy" />}
             <article>
@@ -98,48 +86,6 @@ export default async function ProgramPage({ params }: { params: Promise<{ locale
         ))
       ) : (
         <p className="page-intro">{settings?.emptyMessage || `Programmet for ${currentYear} er under planlegging. Følg med!`}</p>
-      )}
-
-      {archiveArticles.length > 0 && (
-        <>
-          <hr className="divider-heavy" />
-          <details className="archive-section">
-            <summary className="section-heading archive-toggle">{settings?.archiveLabel || 'Arkiv'}</summary>
-            {archiveArticles.map((article, idx) => (
-              <div key={article._filename}>
-                {idx > 0 && <hr className="divider-heavy" />}
-                <article>
-                  <h2 className="section-heading">{article.title}</h2>
-                  {article.deck && <p className="article-deck">{article.deck}</p>}
-                  {article.byline && <p className="byline">{article.byline}</p>}
-                  {article.intro && <p className="drop-cap">{article.intro}</p>}
-
-                  {article.sections?.map((section, i) => (
-                    <Section key={i} section={section} />
-                  ))}
-
-                  {article.galleryImages && article.galleryImages.length > 0 && (
-                    <>
-                      <hr className="divider" />
-                      <h3>{settings?.galleryLabel || 'Bilder fra dagen'}</h3>
-                      {article.photoCredit && <p className="photo-credit">{article.photoCredit}</p>}
-                      <div className="image-gallery">
-                        {article.galleryImages.map((img, i) => (
-                          <figure key={i} className="vintage-frame">
-                            <picture>
-                              <source srcSet={img.image.replace(/\.jpg$/, '.webp')} type="image/webp" />
-                              <img src={img.image} alt={img.alt} width={600} height={450} loading="lazy" decoding="async" />
-                            </picture>
-                          </figure>
-                        ))}
-                      </div>
-                    </>
-                  )}
-                </article>
-              </div>
-            ))}
-          </details>
-        </>
       )}
     </main>
   );
