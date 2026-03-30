@@ -14,6 +14,7 @@ const pages = [
 ];
 
 const nextConfig: NextConfig = {
+  productionBrowserSourceMaps: false,
   images: {
     unoptimized: true,
   },
