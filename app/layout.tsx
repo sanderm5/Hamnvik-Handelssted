@@ -9,6 +9,7 @@ import '@fontsource/cormorant-garamond/500-italic.css';
 import '@fontsource/cormorant-sc/400.css';
 import '@fontsource/cormorant-sc/600.css';
 import '@/styles/global.css';
+import { SanityLive } from '@/lib/sanity-client';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const themeScript = `(function(){var s=localStorage.getItem('theme')||'system';var h=document.documentElement;h.setAttribute('data-theme-setting',s);var d=s==='dark'||(s==='system'&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d){h.setAttribute('data-theme','dark')}else{h.removeAttribute('data-theme')}})()`;
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         {children}
+        <SanityLive />
       </body>
     </html>
   );

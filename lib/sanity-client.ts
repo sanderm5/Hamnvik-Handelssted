@@ -1,4 +1,5 @@
 import { createClient } from '@sanity/client'
+import { defineLive } from 'next-sanity/live'
 import { projectId, dataset, apiVersion } from '@/sanity/env'
 
 export const client = createClient({
@@ -7,6 +8,13 @@ export const client = createClient({
   apiVersion,
   useCdn: true,
 })
+
+const { sanityFetch: baseFetch, SanityLive } = defineLive({
+  client,
+  serverToken: process.env.SANITY_API_READ_TOKEN,
+})
+
+export { SanityLive }
 
 const sectionProjection = `{
   heading,
@@ -76,7 +84,9 @@ const pageQueries: Record<string, string> = {
 export async function readPage<T>(pageName: string, locale: string = 'nb'): Promise<T> {
   const query = pageQueries[pageName]
   if (!query) throw new Error(`Unknown page: ${pageName}`)
-  return client.fetch<T>(query, { locale })
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data } = await baseFetch<any>({ query, params: { locale } })
+  return data as T
 }
 
 export async function readAllNyheter<T>(): Promise<Array<T & { _filename: string }>> {
@@ -87,7 +97,9 @@ export async function readAllNyheter<T>(): Promise<Array<T & { _filename: string
     photoCredit,
     galleryImages[]${galleryImageProjection}
   }`
-  return client.fetch(query)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data } = await baseFetch<any>({ query })
+  return data as Array<T & { _filename: string }>
 }
 
 export async function readAllReferanser<T>(): Promise<Array<T & { _filename: string }>> {
@@ -95,5 +107,7 @@ export async function readAllReferanser<T>(): Promise<Array<T & { _filename: str
     "_filename": _id,
     quote, source, date, context, sortOrder
   }`
-  return client.fetch(query)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data } = await baseFetch<any>({ query })
+  return data as Array<T & { _filename: string }>
 }
