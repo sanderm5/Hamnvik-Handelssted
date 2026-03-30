@@ -99,11 +99,11 @@ export async function readProgramSettings(locale: string = 'nb') {
 }
 
 export async function readAllNyheter<T>(): Promise<Array<T & { _filename: string }>> {
-  const query = `*[_type == "nyhet"]{
+  const query = `*[_type == "nyhet"] | order(sortOrder asc){
     "_filename": _id,
     title, deck, byline, date, intro,
     sections[]${sectionProjection},
-    photoCredit,
+    photoCredit, sortOrder,
     galleryImages[]${galleryImageProjection}
   }`
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

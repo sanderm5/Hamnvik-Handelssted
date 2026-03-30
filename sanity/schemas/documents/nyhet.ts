@@ -21,6 +21,12 @@ export default defineType({
       type: 'array',
       of: [{ type: 'section' }],
     }),
+    defineField({
+      name: 'sortOrder',
+      title: 'Rekkefølge (lavest vises først)',
+      type: 'number',
+      initialValue: 0,
+    }),
     defineField({ name: 'photoCredit', title: 'Fotokreditt', type: 'string' }),
     defineField({
       name: 'galleryImages',
@@ -54,7 +60,17 @@ export default defineType({
       hidden: true,
     }),
   ],
+  orderings: [
+    {
+      title: 'Rekkefølge',
+      name: 'sortOrder',
+      by: [{ field: 'sortOrder', direction: 'asc' }],
+    },
+  ],
   preview: {
-    select: { title: 'title' },
+    select: { title: 'title', sortOrder: 'sortOrder' },
+    prepare({ title, sortOrder }) {
+      return { title: title, subtitle: sortOrder != null ? `Rekkefølge: ${sortOrder}` : '' }
+    },
   },
 })
