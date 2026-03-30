@@ -49,8 +49,8 @@ const pageHeaderFields = [
 
 export default defineConfig({
   branch: process.env.TINA_BRANCH || 'main',
-  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID || 'dummy',
-  token: process.env.NEXT_PUBLIC_TINA_TOKEN || 'dummy',
+  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID || '87a14429-aeb8-4567-96a3-d266d694ecdf',
+  token: process.env.NEXT_PUBLIC_TINA_TOKEN || '13ab6b55f477c8eb64b986bfc2f4c5df826a69b8',
   build: {
     outputFolder: 'admin',
     publicFolder: 'public',
