@@ -22,6 +22,7 @@ export default defineConfig({
   title: 'Hamnvik Handelssted',
   projectId,
   dataset,
+  basePath: '/studio',
   plugins: [
     structureTool({ structure }),
     visionTool({ defaultApiVersion: '2024-01-01' }),
