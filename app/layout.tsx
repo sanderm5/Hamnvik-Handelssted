@@ -9,12 +9,10 @@ import '@fontsource/cormorant-garamond/500-italic.css';
 import '@fontsource/cormorant-sc/400.css';
 import '@fontsource/cormorant-sc/600.css';
 import '@/styles/global.css';
-import { draftMode } from 'next/headers';
 import { SanityLive } from '@/lib/sanity-client';
 import { VisualEditing } from 'next-sanity/visual-editing';
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const { isEnabled: isDraftMode } = await draftMode();
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   const themeScript = `(function(){var s=localStorage.getItem('theme')||'system';var h=document.documentElement;h.setAttribute('data-theme-setting',s);var d=s==='dark'||(s==='system'&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d){h.setAttribute('data-theme','dark')}else{h.removeAttribute('data-theme')}})()`;
 
   return (
@@ -33,7 +31,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body>
         {children}
         <SanityLive />
-        {isDraftMode && <VisualEditing />}
+        <VisualEditing />
       </body>
     </html>
   );
