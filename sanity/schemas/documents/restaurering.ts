@@ -9,7 +9,8 @@ export default defineType({
     ...pageHeaderFields(),
     defineField({
       name: 'sections',
-      title: 'Oppdateringer (nyeste forst)',
+      title: 'Oppdateringer',
+      description: 'Restaureringsoppdateringer med tekst og bilder. Nyeste først. Dra for å endre rekkefølge.',
       type: 'array',
       of: [{ type: 'section' }],
     }),

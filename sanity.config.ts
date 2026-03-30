@@ -70,4 +70,16 @@ export default defineConfig({
   schema: {
     types: schemaTypes,
   },
+  document: {
+    actions: (prev, context) => {
+      const singletonTypes = [
+        'hjem', 'historie', 'servering', 'kulturformidling',
+        'kontakt', 'arkiv', 'restaurering', 'programSettings',
+      ]
+      if (singletonTypes.includes(context.schemaType)) {
+        return prev.filter(({ action }) => action !== 'delete' && action !== 'duplicate')
+      }
+      return prev
+    },
+  },
 })

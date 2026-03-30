@@ -7,18 +7,35 @@ export default defineType({
   fields: [
     defineField({
       name: 'source',
-      title: 'Kilde',
+      title: 'Navn på person eller kilde',
+      description: 'F.eks. "Ruth med gjester" eller "Kjetil Rolnes"',
       type: 'string',
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'quote',
-      title: 'Sitat',
+      title: 'Sitatet',
+      description: 'Det fulle sitatet fra personen',
       type: 'text',
     }),
-    defineField({ name: 'date', title: 'Dato (valgfritt)', type: 'string' }),
-    defineField({ name: 'context', title: 'Kontekst (valgfritt)', type: 'text' }),
-    defineField({ name: 'sortOrder', title: 'Sorteringsrekkefølge', type: 'number' }),
+    defineField({
+      name: 'date',
+      title: 'Dato eller sted (valgfritt)',
+      description: 'F.eks. "Juli 2008" eller "Sveits"',
+      type: 'string',
+    }),
+    defineField({
+      name: 'context',
+      title: 'Ekstra informasjon (valgfritt)',
+      description: 'Bakgrunn om sitatet, f.eks. hva anledningen var',
+      type: 'text',
+    }),
+    defineField({
+      name: 'sortOrder',
+      title: 'Rekkefølge',
+      description: 'Lavest tall vises først. F.eks. 1 = øverst, 10 = nederst.',
+      type: 'number',
+    }),
     defineField({
       name: 'language',
       type: 'string',
@@ -26,7 +43,14 @@ export default defineType({
       hidden: true,
     }),
   ],
+  orderings: [
+    {
+      title: 'Rekkefølge',
+      name: 'sortOrder',
+      by: [{ field: 'sortOrder', direction: 'asc' }],
+    },
+  ],
   preview: {
-    select: { title: 'source' },
+    select: { title: 'source', subtitle: 'date' },
   },
 })

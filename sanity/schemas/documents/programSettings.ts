@@ -7,33 +7,33 @@ export default defineType({
   fields: [
     defineField({
       name: 'heading',
-      title: 'Overskrift (f.eks. "Program 2026")',
+      title: 'Overskrift',
+      description: 'Hovedoverskriften på programsiden, f.eks. "Program 2026"',
       type: 'string',
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'deck',
       title: 'Undertittel',
+      description: 'Teksten under overskriften',
       type: 'string',
     }),
     defineField({
       name: 'byline',
       title: 'Byline',
+      description: 'Liten tekst under undertittelen',
       type: 'string',
     }),
     defineField({
       name: 'emptyMessage',
       title: 'Melding når det ikke er noe program',
-      type: 'string',
-    }),
-    defineField({
-      name: 'archiveLabel',
-      title: 'Tekst for arkiv-knapp',
+      description: 'Vises når det ikke er lagt inn noen arrangementer',
       type: 'string',
     }),
     defineField({
       name: 'galleryLabel',
-      title: 'Tekst for bildegalleri-overskrift',
+      title: 'Bildegalleri-overskrift',
+      description: 'Overskriften over bildegalleriet i hvert arrangement',
       type: 'string',
     }),
     defineField({

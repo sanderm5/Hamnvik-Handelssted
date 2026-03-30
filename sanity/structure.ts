@@ -14,25 +14,24 @@ export const structure: StructureResolver = (S) =>
   S.list()
     .title('Innhold')
     .items([
-      S.listItem()
-        .title('Sider')
-        .child(
-          S.list()
-            .title('Sider')
-            .items(
-              singletonTypes.map(({ type, title }) =>
-                S.listItem()
-                  .title(title)
-                  .id(type)
-                  .child(
-                    S.documentTypeList(type).title(title)
-                  )
-              )
-            )
-        ),
+      // Sider — flat liste, ingen ekstra klikk
+      ...singletonTypes.map(({ type, title }) =>
+        S.listItem()
+          .title(title)
+          .id(type)
+          .child(
+            S.documentTypeList(type).title(title)
+          )
+      ),
+
       S.divider(),
+
+      // Samlinger
+      S.documentTypeListItem('nyhet').title('Arrangementer'),
       S.documentTypeListItem('referanse').title('Referanser'),
-      S.documentTypeListItem('nyhet').title('Program / Nyheter'),
+
       S.divider(),
-      S.documentTypeListItem('programSettings').title('Programside-innstillinger'),
+
+      // Innstillinger
+      S.documentTypeListItem('programSettings').title('Programside-tekster'),
     ])
