@@ -31,12 +31,6 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'galleryLabel',
-      title: 'Bildegalleri-overskrift',
-      description: 'Overskriften over bildegalleriet i hvert arrangement',
-      type: 'string',
-    }),
-    defineField({
       name: 'language',
       type: 'string',
       readOnly: true,

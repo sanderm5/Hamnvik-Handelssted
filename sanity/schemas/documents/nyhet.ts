@@ -2,18 +2,17 @@ import { defineType, defineField } from 'sanity'
 
 export default defineType({
   name: 'nyhet',
-  title: 'Program / Nyheter',
+  title: 'Arrangement',
   type: 'document',
   groups: [
     { name: 'info', title: 'Grunninfo', default: true },
     { name: 'content', title: 'Innhold' },
-    { name: 'gallery', title: 'Bildegalleri' },
   ],
   fields: [
     defineField({
       name: 'title',
       title: 'Tittel',
-      description: 'Navnet på arrangementet eller nyheten',
+      description: 'Navnet på arrangementet',
       type: 'string',
       validation: (rule) => rule.required(),
       group: 'info',
@@ -27,7 +26,7 @@ export default defineType({
     defineField({
       name: 'byline',
       title: 'Byline (valgfritt)',
-      description: 'F.eks. forfatter eller arrangør',
+      description: 'F.eks. arrangør',
       type: 'string',
       group: 'info',
     }),
@@ -56,49 +55,10 @@ export default defineType({
     defineField({
       name: 'sections',
       title: 'Seksjoner',
-      description: 'Innholdsseksjoner med tekst og bilder. Dra for å endre rekkefølge.',
+      description: 'Innholdsseksjoner med tekst og bilder. Legg til bilde i hver seksjon der det passer. Dra for å endre rekkefølge.',
       type: 'array',
       of: [{ type: 'section' }],
       group: 'content',
-    }),
-    defineField({
-      name: 'photoCredit',
-      title: 'Fotograf',
-      description: 'Navn på fotograf for bildegalleriet',
-      type: 'string',
-      group: 'gallery',
-    }),
-    defineField({
-      name: 'galleryImages',
-      title: 'Bilder',
-      description: 'Bilder fra arrangementet. Dra for å endre rekkefølge.',
-      type: 'array',
-      group: 'gallery',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'image',
-              title: 'Bilde',
-              type: 'image',
-              options: { hotspot: true },
-            }),
-            defineField({
-              name: 'alt',
-              title: 'Bildetekst',
-              description: 'Kort beskrivelse av hva bildet viser',
-              type: 'string',
-            }),
-          ],
-          preview: {
-            select: { title: 'alt', media: 'image' },
-            prepare({ title, media }) {
-              return { title: title || 'Bilde', media }
-            },
-          },
-        },
-      ],
     }),
     defineField({
       name: 'language',

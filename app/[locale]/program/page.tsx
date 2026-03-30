@@ -66,21 +66,6 @@ export default async function ProgramPage({ params }: { params: Promise<{ locale
               {article.sections?.map((section, i) => (
                 <Section key={i} section={section} />
               ))}
-
-              {article.galleryImages && article.galleryImages.length > 0 && (
-                <>
-                  <hr className="divider" />
-                  <h3>{settings?.galleryLabel || 'Bilder fra dagen'}</h3>
-                  {article.photoCredit && <p className="photo-credit">{article.photoCredit}</p>}
-                  <div className="image-gallery">
-                    {article.galleryImages.map((img, i) => (
-                      <figure key={i} className="vintage-frame">
-                        <img src={img.image?.includes('cdn.sanity.io') ? `${img.image}?auto=format&w=600` : img.image} alt={img.alt} width={600} height={450} loading="lazy" decoding="async" />
-                      </figure>
-                    ))}
-                  </div>
-                </>
-              )}
             </article>
           </div>
         ))
