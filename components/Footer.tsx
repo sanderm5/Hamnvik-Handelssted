@@ -25,7 +25,7 @@ export default function Footer({ locale }: FooterProps) {
       <div className="site-footer-content">
         <div className="site-footer-col">
           <p className="site-footer-label">{t('footer.inquiries', locale)}</p>
-          <p><a href="mailto:post@hamnvikhandelssted.com">post@hamnvikhandelssted.com</a></p>
+          <p><a href="mailto:post@hamnvikhandelssted.no">post@hamnvikhandelssted.no</a></p>
           <p>{t('footer.location', locale)}</p>
         </div>
         <div className="site-footer-col">

@@ -5,6 +5,7 @@ const singletonTypes = [
   { type: 'historie', title: 'Historie' },
   { type: 'servering', title: 'Servering' },
   { type: 'kulturformidling', title: 'Kulturformidling' },
+  { type: 'fjellhoyden', title: 'Fjellhøyden' },
   { type: 'restaurering', title: 'Restaurering' },
   { type: 'arkiv', title: 'Arkiv' },
   { type: 'kontakt', title: 'Kontakt' },

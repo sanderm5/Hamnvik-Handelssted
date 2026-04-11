@@ -9,12 +9,12 @@ export default function PersonvernPage() {
   return (
     <main id="main-content" className="main-content">
       <h1>Personvernerklæring</h1>
-      <p className="page-intro">Denne personvernerklæringen beskriver hvordan Hamnvik Handelssted behandler personopplysninger i forbindelse med bruk av nettstedet hamnvikhandelssted.com.</p>
+      <p className="page-intro">Denne personvernerklæringen beskriver hvordan Hamnvik Handelssted behandler personopplysninger i forbindelse med bruk av nettstedet hamnvikhandelssted.no.</p>
 
       <hr className="divider" />
       <h2 className="section-heading">Behandlingsansvarlig</h2>
       <p>Behandlingsansvarlig for personopplysninger som samles inn via dette nettstedet er:</p>
-      <p><strong>Hamnvik Handelssted</strong><br />Ibestad kommunes fotefarprosjekt<br />Hamnvik, Ibestad kommune, Troms<br />E-post: <a href="mailto:post@hamnvikhandelssted.com">post@hamnvikhandelssted.com</a></p>
+      <p><strong>Hamnvik Handelssted</strong><br />Ibestad kommunes fotefarprosjekt<br />Hamnvik, Ibestad kommune, Troms<br />E-post: <a href="mailto:post@hamnvikhandelssted.no">post@hamnvikhandelssted.no</a></p>
 
       <hr className="divider" />
       <h2 className="section-heading">Hvilke opplysninger samles inn</h2>
@@ -82,7 +82,7 @@ export default function PersonvernPage() {
 
       <hr className="divider" />
       <h2 className="section-heading">Kontakt</h2>
-      <p>Spørsmål om personvern kan rettes til:<br /><a href="mailto:post@hamnvikhandelssted.com">post@hamnvikhandelssted.com</a><br />Hamnvik Handelssted, Hamnvik, Ibestad kommune, Troms</p>
+      <p>Spørsmål om personvern kan rettes til:<br /><a href="mailto:post@hamnvikhandelssted.no">post@hamnvikhandelssted.no</a><br />Hamnvik Handelssted, Hamnvik, Ibestad kommune, Troms</p>
       <p><em>Sist oppdatert: 8. mars 2026</em></p>
     </main>
   );

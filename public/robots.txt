@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hamnvikhandelssted.com/sitemap-index.xml
+Sitemap: https://hamnvikhandelssted.no/sitemap-index.xml

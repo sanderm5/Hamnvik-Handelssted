@@ -16,6 +16,7 @@ const i18nTypes = [
   'kontakt',
   'arkiv',
   'restaurering',
+  'fjellhoyden',
   'nyhet',
   'programSettings',
 ]
@@ -44,6 +45,8 @@ export default defineConfig({
           { route: '/en/servering', filter: '_type == "servering" && language == "en"' },
           { route: '/kulturformidling', filter: '_type == "kulturformidling" && language == "nb"' },
           { route: '/en/kulturformidling', filter: '_type == "kulturformidling" && language == "en"' },
+          { route: '/fjellhoyden', filter: '_type == "fjellhoyden" && language == "nb"' },
+          { route: '/en/fjellhoyden', filter: '_type == "fjellhoyden" && language == "en"' },
           { route: '/arkiv', filter: '_type == "arkiv" && language == "nb"' },
           { route: '/en/arkiv', filter: '_type == "arkiv" && language == "en"' },
           { route: '/restaurering', filter: '_type == "restaurering" && language == "nb"' },
@@ -74,7 +77,7 @@ export default defineConfig({
     actions: (prev, context) => {
       const singletonTypes = [
         'hjem', 'historie', 'servering', 'kulturformidling',
-        'kontakt', 'arkiv', 'restaurering', 'programSettings',
+        'fjellhoyden', 'kontakt', 'arkiv', 'restaurering', 'programSettings',
       ]
       if (singletonTypes.includes(context.schemaType)) {
         return prev.filter(({ action }) => action !== 'delete' && action !== 'duplicate')

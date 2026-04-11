@@ -6,6 +6,7 @@ import kulturformidling from './documents/kulturformidling'
 import kontakt from './documents/kontakt'
 import arkiv from './documents/arkiv'
 import restaurering from './documents/restaurering'
+import fjellhoyden from './documents/fjellhoyden'
 import referanse from './documents/referanse'
 import nyhet from './documents/nyhet'
 import programSettings from './documents/programSettings'
@@ -21,6 +22,7 @@ export const schemaTypes = [
   kontakt,
   arkiv,
   restaurering,
+  fjellhoyden,
   // Collections
   referanse,
   nyhet,

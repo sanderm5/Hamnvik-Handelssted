@@ -24,6 +24,7 @@ export default function Header({ locale, showBooking = false }: HeaderProps) {
     { key: 'historie', href: '/historie' },
     { key: 'servering', href: '/servering' },
     { key: 'kulturformidling', href: '/kulturformidling' },
+    { key: 'fjellhoyden', href: '/fjellhoyden' },
     { key: 'restaurering', href: '/restaurering' },
     { key: 'arkiv', href: '/arkiv' },
     { key: 'program', href: '/program', suffix: ` ${year}` },

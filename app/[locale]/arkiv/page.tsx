@@ -27,7 +27,7 @@ interface ArkivData {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const loc = locale as Locale;
-  const siteUrl = 'https://hamnvikhandelssted.com';
+  const siteUrl = 'https://hamnvikhandelssted.no';
   const path = loc === 'en' ? '/en/arkiv' : '/arkiv';
   return {
     title: loc === 'en' ? 'Archive | Hamnvik Trading Post' : 'Arkiv | Hamnvik Handelssted',

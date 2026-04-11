@@ -21,7 +21,7 @@ interface RestaureringData {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const loc = locale as Locale;
-  const siteUrl = 'https://hamnvikhandelssted.com';
+  const siteUrl = 'https://hamnvikhandelssted.no';
   const path = loc === 'en' ? '/en/restaurering' : '/restaurering';
   return {
     title: loc === 'en' ? 'Restoration | Hamnvik Trading Post' : 'Restaurering | Hamnvik Handelssted',

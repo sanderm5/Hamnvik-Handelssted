@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const loc = locale as Locale;
   const currentYear = new Date().getFullYear();
-  const siteUrl = 'https://hamnvikhandelssted.com';
+  const siteUrl = 'https://hamnvikhandelssted.no';
   const path = loc === 'en' ? '/en/program' : '/program';
   return {
     title: loc === 'en' ? `Program ${currentYear} | Hamnvik Trading Post` : `Program ${currentYear} | Hamnvik Handelssted`,

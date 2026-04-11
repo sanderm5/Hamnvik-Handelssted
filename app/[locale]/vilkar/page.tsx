@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Vilkår for bruk | Hamnvik Handelssted',
-  description: 'Vilkår for bruk av nettstedet hamnvikhandelssted.com.',
+  description: 'Vilkår for bruk av nettstedet hamnvikhandelssted.no.',
 };
 
 export default function VilkarPage() {
   return (
     <main id="main-content" className="main-content">
       <h1>Vilkår for bruk</h1>
-      <p className="page-intro">Ved å bruke nettstedet hamnvikhandelssted.com aksepterer du følgende vilkår. Dersom du ikke godtar vilkårene, ber vi deg om å ikke benytte nettstedet.</p>
+      <p className="page-intro">Ved å bruke nettstedet hamnvikhandelssted.no aksepterer du følgende vilkår. Dersom du ikke godtar vilkårene, ber vi deg om å ikke benytte nettstedet.</p>
 
       <hr className="divider" />
       <h2 className="section-heading">Opphavsrett</h2>
@@ -53,7 +53,7 @@ export default function VilkarPage() {
 
       <hr className="divider" />
       <h2 className="section-heading">Kontakt</h2>
-      <p>Spørsmål om vilkårene kan rettes til <a href="mailto:post@hamnvikhandelssted.com">post@hamnvikhandelssted.com</a>.</p>
+      <p>Spørsmål om vilkårene kan rettes til <a href="mailto:post@hamnvikhandelssted.no">post@hamnvikhandelssted.no</a>.</p>
       <p><em>Sist oppdatert: mars 2026</em></p>
     </main>
   );

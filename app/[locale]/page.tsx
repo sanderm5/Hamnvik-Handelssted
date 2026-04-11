@@ -27,7 +27,7 @@ interface HjemData {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const loc = locale as Locale;
-  const siteUrl = 'https://hamnvikhandelssted.com';
+  const siteUrl = 'https://hamnvikhandelssted.no';
   const currentPath = loc === 'en' ? '/en' : '/';
   return {
     title: loc === 'en' ? 'Welcome | Hamnvik Trading Post' : 'Velkommen | Hamnvik Handelssted',

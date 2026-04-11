@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
     annet: 'Annet',
   };
 
-  const emailBody = `Ny henvendelse fra kontaktskjemaet på hamnvikhandelssted.com
+  const emailBody = `Ny henvendelse fra kontaktskjemaet på hamnvikhandelssted.no
 
 Navn: ${navn}
 E-post: ${epost}
@@ -113,8 +113,8 @@ ${melding}`;
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Hamnvik Handelssted <noreply@hamnvikhandelssted.com>',
-        to: ['post@hamnvikhandelssted.com'],
+        from: 'Hamnvik Handelssted <noreply@hamnvikhandelssted.no>',
+        to: ['post@hamnvikhandelssted.no'],
         reply_to: sanitizeHeaderValue(epost),
         subject: sanitizeHeaderValue(`Henvendelse: ${typeLabels[type] || type} – ${navn}`),
         text: emailBody,

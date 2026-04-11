@@ -23,21 +23,23 @@ export default defineType({
       description: 'Vises ved siden av teksten',
       type: 'image',
       options: { hotspot: true },
-    }),
-    defineField({
-      name: 'imageSize',
-      title: 'Bildestørrelse',
-      description: 'Velg hvor stort bildet skal vises',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'Liten', value: 'small' },
-          { title: 'Medium (standard)', value: 'medium' },
-          { title: 'Stor', value: 'large' },
-        ],
-        layout: 'radio',
-      },
-      initialValue: 'medium',
+      fields: [
+        defineField({
+          name: 'size',
+          title: 'Bildestørrelse',
+          description: 'Velg hvor stort bildet skal vises',
+          type: 'string',
+          options: {
+            list: [
+              { title: 'Liten', value: 'small' },
+              { title: 'Medium (standard)', value: 'medium' },
+              { title: 'Stor', value: 'large' },
+            ],
+            layout: 'radio',
+          },
+          initialValue: 'medium',
+        }),
+      ],
     }),
     defineField({
       name: 'imageAlt',

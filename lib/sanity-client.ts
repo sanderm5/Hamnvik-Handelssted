@@ -9,9 +9,10 @@ export const client = createClient({
   useCdn: true,
 })
 
-const { sanityFetch: baseFetch, SanityLive } = defineLive({
+const { SanityLive } = defineLive({
   client,
   serverToken: process.env.SANITY_API_READ_TOKEN,
+  browserToken: false,
 })
 
 export { SanityLive }
@@ -20,10 +21,10 @@ const sectionProjection = `{
   heading,
   content,
   "image": image.asset->url,
+  "imageSize": image.size,
   imageAlt,
   imageCaption,
-  pullQuote,
-  imageSize
+  pullQuote
 }`
 
 const imageItemProjection = `{
@@ -63,6 +64,11 @@ const pageQueries: Record<string, string> = {
     sections[]${sectionProjection},
     noticeTitle, noticeText
   }`,
+  fjellhoyden: `*[_type == "fjellhoyden" && language == $locale][0]{
+    heading, deck, byline, intro,
+    sections[]${sectionProjection},
+    noticeTitle, noticeText
+  }`,
   kontakt: `*[_type == "kontakt" && language == $locale][0]{
     heading, deck, byline, intro,
     contacts[]{ name, email, phone },
@@ -85,18 +91,14 @@ const pageQueries: Record<string, string> = {
 export async function readPage<T>(pageName: string, locale: string = 'nb'): Promise<T> {
   const query = pageQueries[pageName]
   if (!query) throw new Error(`Unknown page: ${pageName}`)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { data } = await baseFetch<any>({ query, params: { locale } })
-  return data as T
+  return client.fetch<T>(query, { locale })
 }
 
 export async function readProgramSettings(locale: string = 'nb') {
   const query = `*[_type == "programSettings" && language == $locale][0]{
     heading, deck, byline, emptyMessage, archiveLabel, galleryLabel
   }`
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { data } = await baseFetch<any>({ query, params: { locale } })
-  return data
+  return client.fetch(query, { locale })
 }
 
 export async function readAllNyheter<T>(): Promise<Array<T & { _filename: string }>> {
@@ -107,9 +109,7 @@ export async function readAllNyheter<T>(): Promise<Array<T & { _filename: string
     photoCredit, sortOrder,
     galleryImages[]${galleryImageProjection}
   }`
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { data } = await baseFetch<any>({ query })
-  return data as Array<T & { _filename: string }>
+  return client.fetch(query)
 }
 
 export async function readAllReferanser<T>(): Promise<Array<T & { _filename: string }>> {
@@ -117,7 +117,5 @@ export async function readAllReferanser<T>(): Promise<Array<T & { _filename: str
     "_filename": _id,
     quote, source, date, context, sortOrder
   }`
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { data } = await baseFetch<any>({ query })
-  return data as Array<T & { _filename: string }>
+  return client.fetch(query)
 }

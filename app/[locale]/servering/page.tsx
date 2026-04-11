@@ -24,7 +24,7 @@ interface ServeringData {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const loc = locale as Locale;
-  const siteUrl = 'https://hamnvikhandelssted.com';
+  const siteUrl = 'https://hamnvikhandelssted.no';
   const path = loc === 'en' ? '/en/servering' : '/servering';
   return {
     title: loc === 'en' ? 'Dining | Hamnvik Trading Post' : 'Servering | Hamnvik Handelssted',

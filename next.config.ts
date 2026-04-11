@@ -4,6 +4,7 @@ const pages = [
   'historie',
   'servering',
   'kulturformidling',
+  'fjellhoyden',
   'restaurering',
   'arkiv',
   'kontakt',
