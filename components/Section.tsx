@@ -10,7 +10,14 @@ interface SectionData {
   imageAlt?: string;
   imageCaption?: string;
   pullQuote?: string;
+  imageSize?: 'small' | 'medium' | 'large';
 }
+
+const sizeMap = {
+  small: { width: 200, height: 280 },
+  medium: { width: 280, height: 370 },
+  large: { width: 400, height: 520 },
+};
 
 interface SectionProps {
   section: SectionData;
@@ -19,6 +26,7 @@ interface SectionProps {
 export default function Section({ section }: SectionProps) {
   const paragraphs = section.content ? section.content.split('\n\n').filter(Boolean) : [];
   const hasImage = !!section.image;
+  const size = sizeMap[section.imageSize || 'medium'];
 
   return (
     <>
@@ -32,13 +40,13 @@ export default function Section({ section }: SectionProps) {
             ))}
           </div>
           {section.imageCaption ? (
-            <figure className="vintage-frame section-image-small">
-              <img src={imgUrl(section.image!)} alt={section.imageAlt || section.heading || ''} width={280} height={370} loading="lazy" decoding="async" />
+            <figure className="vintage-frame section-image-small" style={{ maxWidth: size.width }}>
+              <img src={imgUrl(section.image!)} alt={section.imageAlt || section.heading || ''} width={size.width} height={size.height} loading="lazy" decoding="async" />
               <figcaption className="vintage-frame-caption">{section.imageCaption}</figcaption>
             </figure>
           ) : (
-            <figure className="vintage-frame straight section-image-full">
-              <img src={imgUrl(section.image!)} alt={section.imageAlt || section.heading || ''} loading="lazy" decoding="async" />
+            <figure className="vintage-frame straight section-image-full" style={{ maxWidth: size.width }}>
+              <img src={imgUrl(section.image!)} alt={section.imageAlt || section.heading || ''} width={size.width} height={size.height} loading="lazy" decoding="async" />
             </figure>
           )}
         </div>

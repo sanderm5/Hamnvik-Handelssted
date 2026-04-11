@@ -22,7 +22,8 @@ const sectionProjection = `{
   "image": image.asset->url,
   imageAlt,
   imageCaption,
-  pullQuote
+  pullQuote,
+  imageSize
 }`
 
 const imageItemProjection = `{
